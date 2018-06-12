@@ -1,4 +1,4 @@
-package cartas;
+package Cartas;
 
 public abstract class CartaMonstruo implements Carta{
 	
@@ -19,14 +19,12 @@ public abstract class CartaMonstruo implements Carta{
 	}
 	
 	public void recibirDanio(int danio) {
-		this.posicion.recibirDanio(danio);
+		this.posicion.recibirDanio(this);
 	}
 	
 	
 	public void invocar(PosicionCarta posicion,LadoCarta lado) {
-
 		this.posicion= posicion;
-		this.posicion.setMonstruo(this);
 		this.lado = lado;
 		
 	}

@@ -1,4 +1,4 @@
-package cartas;
+package Cartas;
 
 public class AbismoReluciente extends CartaMonstruo {
 	
