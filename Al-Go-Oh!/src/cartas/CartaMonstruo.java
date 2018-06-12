@@ -22,7 +22,7 @@ public abstract class CartaMonstruo implements Carta{
 		this.posicion.recibirDanio(danio);
 	}
 	
-	
+	@Override
 	public void invocar(PosicionCarta posicion,LadoCarta lado) {
 		this.posicion= posicion;
 		this.lado = lado;

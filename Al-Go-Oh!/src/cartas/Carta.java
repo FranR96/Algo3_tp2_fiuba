@@ -1,7 +1,7 @@
 package cartas;
 
 public interface Carta {
-
-	void invocar();
+	
 	void efecto();
+	void invocar(PosicionCarta posicion, LadoCarta lado);
 }

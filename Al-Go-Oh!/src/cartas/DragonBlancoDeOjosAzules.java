@@ -11,4 +11,5 @@ public class DragonBlancoDeOjosAzules extends CartaMonstruo {
 		
 	}
 	
+
 }

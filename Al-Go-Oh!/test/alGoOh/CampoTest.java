@@ -46,7 +46,11 @@ class CampoTest {
 
 	@Test 
 	void test03ColocarCartaMagicaBocaAbajoYNoActiveNingunEfecto() {
+		Campo campo = new Campo();
 		
+		CartaEspecial agujeroNegro = new AgujeroNegro();
+		
+		campo.colocarCarta(agujeroNegro, new BocaAbajo());
 	}
 }
 
