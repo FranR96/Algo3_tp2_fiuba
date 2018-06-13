@@ -1,13 +1,14 @@
 package cartas;
 
-public class BocaArriba implements LadoCarta {
+public class BocaAbajo implements LadoCarta {
 
 	private Carta carta;
 	
+	@Override
 	public void setCarta(Carta carta) {
 		this.carta=carta;
+
 	}
-	public void invocar() {
-		this.carta.efecto();
-	}
+
+	public void invocar()
 }

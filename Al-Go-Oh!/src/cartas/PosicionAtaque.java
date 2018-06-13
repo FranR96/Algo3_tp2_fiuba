@@ -6,13 +6,28 @@ public class PosicionAtaque implements PosicionCarta {
 	
 	@Override
 	public void atacar(CartaMonstruo monstruo1, CartaMonstruo monstruo2) {
-		monstruo2.recibirDanio(this.carta.getPtsAtaque());
+		int diferencia = monstruo2.recibirDanio(this.carta.getPtsAtaque());
+		if(diferencia >=0) {
+			this.carta.campo.eliminarMonstruo(this.carta);
+			this.carta.campo.atacarJugador(diferencia);
+		}
 	}
 	
-	public void recibirDanio(int danio) {
+	public int recibirDanio(int danio) {
 		if(this.carta.getPtsAtaque()< danio) {
-			throw new MonstruoEstaMuertoException();
+			int diferencia= danio-this.carta.getPtsAtaque();
+			this.carta.campo.eliminarMonstruo(this.carta);
+			this.carta.campo.atacarJugador(diferencia);
 		}
+		else if(this.carta.getPtsAtaque()>danio) {
+			int diferencia= this.carta.getPtsAtaque()- danio;
+			return diferencia;
+		}
+		else {
+			this.carta.campo.eliminarMonstruo(this.carta);
+			return 0;
+		}
+		return -1;
 	}
 	
 	public void setCarta(CartaMonstruo carta) {
