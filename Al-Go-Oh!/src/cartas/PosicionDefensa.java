@@ -4,20 +4,22 @@ public class PosicionDefensa implements PosicionCarta {
 
 	private CartaMonstruo carta;
 	
-	@Override
 	public void setCarta(CartaMonstruo monstruo) {
 		this.carta=monstruo;
 
 	}
 
-	@Override
-	public void recibirDanio(int danio) {
+	public int recibirDanio(int danio) {
 		if(this.carta.getPtsDefensa()< danio) {
-			throw new MonstruoEstaMuertoException();
+			this.carta.campo.eliminarMonstruo(this.carta);
+		}else if(this.carta.getPtsDefensa()>danio) {
+			int diferencia= this.carta.getPtsDefensa()- danio;
+			return diferencia;
 		}
+		return -1;
 	}
 
-	@Override
+	
 	public void atacar(CartaMonstruo monstruo1, CartaMonstruo monstruo2) {
 		throw new MonstruoNoPuedeAtacarEstaEnPosicionDefensaException();
 

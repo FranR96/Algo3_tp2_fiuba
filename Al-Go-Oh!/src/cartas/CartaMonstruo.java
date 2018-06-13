@@ -1,5 +1,7 @@
 package cartas;
 
+import alGoOh.*;
+
 public abstract class CartaMonstruo implements Carta{
 	
 	protected int ptsAtaque;
@@ -7,6 +9,7 @@ public abstract class CartaMonstruo implements Carta{
 	protected int estrellas;
 	private PosicionCarta posicion;
 	private LadoCarta lado;
+	protected Campo campo;
 	
 	
 	public CartaMonstruo() {
@@ -18,15 +21,21 @@ public abstract class CartaMonstruo implements Carta{
 		this.posicion.atacar(this,monstruo);
 	}
 	
-	public void recibirDanio(int danio) {
-		this.posicion.recibirDanio(danio);
+	public int recibirDanio(int danio) {
+		return (this.posicion.recibirDanio(danio));
 	}
 	
-	@Override
-	public void invocar(PosicionCarta posicion,LadoCarta lado) {
+	
+	public void invocar(PosicionCarta posicion,LadoCarta lado,Campo campo) {
 		this.posicion= posicion;
 		this.lado = lado;
 		this.posicion.setCarta(this);
+		this.lado.setCarta(this);
+		this.campo=campo;
+		if(this.estrellas >= 5) { //Requiere sacrificio
+			this.campo.cartaRequiereSacrificio((this.estrellas-2)/2);
+		}
+		
 	}
 
 

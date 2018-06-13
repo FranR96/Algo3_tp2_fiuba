@@ -18,12 +18,8 @@ class CampoTest {
 		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 		
 		campo.colocarCarta(abismoReluciente,new PosicionAtaque(),new BocaArriba());
-		huevoMonstruoso.invocar(new PosicionAtaque(),new BocaArriba());
+		huevoMonstruoso.invocar(new PosicionAtaque(),new BocaArriba(),campo);
 		
-		assertThrows(MonstruoEstaMuertoException.class,
-				()->{
-					abismoReluciente.atacar(huevoMonstruoso);
-				});
 	}
 	
 	@Test
@@ -35,13 +31,9 @@ class CampoTest {
 		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 		
 		campo.colocarCarta(abismoReluciente,new PosicionDefensa(),new BocaArriba());
-		huevoMonstruoso.invocar(new PosicionAtaque(),new BocaArriba());
+		huevoMonstruoso.invocar(new PosicionAtaque(),new BocaArriba(),campo);
 		
-		assertThrows(MonstruoNoPuedeAtacarEstaEnPosicionDefensaException.class,
-				()->{
-					abismoReluciente.atacar(huevoMonstruoso);
-				});
-		
+
 	}
 
 	@Test 
@@ -49,8 +41,14 @@ class CampoTest {
 		Campo campo = new Campo();
 		
 		CartaEspecial agujeroNegro = new AgujeroNegro();
+		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 		
+		campo.colocarCarta(huevoMonstruoso, new PosicionAtaque(), new BocaArriba());
 		campo.colocarCarta(agujeroNegro, new BocaAbajo());
+		
+		assertEquals(1,campo.getZonaMonstruos().size());
+		
+		
 	}
 }
 

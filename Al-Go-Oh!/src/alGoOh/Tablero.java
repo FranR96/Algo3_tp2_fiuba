@@ -1,5 +1,43 @@
 package alGoOh;
 
-public class Tablero {
 
+import cartas.*;
+
+public class Tablero {
+	private static Tablero INSTANCE = new Tablero();
+	public Campo campo1= new Campo();
+	public Campo campo2= new Campo();
+	
+	private Tablero() {}
+	
+	public static Tablero getInstance() {
+	    return INSTANCE;
+	}
+	public void inicializarTablero(Jugador jugador1, Jugador jugador2) {
+		campo1.setJugador(jugador1);
+		campo2.setJugador(jugador2);
+		jugador1.setTablero(this);
+		jugador2.setTablero(this);
+	}
+
+	public void colocarCartaEnCampoJugador1(CartaMonstruo monstruo, PosicionCarta posicion,
+			LadoCarta lado) {
+		this.colocarCartaEnCampo(monstruo, posicion,lado,campo1);	
+	}
+	
+	public void colocarCartaEnCampoJugador2(CartaMonstruo monstruo, PosicionCarta posicion,
+			LadoCarta lado) {
+		this.colocarCartaEnCampo(monstruo, posicion,lado,campo2);	
+	}
+	
+	public void colocarCartaEnCampo(CartaMonstruo monstruo, PosicionCarta posicion,
+			LadoCarta lado,Campo campo) {
+		campo.colocarCarta(monstruo, posicion, lado);
+	}
+
+	public void atacarACon(CartaMonstruo monstruo1, CartaMonstruo monstruo2) {
+		monstruo2.atacar(monstruo1);
+		
+	}
+	
 }
