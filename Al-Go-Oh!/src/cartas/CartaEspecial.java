@@ -13,4 +13,5 @@ public abstract class CartaEspecial implements Carta{
 		this.campo=campo;
 	}
 
+	
 }

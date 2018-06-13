@@ -13,7 +13,7 @@ public class Campo {
 	
 	
 	public void colocarCarta(CartaMonstruo monstruo, PosicionCarta posicion,LadoCarta lado) {
-		if(this.zonaMonstruos.size()<5) {
+		if(this.zonaMonstruos.size()<=5) {
 			monstruo.invocar(posicion, lado,this);
 			this.zonaMonstruos.add(monstruo);
 		}
@@ -69,6 +69,7 @@ public class Campo {
 		}
 		
 	}
+
 
 
 	
