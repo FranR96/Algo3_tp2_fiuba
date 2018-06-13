@@ -61,7 +61,7 @@ public class Campo {
 	public void cartaRequiereSacrificio(int cantSacrificios) {
 		if(this.zonaMonstruos.size()>=cantSacrificios) {
 			for(int i = 0;i<cantSacrificios;i++) {
-				Carta cartaMuerta = this.zonaMonstruos.remove(i);
+				Carta cartaMuerta = this.zonaMonstruos.remove(0);
 				this.cementerio.add(cartaMuerta);
 			}
 		}
