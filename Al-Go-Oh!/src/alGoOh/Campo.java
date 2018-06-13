@@ -53,7 +53,7 @@ public class Campo {
 		
 	}
 
-	public Collection<CartaMonstruo> monstruosInvocados() {
+	public ArrayList<CartaMonstruo> monstruosInvocados() {
 		return this.zonaMonstruos;
 	}
 
@@ -69,7 +69,10 @@ public class Campo {
 		}
 		
 	}
-
+	
+	public void aplicarEfecto(CartaEspecial carta) {
+		carta.aplicarEfecto(this);
+	}
 
 
 	
