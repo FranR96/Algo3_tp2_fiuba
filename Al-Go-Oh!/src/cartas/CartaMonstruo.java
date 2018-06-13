@@ -33,7 +33,7 @@ public abstract class CartaMonstruo implements Carta{
 		this.lado.setCarta(this);
 		this.campo=campo;
 		if(this.estrellas >= 5) { //Requiere sacrificio
-			this.campo.cartaRequiereSacrificio((this.estrellas-2)/2);
+			this.campo.cartaRequiereSacrificio((this.estrellas-1)/3);
 		}
 		
 	}
