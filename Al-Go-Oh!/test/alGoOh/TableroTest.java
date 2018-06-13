@@ -25,7 +25,7 @@ class TableroTest {
 		tablero.colocarCartaEnCampoJugador2(monstruo2,new PosicionAtaque(),new BocaArriba());
 		
 		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerio= tablero.campo1.cartasEnCementerio();
+		Collection<Carta> cementerio= tablero.getCampo1().cartasEnCementerio();
 		
 		assertTrue(cementerio.contains(monstruo1));
 		
@@ -49,7 +49,7 @@ class TableroTest {
 		tablero.colocarCartaEnCampoJugador2(monstruo2,new PosicionAtaque(),new BocaArriba());
 		
 		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerio= tablero.campo2.cartasEnCementerio();
+		Collection<Carta> cementerio= tablero.getCampo2().cartasEnCementerio();
 		
 		assertTrue(cementerio.contains(monstruo2));
 		
@@ -71,8 +71,8 @@ class TableroTest {
 		tablero.colocarCartaEnCampoJugador2(monstruo2,new PosicionAtaque(),new BocaArriba());
 	
 		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerio2= tablero.campo2.cartasEnCementerio();
-		Collection<Carta> cementerio1= tablero.campo1.cartasEnCementerio();
+		Collection<Carta> cementerio2= tablero.getCampo2().cartasEnCementerio();
+		Collection<Carta> cementerio1= tablero.getCampo1().cartasEnCementerio();
 		
 		assertTrue(cementerio2.contains(monstruo2));
 		assertTrue(cementerio1.contains(monstruo1));
@@ -97,7 +97,7 @@ class TableroTest {
 		tablero.colocarCartaEnCampoJugador2(monstruo2, new PosicionAtaque(), new BocaArriba());
 		
 		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerioJugador1 = tablero.campo1.cartasEnCementerio();
+		Collection<Carta> cementerioJugador1 = tablero.getCampo1().cartasEnCementerio();
 		
 		assertTrue(cementerioJugador1.contains(monstruo1));
 		
@@ -120,7 +120,7 @@ class TableroTest {
 		tablero.colocarCartaEnCampoJugador2(monstruo2, new PosicionAtaque(), new BocaArriba());
 		
 		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerioJugador1 = tablero.campo1.cartasEnCementerio();
+		Collection<Carta> cementerioJugador1 = tablero.getCampo1().cartasEnCementerio();
 		
 		assertFalse(cementerioJugador1.contains(monstruo1));
 		

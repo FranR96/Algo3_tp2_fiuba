@@ -8,7 +8,6 @@ import cartas.*;
 public class Campo {
 	private ArrayList<CartaMonstruo> zonaMonstruos = new ArrayList<CartaMonstruo>();
 	private ArrayList<CartaEspecial> zonaEspeciales = new ArrayList<CartaEspecial>();
-	private Tablero tablero = Tablero.getInstance();
 	private Jugador jugador;
 	private ArrayList<Carta> cementerio= new ArrayList<Carta>();
 	
@@ -26,8 +25,8 @@ public class Campo {
 
 	public void colocarCarta(CartaEspecial carta, LadoCarta lado) {
 		if(this.zonaEspeciales.size()< 5) {
-			this.zonaEspeciales.add(carta);
 			carta.invocar(lado);
+			this.zonaEspeciales.add(carta);
 		}
 		else {
 			throw new CapacidadMaximaEnZonaEspecialesException();

@@ -5,8 +5,8 @@ import cartas.*;
 
 public class Tablero {
 	private static Tablero INSTANCE = new Tablero();
-	public Campo campo1= new Campo();
-	public Campo campo2= new Campo();
+	private Campo campo1= new Campo();
+	private Campo campo2= new Campo();
 	
 	private Tablero() {}
 	
@@ -16,8 +16,14 @@ public class Tablero {
 	public void inicializarTablero(Jugador jugador1, Jugador jugador2) {
 		campo1.setJugador(jugador1);
 		campo2.setJugador(jugador2);
-		jugador1.setTablero(this);
-		jugador2.setTablero(this);
+	}
+	
+	public Campo getCampo1() {
+		return campo1;
+	}
+	
+	public Campo getCampo2() {
+		return campo2;
 	}
 
 	public void colocarCartaEnCampoJugador1(CartaMonstruo monstruo, PosicionCarta posicion,
