@@ -11,7 +11,7 @@ public abstract class CartaEspecial implements Carta{
 		this.lado=lado;
 		this.lado.setCarta(this);
 		this.campo=campo;
-		this.lado.invocar(campo);
+		this.lado.invocar(this.campo);
 		
 	}
 
