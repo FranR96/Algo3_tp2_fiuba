@@ -7,5 +7,5 @@ public class AbismoReluciente extends CartaMonstruo {
 	}
 	
 	public void efecto() {}
-	
+	public void efecto(Campo campo) {}
 }
