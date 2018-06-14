@@ -22,6 +22,8 @@ public class Tablero {
 	public void inicializarTablero(Jugador jugador1, Jugador jugador2) {
 		campo1.setJugador(jugador1);
 		campo2.setJugador(jugador2);
+		campo1.setTablero(this);
+		campo2.setTablero(this);
 	}
 	
 	public Campo getCampo1() {
