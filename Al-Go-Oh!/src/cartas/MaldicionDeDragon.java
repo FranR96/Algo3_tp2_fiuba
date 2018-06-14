@@ -6,4 +6,5 @@ public class MaldicionDeDragon extends CartaMonstruo{
 		super(2000,1500,5);
 	}
 	public void efecto() {};
+	public void efecto(Campo campo) {}
 }
