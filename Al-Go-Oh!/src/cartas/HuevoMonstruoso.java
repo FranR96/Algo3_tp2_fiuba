@@ -7,5 +7,5 @@ public class HuevoMonstruoso extends CartaMonstruo{
 	}
 	
 	public void efecto() {}
-	
+	public void efecto(Campo campo) {}
 }
