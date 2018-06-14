@@ -28,7 +28,9 @@ class CampoTest {
 		campo.colocarCarta(abismoReluciente, new PosicionDefensa(), new BocaArriba());
 
 		assertThrows(MonstruoNoPuedeAtacarEstaEnPosicionDefensaException.class,
-				()-> abismoReluciente.atacar(huevoMonstruoso));
+				()->{
+					abismoReluciente.atacar(huevoMonstruoso);
+				});
 
 	}
 
@@ -49,9 +51,6 @@ class CampoTest {
 
 		Collection<CartaMonstruo> zonaMonstruosJugador1 = tablero.getCampo1().monstruosInvocados();
 		Collection<CartaMonstruo> zonaMonstruosJugador2 = tablero.getCampo2().monstruosInvocados();
-		tablero.aplicarEfecto(agujeroNegro);  /* Esto esta hardcodeado, se supone que el campo le dice al tablero
-												que active el efecto de una carta magica inmediatamente cuando se activa
-												una boca arriba.*/
 
 		assertEquals(1,zonaMonstruosJugador1.size());
 		assertEquals(1,zonaMonstruosJugador2.size());
@@ -84,7 +83,98 @@ class CampoTest {
 
 		assertTrue(cementerioJugador2.contains(monstruo2));
 	}
+	
+	@Test
+	void test06ColocoUnMonstruoYLuegoColocoUnMonstruoQueRequiereUnSacrificioElPrimeroNoEstaYElUltimoSi() {
+		Campo campo = new Campo();
+		
+		CartaMonstruo abismoReluciente = new AbismoReluciente();
+		campo.colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
+		
+		CartaMonstruo maldicionDeDragon = new MaldicionDeDragon();
+		campo.colocarCarta(maldicionDeDragon, new PosicionAtaque(), new BocaArriba());
+		
+		Collection<Carta> cementerio = campo.cartasEnCementerio();
+		
+		assertTrue(cementerio.contains(abismoReluciente));
+		
+		Collection<CartaMonstruo> zonaMonstruosInvocados = campo.monstruosInvocados();
+		
+		assertTrue(zonaMonstruosInvocados.contains(maldicionDeDragon));
 
+	}
+	
+	@Test 
+	void test07ColocoDosMonstruosYLuegoColocoUnMonstruoQueRequiereDosSacrificiosAmbosNoEstanYElUltimoSi() {
+		Campo campo = new Campo();
+		
+		CartaMonstruo abismoReluciente = new AbismoReluciente();
+		campo.colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
+		
+		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
+		campo.colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaArriba());
+		
+		CartaMonstruo dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
+		campo.colocarCarta(dragonBlancoDeOjosAzules, new PosicionAtaque(), new BocaArriba());
+		
+		Collection<Carta> cementerio = campo.cartasEnCementerio();
+		
+		assertTrue(cementerio.contains(abismoReluciente));
+		assertTrue(cementerio.contains(huevoMonstruoso));
+		
+		Collection<CartaMonstruo> zonaMonstruosInvocados = campo.monstruosInvocados();
+		
+		assertTrue(zonaMonstruosInvocados.contains(dragonBlancoDeOjosAzules));
+
+	}
+
+	
+	@Test
+	void test08ColocoMasDeCincoCartasEspecialesBocaAbajoYMeSaltaUnaExcepcion() {
+		Campo campo = new Campo();
+		
+		for(int i = 0; i<5;i++) {
+			CartaMagica agujeroNegro = new AgujeroNegro();
+			campo.colocarCarta(agujeroNegro, new BocaAbajo());
+		}
+		assertThrows(CapacidadMaximaEnZonaEspecialesException.class,
+				()->{
+					CartaMagica agujeroNegro = new AgujeroNegro();
+					campo.colocarCarta(agujeroNegro, new BocaAbajo());
+				});
+		
+	}
+	
+	@Test
+	void test09ColocoMasDeCincoCartasMonstruosYMeSaltaUnaExcepcion() {
+
+		Campo campo = new Campo();
+		
+		for(int i = 0; i<5;i++) {
+			CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
+			campo.colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
+		}
+		assertThrows(CapacidadMaximaEnZonaMonstruosException.class,
+				()->{
+					CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
+					campo.colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
+				});
+	}
+	
+	@Test
+	void test10TengoLaZonaDeMonstruosCompletaPeroQuieroInvocarAUnMonstruoQueRequiereSacrificioYPuedo() {
+		Campo campo = new Campo();
+		
+		for(int i = 0; i<5;i++) {
+			CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
+			campo.colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
+		}
+		
+		CartaMonstruo maldicionDeDragon = new MaldicionDeDragon();
+		campo.colocarCarta(maldicionDeDragon,new PosicionAtaque(),new BocaArriba());
+		
+		assertTrue(campo.monstruosInvocados().contains(maldicionDeDragon));
+	}
 }
 
 

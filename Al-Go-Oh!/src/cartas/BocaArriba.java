@@ -10,6 +10,6 @@ public class BocaArriba implements LadoCarta {
 		this.carta=carta;
 	}
 	public void invocar(Campo campo) {
-		this.carta.efecto();
+		this.carta.efecto(campo);
 	}
 }

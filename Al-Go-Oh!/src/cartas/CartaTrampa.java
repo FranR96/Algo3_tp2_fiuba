@@ -1,15 +1,9 @@
 package cartas;
+import alGoOh.*;
 
 public abstract class CartaTrampa extends CartaEspecial {
 	
-	public CartaTrampa() {
-		
-	}
-
-	@Override
-	public void efecto() {
-		
-	}
+	public abstract void efecto(Campo campo);
 
 
 }
