@@ -8,9 +8,14 @@ import cartas.*;
 public class Campo {
 	private ArrayList<CartaMonstruo> zonaMonstruos = new ArrayList<CartaMonstruo>();
 	private ArrayList<CartaEspecial> zonaEspeciales = new ArrayList<CartaEspecial>();
+	private Tablero tablero;
 	private Jugador jugador;
 	private ArrayList<Carta> cementerio= new ArrayList<Carta>();
 	
+	public void setTablero(Tablero tablero) {
+		
+		this.tablero=tablero;
+	}
 	
 	public void colocarCarta(CartaMonstruo monstruo, PosicionCarta posicion,LadoCarta lado) {
 		if(this.zonaMonstruos.size()<=5) {
@@ -27,6 +32,7 @@ public class Campo {
 		if(this.zonaEspeciales.size()< 5) {
 			carta.invocar(lado, this);
 			this.zonaEspeciales.add(carta);
+			this.tablero.aplicarEfecto(carta);
 		}
 		else {
 			throw new CapacidadMaximaEnZonaEspecialesException();

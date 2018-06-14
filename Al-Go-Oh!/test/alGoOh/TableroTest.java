@@ -142,9 +142,6 @@ class TableroTest {
 
 		Collection<CartaMonstruo> zonaMonstruosJugador1 = tablero.getCampo1().monstruosInvocados();
 		Collection<CartaMonstruo> zonaMonstruosJugador2 = tablero.getCampo2().monstruosInvocados();
-		tablero.aplicarEfecto(agujeroNegro);  /* Esto esta hardcodeado, se supone que el campo le dice al tablero
-												que active el efecto de una carta magica inmediatamente cuando se activa
-												una boca arriba.*/
 
 		
 		assertEquals(0,zonaMonstruosJugador1.size());
