@@ -8,6 +8,6 @@ public class DragonBlancoDeOjosAzules extends CartaMonstruo {
 	public void efecto() {
 		
 	}
-	
+	public void efecto(Campo campo) {}
 
 }
