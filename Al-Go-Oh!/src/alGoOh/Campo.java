@@ -9,24 +9,30 @@ public class Campo {
 	private ArrayList<CartaMonstruo> zonaMonstruos = new ArrayList<CartaMonstruo>();
 	private ArrayList<CartaEspecial> zonaEspeciales = new ArrayList<CartaEspecial>();
 	private Jugador jugador;
+	private Tablero tablero;
 	private ArrayList<Carta> cementerio= new ArrayList<Carta>();
 	
 	
 	public void colocarCarta(CartaMonstruo monstruo, PosicionCarta posicion,LadoCarta lado) {
-		if(this.zonaMonstruos.size()<=5) {
-			monstruo.invocar(posicion, lado,this);
+		monstruo.invocar(posicion, lado,this);
+		if(this.zonaMonstruos.size()<5) {
 			this.zonaMonstruos.add(monstruo);
 		}
 		else {
-			throw new CapacidadMaximaEnZonaMontruosException();
+			throw new CapacidadMaximaEnZonaMonstruosException();
 		}
 		
 	}
 
+	public void setTablero(Tablero tablero) {
+		
+		this.tablero=tablero;
+	}
+	
 	public void colocarCarta(CartaEspecial carta, LadoCarta lado) {
 		if(this.zonaEspeciales.size()< 5) {
-			carta.invocar(lado, this);
 			this.zonaEspeciales.add(carta);
+			carta.invocar(lado, this);
 		}
 		else {
 			throw new CapacidadMaximaEnZonaEspecialesException();
@@ -43,6 +49,11 @@ public class Campo {
 		this.cementerio.add(cartaMuerta);
 	}
 
+	public void eliminarCartaEspecial(CartaEspecial carta) {
+		int celda = this.zonaEspeciales.indexOf(carta);
+		Carta cartaUsada = this.zonaEspeciales.remove(celda);
+		this.cementerio.add(cartaUsada);
+	}
 	public void atacarJugador(int danio) {
 		this.jugador.recibirDaniosVitales(danio);
 		
@@ -69,10 +80,11 @@ public class Campo {
 		}
 		
 	}
-	
-	public void aplicarEfecto(CartaEspecial carta) {
-		carta.aplicarEfecto(this);
+
+	public ArrayList<CartaEspecial> cartasEspeciales() {
+		return this.zonaEspeciales;
 	}
+	
 
 
 }

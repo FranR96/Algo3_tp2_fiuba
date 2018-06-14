@@ -11,11 +11,8 @@ public abstract class CartaEspecial implements Carta{
 		this.lado=lado;
 		this.lado.setCarta(this);
 		this.campo=campo;
-	}
-	
-	public void aplicarEfecto(Campo campo) {
-		
 		this.lado.invocar(campo);
+		
 	}
 
 	public boolean estaBocaAbajo(){

@@ -4,10 +4,8 @@ import alGoOh.Campo;
 
 public abstract class CartaMagica extends CartaEspecial {
 	
-	@Override
-	public void efecto(Campo campo) {
-		
-	}
+	
+	public abstract void efecto(Campo campo);
 		
 	
 }
