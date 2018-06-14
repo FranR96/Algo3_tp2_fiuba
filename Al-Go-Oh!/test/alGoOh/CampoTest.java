@@ -28,10 +28,7 @@ class CampoTest {
 		campo.colocarCarta(abismoReluciente, new PosicionDefensa(), new BocaArriba());
 
 		assertThrows(MonstruoNoPuedeAtacarEstaEnPosicionDefensaException.class,
-				()->{ 
-					abismoReluciente.atacar(huevoMonstruoso);
-					
-				});
+				()-> abismoReluciente.atacar(huevoMonstruoso));
 
 	}
 
@@ -88,66 +85,6 @@ class CampoTest {
 		assertTrue(cementerioJugador2.contains(monstruo2));
 	}
 
-
-
-	@Test 
-	void test06ColocoUnMonstruoYLuegoColocoUnMonstruoQueRequiereUnSacrificioElPrimeroNoEstaYElUltimoSi() {
-		Campo campo = new Campo();
-	
-		CartaMonstruo abismoReluciente = new AbismoReluciente();
-		campo.colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
-	
-		CartaMonstruo maldicionDeDragon = new MaldicionDeDragon();
-		campo.colocarCarta(maldicionDeDragon, new PosicionAtaque(), new BocaArriba());
-	
-		Collection<Carta> cementerio = campo.cartasEnCementerio();
-	
-		assertTrue(cementerio.contains(abismoReluciente));
-	
-		Collection<CartaMonstruo> zonaMonstruosInvocados = campo.monstruosInvocados();
-	
-		assertTrue(zonaMonstruosInvocados.contains(maldicionDeDragon));
-
-	}
-
-	@Test 
-	void test07ColocoDosMonstruosYLuegoColocoUnMonstruoQueRequiereDosSacrificiosAmbosNoEstanYElUltimoSi() {
-		Campo campo = new Campo();
-	
-		CartaMonstruo abismoReluciente = new AbismoReluciente();
-		campo.colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
-	
-		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
-		campo.colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaArriba());
-	
-		CartaMonstruo dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
-		campo.colocarCarta(dragonBlancoDeOjosAzules, new PosicionAtaque(), new BocaArriba());
-		
-		Collection<Carta> cementerio = campo.cartasEnCementerio();
-	
-		assertTrue(cementerio.contains(abismoReluciente));
-		assertTrue(cementerio.contains(huevoMonstruoso));
-	
-		Collection<CartaMonstruo> zonaMonstruosInvocados = campo.monstruosInvocados();
-	
-		assertTrue(zonaMonstruosInvocados.contains(dragonBlancoDeOjosAzules));
-
-	}
-
-	@Test
-	void test08ColocoMasDeCincoCartasEnLaZonaDeMonstruosDaError() {
-		Campo campo= new Campo();
-		
-		for(int i = 0; i<=4;i++) {
-			CartaMonstruo abismoReluciente = new AbismoReluciente();
-			campo.colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
-		}
-		
-		assertThrows(CapacidadMaximaEnZonaMonstruosException.class,
-				()->{ 
-					CartaMonstruo abismoReluciente = new AbismoReluciente();
-					campo.colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
-				});
-	}
 }
+
 

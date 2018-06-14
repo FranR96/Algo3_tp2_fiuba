@@ -23,7 +23,7 @@ public class Campo {
 			this.zonaMonstruos.add(monstruo);
 		}
 		else {
-			throw new CapacidadMaximaEnZonaMonstruosException();
+			throw new CapacidadMaximaEnZonaMontruosException();
 		}
 		
 	}
