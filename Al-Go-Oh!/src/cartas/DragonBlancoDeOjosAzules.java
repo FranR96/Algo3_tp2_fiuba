@@ -1,5 +1,7 @@
 package cartas;
 
+import alGoOh.Campo;
+
 public class DragonBlancoDeOjosAzules extends CartaMonstruo {
 	
 	public DragonBlancoDeOjosAzules() {

@@ -4,10 +4,6 @@ import alGoOh.*;
 
 public class AgujeroNegro extends CartaMagica {
 
-	public AgujeroNegro() {
-		
-	}
-	
 	@Override
 	public void efecto() {
 		

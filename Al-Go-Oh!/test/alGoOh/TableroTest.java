@@ -1,11 +1,8 @@
 package alGoOh;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Collection;
-
 import org.junit.jupiter.api.Test;
-
 import cartas.*;
 
 class TableroTest {
@@ -13,7 +10,6 @@ class TableroTest {
 	@Test
 	void test01ColocarUnaCartaEnPosicionAtaqueYElOponenteColoqueOtraDeMayorAtaqueYEsteGanaAplicandoDanioAlOtroJugador() {
 	
-		
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
@@ -32,7 +28,6 @@ class TableroTest {
 		int ptsDeVidaEsperados = 8000-(1600-600);
 		
 		assertEquals(ptsDeVidaEsperados,jugador1.getPtsVida());
-		
 	}
 	
 	@Test
@@ -188,10 +183,13 @@ class TableroTest {
 		
 		CartaMagica agujeroNegro = new AgujeroNegro();
 		tablero.colocarCartaEnCampoJugador1(agujeroNegro, new BocaArriba());
-		
-		Collection<CartaMonstruo> zonaMonstruosJugador1 = tablero.campo1.monstruosInvocados();
-		Collection<CartaMonstruo> zonaMonstruosJugador2 = tablero.campo2.monstruosInvocados();
-		tablero.aplicarEfecto(agujeroNegro);
+
+		Collection<CartaMonstruo> zonaMonstruosJugador1 = tablero.getCampo1().monstruosInvocados();
+		Collection<CartaMonstruo> zonaMonstruosJugador2 = tablero.getCampo2().monstruosInvocados();
+		tablero.aplicarEfecto(agujeroNegro);  /* Esto esta hardcodeado, se supone que el campo le dice al tablero
+												que active el efecto de una carta magica inmediatamente cuando se activa
+												una boca arriba.*/
+
 		
 		assertEquals(0,zonaMonstruosJugador1.size());
 		assertEquals(0,zonaMonstruosJugador2.size());

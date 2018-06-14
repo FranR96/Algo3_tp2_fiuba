@@ -1,5 +1,7 @@
 package cartas;
 
+import alGoOh.Campo;
+
 public class AbismoReluciente extends CartaMonstruo {
 	
 	public AbismoReluciente () {

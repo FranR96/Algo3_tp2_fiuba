@@ -18,4 +18,8 @@ public abstract class CartaEspecial implements Carta{
 		this.lado.invocar(campo);
 	}
 
+	public boolean estaBocaAbajo(){
+		return lado instanceof BocaAbajo;
+	}
+
 }

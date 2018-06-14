@@ -43,7 +43,6 @@ public abstract class CartaMonstruo implements Carta{
 		
 	}
 
-
 	public int getPtsAtaque() {
 		return this.ptsAtaque;
 	}
@@ -54,5 +53,9 @@ public abstract class CartaMonstruo implements Carta{
 	
 	public int getEstrellas() {
 		return this.estrellas;
+	}
+
+	public boolean enPosicionDeAtaque(){
+		return this.posicion instanceof PosicionAtaque;
 	}
 }

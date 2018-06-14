@@ -1,5 +1,7 @@
 package cartas;
 
+import alGoOh.Campo;
+
 public class BocaAbajo implements LadoCarta {
 
 	private Carta carta;

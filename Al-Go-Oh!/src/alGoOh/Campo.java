@@ -25,7 +25,7 @@ public class Campo {
 
 	public void colocarCarta(CartaEspecial carta, LadoCarta lado) {
 		if(this.zonaEspeciales.size()< 5) {
-			carta.invocar(lado);
+			carta.invocar(lado, this);
 			this.zonaEspeciales.add(carta);
 		}
 		else {
@@ -75,5 +75,8 @@ public class Campo {
 	}
 
 
-	
 }
+
+
+	
+
