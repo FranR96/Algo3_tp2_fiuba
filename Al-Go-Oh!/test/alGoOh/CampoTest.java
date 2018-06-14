@@ -28,9 +28,7 @@ class CampoTest {
 		campo.colocarCarta(abismoReluciente, new PosicionDefensa(), new BocaArriba());
 
 		assertThrows(MonstruoNoPuedeAtacarEstaEnPosicionDefensaException.class,
-				()->{
-					abismoReluciente.atacar(huevoMonstruoso);
-				});
+				()-> abismoReluciente.atacar(huevoMonstruoso));
 
 	}
 

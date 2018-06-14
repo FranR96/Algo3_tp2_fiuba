@@ -9,15 +9,15 @@
 
 ### Links:
 - [Enunciado](https://docs.google.com/document/d/1rhfMbyq-ikrl6lGjERISsc4I5taV5PhcU0FLQG1O0QQ)
-
+- [Informe](https://www.overleaf.com/17021137vbwkdxxrfxvy#/64991821/)
 ### A hacer:
 **1ra Entrega (14 de Junio)**
 
-- [ ] Colocar una carta de monstruo en posición de ataque.
+- [x] Colocar una carta de monstruo en posición de ataque.
 - [x] Colocar un monstruo en posición de defensa
-- [ ] Colocar una carta mágica en el campo boca abajo (no activa ningún efecto)
-- [ ] Colocar una carta trampa en el campo boca abajo
-- [ ] Mandar una carta al cementerio (sinónimo de destruir) y verificar que estén ahí.
+- [x] Colocar una carta mágica en el campo boca abajo (no activa ningún efecto)
+- [x] Colocar una carta trampa en el campo boca abajo
+- [x] Mandar una carta al cementerio (sinónimo de destruir) y verificar que estén ahí.
 - [x] Colocar una carta de monstruo en posición de ataque, el oponente coloca otra carta de monstruo en posición de ataque (con mayor ataque). Atacar al primer monstruo y verificar que este se destruyó, y sufro daño a los puntos de vida igual a la diferencia de los puntos de ataque de los monstruos
 - [x] Colocar una carta de monstruo en posición de ataque, el oponente coloca otra carta de monstruo en posición de ataque (con menor ataque), atacar al primer monstruo, verificar que el monstruo atacante es destruido y el atacante recibe daño a los puntos de vida igual a la diferencia de ataques.
 - [x] Colocar una carta de monstruo en posición de ataque, el oponente coloca otra carta de monstruo en posición de ataque (con igual ataque), atacar al primer monstruo, verificar que ambos monstruos son destruidos y nadie recibe daño a los puntos de vida.
