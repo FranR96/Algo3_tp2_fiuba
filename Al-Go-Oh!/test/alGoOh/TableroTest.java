@@ -174,4 +174,32 @@ class TableroTest {
 
 	}
 	
+	@Test
+	void test06ColocoUnMonstruoPorCadaLadoYLuegoLaCartaAgujeroNegroBocaArribaTodosLosMonstruosFueronDestruidosPeroNadieRecibeDanioVital() {
+		Tablero tablero = Tablero.getInstance();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		tablero.inicializarTablero(jugador1, jugador2);
+		
+		CartaMonstruo monstruo1 = new AbismoReluciente();
+		CartaMonstruo monstruo2 = new HuevoMonstruoso();
+		tablero.colocarCartaEnCampoJugador1(monstruo1, new PosicionAtaque(), new BocaArriba());
+		tablero.colocarCartaEnCampoJugador2(monstruo2, new PosicionDefensa(), new BocaArriba());
+		
+		CartaMagica agujeroNegro = new AgujeroNegro();
+		tablero.colocarCartaEnCampoJugador1(agujeroNegro, new BocaArriba());
+		
+		Collection<CartaMonstruo> zonaMonstruosJugador1 = tablero.campo1.monstruosInvocados();
+		Collection<CartaMonstruo> zonaMonstruosJugador2 = tablero.campo2.monstruosInvocados();
+		tablero.aplicarEfecto(agujeroNegro);
+		
+		assertEquals(0,zonaMonstruosJugador1.size());
+		assertEquals(0,zonaMonstruosJugador2.size());
+		
+		int ptsDeVidaEsperados = 8000;
+		
+		assertEquals(ptsDeVidaEsperados,jugador1.getPtsVida());
+		assertEquals(ptsDeVidaEsperados,jugador2.getPtsVida());
+	}
+	
 }
