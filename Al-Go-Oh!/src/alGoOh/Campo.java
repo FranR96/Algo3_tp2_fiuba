@@ -18,7 +18,7 @@ public class Campo {
 			this.zonaMonstruos.add(monstruo);
 		}
 		else {
-			throw new CapacidadMaximaEnZonaMontruosException();
+			throw new CapacidadMaximaEnZonaMonstruosException();
 		}
 		
 	}

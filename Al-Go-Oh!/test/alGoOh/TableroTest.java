@@ -125,50 +125,6 @@ class TableroTest {
 		
 	}
 	
-	@Test //Este test va a Campo Test
-	void test0ColocoUnMonstruoYLuegoColocoUnMonstruoQueRequiereUnSacrificioElPrimeroNoEstaYElUltimoSi() {
-		Campo campo = new Campo();
-		
-		CartaMonstruo abismoReluciente = new AbismoReluciente();
-		campo.colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
-		
-		CartaMonstruo maldicionDeDragon = new MaldicionDeDragon();
-		campo.colocarCarta(maldicionDeDragon, new PosicionAtaque(), new BocaArriba());
-		
-		Collection<Carta> cementerio = campo.cartasEnCementerio();
-		
-		assertTrue(cementerio.contains(abismoReluciente));
-		
-		Collection<CartaMonstruo> zonaMonstruosInvocados = campo.monstruosInvocados();
-		
-		assertTrue(zonaMonstruosInvocados.contains(maldicionDeDragon));
-
-	}
-	
-	@Test //Este test va a Campo Test
-	void test0ColocoDosMonstruosYLuegoColocoUnMonstruoQueRequiereDosSacrificiosAmbosNoEstanYElUltimoSi() {
-		Campo campo = new Campo();
-		
-		CartaMonstruo abismoReluciente = new AbismoReluciente();
-		campo.colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
-		
-		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
-		campo.colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaArriba());
-		
-		CartaMonstruo dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
-		campo.colocarCarta(dragonBlancoDeOjosAzules, new PosicionAtaque(), new BocaArriba());
-		
-		Collection<Carta> cementerio = campo.cartasEnCementerio();
-		
-		assertTrue(cementerio.contains(abismoReluciente));
-		assertTrue(cementerio.contains(huevoMonstruoso));
-		
-		Collection<CartaMonstruo> zonaMonstruosInvocados = campo.monstruosInvocados();
-		
-		assertTrue(zonaMonstruosInvocados.contains(dragonBlancoDeOjosAzules));
-
-	}
-	
 	@Test
 	void test06ColocoUnMonstruoPorCadaLadoYLuegoLaCartaAgujeroNegroBocaArribaTodosLosMonstruosFueronDestruidosPeroNadieRecibeDanioVital() {
 		Tablero tablero = Tablero.getInstance();

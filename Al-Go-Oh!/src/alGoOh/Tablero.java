@@ -4,21 +4,24 @@ package alGoOh;
 import cartas.*;
 
 public class Tablero {
-	private static Tablero INSTANCE = new Tablero();
+	private static Tablero INSTANCE = null;
 	private Campo campo1= new Campo();
 	private Campo campo2= new Campo();
 	
 	private Tablero() {}
 	
-	// Esto no andaba y al comentarlo anduvo, hay que fijarse bien como dejarlo.
-	/*private synchronized static void createInstance() {
+	private synchronized static void createInstance() {
 		if (INSTANCE == null) { 
 	       INSTANCE = new Tablero();
 	    }
-	}*/
+	}
+	
 	public static Tablero getInstance() {
+	    if (INSTANCE == null) 
+	    	createInstance();
 	    return INSTANCE;
 	}
+	
 	public void inicializarTablero(Jugador jugador1, Jugador jugador2) {
 		campo1.setJugador(jugador1);
 		campo2.setJugador(jugador2);
