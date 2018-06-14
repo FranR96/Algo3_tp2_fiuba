@@ -11,7 +11,7 @@ public class PosicionDefensa implements PosicionCarta {
 
 	public int recibirDanio(int danio) {
 		if(this.carta.getPtsDefensa()< danio) {
-			this.carta.campo.eliminarMonstruo(this.carta);
+			this.carta.getCampo().eliminarMonstruo(this.carta);
 		}else if(this.carta.getPtsDefensa()>danio) {
 			int diferencia= this.carta.getPtsDefensa()- danio;
 			return diferencia;

@@ -5,19 +5,31 @@ import cartas.*;
 
 public class Tablero {
 	private static Tablero INSTANCE = new Tablero();
-	public Campo campo1= new Campo();
-	public Campo campo2= new Campo();
+	private Campo campo1= new Campo();
+	private Campo campo2= new Campo();
 	
 	private Tablero() {}
 	
+	// Esto no andaba y al comentarlo anduvo, hay que fijarse bien como dejarlo.
+	/*private synchronized static void createInstance() {
+		if (INSTANCE == null) { 
+	       INSTANCE = new Tablero();
+	    }
+	}*/
 	public static Tablero getInstance() {
 	    return INSTANCE;
 	}
 	public void inicializarTablero(Jugador jugador1, Jugador jugador2) {
 		campo1.setJugador(jugador1);
 		campo2.setJugador(jugador2);
-		jugador1.setTablero(this);
-		jugador2.setTablero(this);
+	}
+	
+	public Campo getCampo1() {
+		return campo1;
+	}
+	
+	public Campo getCampo2() {
+		return campo2;
 	}
 
 	public void colocarCartaEnCampoJugador1(CartaMonstruo monstruo, PosicionCarta posicion,
@@ -30,14 +42,30 @@ public class Tablero {
 		this.colocarCartaEnCampo(monstruo, posicion,lado,campo2);	
 	}
 	
+	public void colocarCartaEnCampoJugador1(CartaEspecial especial, LadoCarta lado) {
+		this.colocarCartaEnCampo(especial, lado, campo1);
+	}
+	
+	public void colocarCartaEnCampoJugador2(CartaEspecial especial, LadoCarta lado) {
+		this.colocarCartaEnCampo(especial, lado, campo2);
+	}
+	
 	public void colocarCartaEnCampo(CartaMonstruo monstruo, PosicionCarta posicion,
 			LadoCarta lado,Campo campo) {
 		campo.colocarCarta(monstruo, posicion, lado);
 	}
 
+	public void colocarCartaEnCampo(CartaEspecial especial, LadoCarta lado, Campo campo) {
+		campo.colocarCarta(especial, lado);
+	}
+	
 	public void atacarACon(CartaMonstruo monstruo1, CartaMonstruo monstruo2) {
 		monstruo2.atacar(monstruo1);
 		
 	}
 	
+	public void aplicarEfecto(CartaEspecial especial) {
+		campo1.aplicarEfecto(especial);
+		campo2.aplicarEfecto(especial);
+	}
 }

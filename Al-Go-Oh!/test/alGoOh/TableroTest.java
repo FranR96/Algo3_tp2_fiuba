@@ -1,11 +1,8 @@
 package alGoOh;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Collection;
-
 import org.junit.jupiter.api.Test;
-
 import cartas.*;
 
 class TableroTest {
@@ -13,7 +10,6 @@ class TableroTest {
 	@Test
 	void test01ColocarUnaCartaEnPosicionAtaqueYElOponenteColoqueOtraDeMayorAtaqueYEsteGanaAplicandoDanioAlOtroJugador() {
 	
-		
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
@@ -25,14 +21,13 @@ class TableroTest {
 		tablero.colocarCartaEnCampoJugador2(monstruo2,new PosicionAtaque(),new BocaArriba());
 		
 		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerio= tablero.campo1.cartasEnCementerio();
+		Collection<Carta> cementerio= tablero.getCampo1().cartasEnCementerio();
 		
 		assertTrue(cementerio.contains(monstruo1));
 		
 		int ptsDeVidaEsperados = 8000-(1600-600);
 		
 		assertEquals(ptsDeVidaEsperados,jugador1.getPtsVida());
-		
 	}
 	
 	@Test
@@ -49,7 +44,7 @@ class TableroTest {
 		tablero.colocarCartaEnCampoJugador2(monstruo2,new PosicionAtaque(),new BocaArriba());
 		
 		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerio= tablero.campo2.cartasEnCementerio();
+		Collection<Carta> cementerio= tablero.getCampo2().cartasEnCementerio();
 		
 		assertTrue(cementerio.contains(monstruo2));
 		
@@ -71,8 +66,8 @@ class TableroTest {
 		tablero.colocarCartaEnCampoJugador2(monstruo2,new PosicionAtaque(),new BocaArriba());
 	
 		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerio2= tablero.campo2.cartasEnCementerio();
-		Collection<Carta> cementerio1= tablero.campo1.cartasEnCementerio();
+		Collection<Carta> cementerio2= tablero.getCampo2().cartasEnCementerio();
+		Collection<Carta> cementerio1= tablero.getCampo1().cartasEnCementerio();
 		
 		assertTrue(cementerio2.contains(monstruo2));
 		assertTrue(cementerio1.contains(monstruo1));
@@ -97,7 +92,7 @@ class TableroTest {
 		tablero.colocarCartaEnCampoJugador2(monstruo2, new PosicionAtaque(), new BocaArriba());
 		
 		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerioJugador1 = tablero.campo1.cartasEnCementerio();
+		Collection<Carta> cementerioJugador1 = tablero.getCampo1().cartasEnCementerio();
 		
 		assertTrue(cementerioJugador1.contains(monstruo1));
 		
@@ -120,7 +115,7 @@ class TableroTest {
 		tablero.colocarCartaEnCampoJugador2(monstruo2, new PosicionAtaque(), new BocaArriba());
 		
 		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerioJugador1 = tablero.campo1.cartasEnCementerio();
+		Collection<Carta> cementerioJugador1 = tablero.getCampo1().cartasEnCementerio();
 		
 		assertFalse(cementerioJugador1.contains(monstruo1));
 		
@@ -172,6 +167,37 @@ class TableroTest {
 		
 		assertTrue(zonaMonstruosInvocados.contains(dragonBlancoDeOjosAzules));
 
+	}
+	
+	@Test
+	void test06ColocoUnMonstruoPorCadaLadoYLuegoLaCartaAgujeroNegroBocaArribaTodosLosMonstruosFueronDestruidosPeroNadieRecibeDanioVital() {
+		Tablero tablero = Tablero.getInstance();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		tablero.inicializarTablero(jugador1, jugador2);
+		
+		CartaMonstruo monstruo1 = new AbismoReluciente();
+		CartaMonstruo monstruo2 = new HuevoMonstruoso();
+		tablero.colocarCartaEnCampoJugador1(monstruo1, new PosicionAtaque(), new BocaArriba());
+		tablero.colocarCartaEnCampoJugador2(monstruo2, new PosicionDefensa(), new BocaArriba());
+		
+		CartaMagica agujeroNegro = new AgujeroNegro();
+		tablero.colocarCartaEnCampoJugador1(agujeroNegro, new BocaArriba());
+
+		Collection<CartaMonstruo> zonaMonstruosJugador1 = tablero.getCampo1().monstruosInvocados();
+		Collection<CartaMonstruo> zonaMonstruosJugador2 = tablero.getCampo2().monstruosInvocados();
+		tablero.aplicarEfecto(agujeroNegro);  /* Esto esta hardcodeado, se supone que el campo le dice al tablero
+												que active el efecto de una carta magica inmediatamente cuando se activa
+												una boca arriba.*/
+
+		
+		assertEquals(0,zonaMonstruosJugador1.size());
+		assertEquals(0,zonaMonstruosJugador2.size());
+		
+		int ptsDeVidaEsperados = 8000;
+		
+		assertEquals(ptsDeVidaEsperados,jugador1.getPtsVida());
+		assertEquals(ptsDeVidaEsperados,jugador2.getPtsVida());
 	}
 	
 }

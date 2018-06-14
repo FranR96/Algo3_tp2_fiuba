@@ -8,13 +8,12 @@ import cartas.*;
 public class Campo {
 	private ArrayList<CartaMonstruo> zonaMonstruos = new ArrayList<CartaMonstruo>();
 	private ArrayList<CartaEspecial> zonaEspeciales = new ArrayList<CartaEspecial>();
-	private Tablero tablero = Tablero.getInstance();
 	private Jugador jugador;
 	private ArrayList<Carta> cementerio= new ArrayList<Carta>();
 	
 	
 	public void colocarCarta(CartaMonstruo monstruo, PosicionCarta posicion,LadoCarta lado) {
-		if(this.zonaMonstruos.size()<5) {
+		if(this.zonaMonstruos.size()<=5) {
 			monstruo.invocar(posicion, lado,this);
 			this.zonaMonstruos.add(monstruo);
 		}
@@ -26,8 +25,8 @@ public class Campo {
 
 	public void colocarCarta(CartaEspecial carta, LadoCarta lado) {
 		if(this.zonaEspeciales.size()< 5) {
+			carta.invocar(lado, this);
 			this.zonaEspeciales.add(carta);
-			carta.invocar(lado);
 		}
 		else {
 			throw new CapacidadMaximaEnZonaEspecialesException();
@@ -54,7 +53,7 @@ public class Campo {
 		
 	}
 
-	public Collection<CartaMonstruo> monstruosInvocados() {
+	public ArrayList<CartaMonstruo> monstruosInvocados() {
 		return this.zonaMonstruos;
 	}
 
@@ -70,7 +69,14 @@ public class Campo {
 		}
 		
 	}
+	
+	public void aplicarEfecto(CartaEspecial carta) {
+		carta.aplicarEfecto(this);
+	}
+
+
+}
 
 
 	
-}
+

@@ -4,18 +4,23 @@ import alGoOh.*;
 
 public abstract class CartaMonstruo implements Carta{
 	
-	protected int ptsAtaque;
-	protected int ptsDefensa;
-	protected int estrellas;
+	private int ptsAtaque;
+	private int ptsDefensa;
+	private int estrellas;
 	private PosicionCarta posicion;
 	private LadoCarta lado;
-	protected Campo campo;
+	private Campo campo;
 	
 	
-	public CartaMonstruo() {
-		
+	public CartaMonstruo(int ataque,int defensa, int estrellas) {
+		this.ptsAtaque= ataque;
+		this.ptsDefensa= defensa;
+		this.estrellas = estrellas;
 	}
 	
+	public Campo getCampo() {
+		return campo;
+	}
 	
 	public void atacar(CartaMonstruo monstruo) {
 		this.posicion.atacar(this,monstruo);
@@ -38,7 +43,6 @@ public abstract class CartaMonstruo implements Carta{
 		
 	}
 
-
 	public int getPtsAtaque() {
 		return this.ptsAtaque;
 	}
@@ -49,5 +53,9 @@ public abstract class CartaMonstruo implements Carta{
 	
 	public int getEstrellas() {
 		return this.estrellas;
+	}
+
+	public boolean enPosicionDeAtaque(){
+		return this.posicion instanceof PosicionAtaque;
 	}
 }

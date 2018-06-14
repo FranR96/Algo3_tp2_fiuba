@@ -1,15 +1,13 @@
 package cartas;
 
+import alGoOh.Campo;
+
 public class HuevoMonstruoso extends CartaMonstruo{
 
 	public HuevoMonstruoso() {
-		
-		this.ptsAtaque=600;
-		this.ptsDefensa=900;
-		this.estrellas=3;
-		
+		super(600,900,3);
 	}
 	
 	public void efecto() {}
-	
+	public void efecto(Campo campo) {}
 }

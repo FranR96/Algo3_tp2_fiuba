@@ -5,12 +5,21 @@ import alGoOh.*;
 public abstract class CartaEspecial implements Carta{
 
 	private LadoCarta lado;
-	//protected Campo campo;
+	private Campo campo;
 	
-	public void invocar(LadoCarta lado) {
+	public void invocar(LadoCarta lado, Campo campo) {
 		this.lado=lado;
 		this.lado.setCarta(this);
-	//	this.campo=campo;
+		this.campo=campo;
+	}
+	
+	public void aplicarEfecto(Campo campo) {
+		
+		this.lado.invocar(campo);
+	}
+
+	public boolean estaBocaAbajo(){
+		return lado instanceof BocaAbajo;
 	}
 
 }
