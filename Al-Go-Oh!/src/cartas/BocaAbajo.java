@@ -12,5 +12,5 @@ public class BocaAbajo implements LadoCarta {
 
 	}
 
-	public void invocar(Campo campo){};
+	public void invocar(){};
 }

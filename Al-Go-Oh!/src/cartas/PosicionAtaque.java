@@ -4,7 +4,6 @@ public class PosicionAtaque implements PosicionCarta {
 	
 	private CartaMonstruo carta;
 	
-	@Override
 	public void atacar(CartaMonstruo monstruo1, CartaMonstruo monstruo2) {
 		int diferencia = monstruo2.recibirDanio(this.carta.getPtsAtaque());
 		if(diferencia >=0) {

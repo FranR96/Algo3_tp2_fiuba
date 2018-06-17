@@ -14,8 +14,9 @@ public class Campo {
 	
 	
 	public void colocarCarta(CartaMonstruo monstruo, PosicionCarta posicion,LadoCarta lado) {
-		monstruo.invocar(posicion, lado,this);
-		if(this.zonaMonstruos.size()<5) {
+		int sacrificiosNecesarios = monstruo.invocar(posicion, lado,this);
+		if((this.zonaMonstruos.size()-sacrificiosNecesarios)<5) {
+			this.cartaRequiereSacrificio(sacrificiosNecesarios);
 			this.zonaMonstruos.add(monstruo);
 		}
 		else {
@@ -32,7 +33,7 @@ public class Campo {
 	public void colocarCarta(CartaEspecial carta, LadoCarta lado) {
 		if(this.zonaEspeciales.size()< 5) {
 			this.zonaEspeciales.add(carta);
-			carta.invocar(lado, this);
+			carta.invocar(lado,this);
 		}
 		else {
 			throw new CapacidadMaximaEnZonaEspecialesException();
@@ -41,6 +42,7 @@ public class Campo {
 
 	public void setJugador(Jugador jugador) {
 		this.jugador=jugador;
+		this.jugador.setCampo(this);
 	}
 
 	public void eliminarMonstruo(CartaMonstruo carta) {

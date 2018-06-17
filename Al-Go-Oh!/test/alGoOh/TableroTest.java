@@ -14,14 +14,16 @@ class TableroTest {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		tablero.inicializarTablero(jugador1, jugador2);
+		Campo campo1 = tablero.getCampo1();
+		Campo campo2  = tablero.getCampo2();
 		
 		CartaMonstruo monstruo1 = new HuevoMonstruoso();
 		CartaMonstruo monstruo2 = new AbismoReluciente();
-		tablero.colocarCartaEnCampoJugador1(monstruo1,new PosicionAtaque(),new BocaArriba());
-		tablero.colocarCartaEnCampoJugador2(monstruo2,new PosicionAtaque(),new BocaArriba());
+		campo1.colocarCarta(monstruo1,new PosicionAtaque(),new BocaArriba());
+		campo2.colocarCarta(monstruo2,new PosicionAtaque(),new BocaArriba());
 		
-		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerio= tablero.getCampo1().cartasEnCementerio();
+		monstruo2.atacar(monstruo1);
+		Collection<Carta> cementerio=campo1.cartasEnCementerio();
 		
 		assertTrue(cementerio.contains(monstruo1));
 		
@@ -37,14 +39,16 @@ class TableroTest {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		tablero.inicializarTablero(jugador1, jugador2);
+		Campo campo1 = tablero.getCampo1();
+		Campo campo2  = tablero.getCampo2();
 		
 		CartaMonstruo monstruo2 = new HuevoMonstruoso();
 		CartaMonstruo monstruo1 = new AbismoReluciente();
-		tablero.colocarCartaEnCampoJugador1(monstruo1,new PosicionAtaque(),new BocaArriba());
-		tablero.colocarCartaEnCampoJugador2(monstruo2,new PosicionAtaque(),new BocaArriba());
+		campo1.colocarCarta(monstruo1,new PosicionAtaque(),new BocaArriba());
+		campo2.colocarCarta(monstruo2,new PosicionAtaque(),new BocaArriba());
 		
-		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerio= tablero.getCampo2().cartasEnCementerio();
+		monstruo2.atacar(monstruo1);
+		Collection<Carta> cementerio= campo2.cartasEnCementerio();
 		
 		assertTrue(cementerio.contains(monstruo2));
 		
@@ -59,15 +63,18 @@ class TableroTest {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		tablero.inicializarTablero(jugador1, jugador2);
+		Campo campo1 = tablero.getCampo1();
+		Campo campo2  = tablero.getCampo2();
+		
 		
 		CartaMonstruo monstruo2 = new AbismoReluciente();
 		CartaMonstruo monstruo1 = new AbismoReluciente();
-		tablero.colocarCartaEnCampoJugador1(monstruo1,new PosicionAtaque(),new BocaArriba());
-		tablero.colocarCartaEnCampoJugador2(monstruo2,new PosicionAtaque(),new BocaArriba());
+		campo1.colocarCarta(monstruo1,new PosicionAtaque(),new BocaArriba());
+		campo2.colocarCarta(monstruo2,new PosicionAtaque(),new BocaArriba());
 	
-		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerio2= tablero.getCampo2().cartasEnCementerio();
-		Collection<Carta> cementerio1= tablero.getCampo1().cartasEnCementerio();
+		monstruo2.atacar(monstruo1);
+		Collection<Carta> cementerio2= campo2.cartasEnCementerio();
+		Collection<Carta> cementerio1= campo1.cartasEnCementerio();
 		
 		assertTrue(cementerio2.contains(monstruo2));
 		assertTrue(cementerio1.contains(monstruo1));
@@ -85,14 +92,17 @@ class TableroTest {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		tablero.inicializarTablero(jugador1, jugador2);
+		Campo campo1 = tablero.getCampo1();
+		Campo campo2  = tablero.getCampo2();
+		
 		
 		CartaMonstruo monstruo1 = new HuevoMonstruoso();
 		CartaMonstruo monstruo2 = new AbismoReluciente();
-		tablero.colocarCartaEnCampoJugador1(monstruo1, new PosicionDefensa(), new BocaArriba());
-		tablero.colocarCartaEnCampoJugador2(monstruo2, new PosicionAtaque(), new BocaArriba());
+		campo1.colocarCarta(monstruo1,new PosicionDefensa(),new BocaArriba());
+		campo2.colocarCarta(monstruo2,new PosicionAtaque(),new BocaArriba());
 		
-		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerioJugador1 = tablero.getCampo1().cartasEnCementerio();
+		monstruo2.atacar(monstruo1);
+		Collection<Carta> cementerioJugador1 =campo1.cartasEnCementerio();
 		
 		assertTrue(cementerioJugador1.contains(monstruo1));
 		
@@ -111,11 +121,14 @@ class TableroTest {
 		
 		CartaMonstruo monstruo1 = new AbismoReluciente();
 		CartaMonstruo monstruo2 = new HuevoMonstruoso();
-		tablero.colocarCartaEnCampoJugador1(monstruo1, new PosicionDefensa(), new BocaArriba());
-		tablero.colocarCartaEnCampoJugador2(monstruo2, new PosicionAtaque(), new BocaArriba());
 		
-		tablero.atacarACon(monstruo1, monstruo2);
-		Collection<Carta> cementerioJugador1 = tablero.getCampo1().cartasEnCementerio();
+		Campo campo1= tablero.getCampo1();
+		Campo campo2= tablero.getCampo2();
+		campo1.colocarCarta(monstruo1, new PosicionDefensa(), new BocaArriba());
+		campo2.colocarCarta(monstruo2, new PosicionAtaque(), new BocaArriba());
+		
+		monstruo2.atacar(monstruo1);
+		Collection<Carta> cementerioJugador1 = campo1.cartasEnCementerio();
 		
 		assertFalse(cementerioJugador1.contains(monstruo1));
 		
@@ -131,17 +144,19 @@ class TableroTest {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		tablero.inicializarTablero(jugador1, jugador2);
+		Campo campo1= tablero.getCampo1();
+		Campo campo2= tablero.getCampo2();
 		
 		CartaMonstruo monstruo1 = new AbismoReluciente();
 		CartaMonstruo monstruo2 = new HuevoMonstruoso();
-		tablero.colocarCartaEnCampoJugador1(monstruo1, new PosicionAtaque(), new BocaArriba());
-		tablero.colocarCartaEnCampoJugador2(monstruo2, new PosicionDefensa(), new BocaArriba());
+		campo1.colocarCarta(monstruo1, new PosicionAtaque(), new BocaArriba());
+		campo2.colocarCarta(monstruo2, new PosicionDefensa(), new BocaArriba());
 		
 		CartaMagica agujeroNegro = new AgujeroNegro();
-		tablero.colocarCartaEnCampoJugador1(agujeroNegro, new BocaArriba());
+		campo1.colocarCarta(agujeroNegro, new BocaArriba());
 
-		Collection<CartaMonstruo> zonaMonstruosJugador1 = tablero.getCampo1().monstruosInvocados();
-		Collection<CartaMonstruo> zonaMonstruosJugador2 = tablero.getCampo2().monstruosInvocados();
+		Collection<CartaMonstruo> zonaMonstruosJugador1 = campo1.monstruosInvocados();
+		Collection<CartaMonstruo> zonaMonstruosJugador2 = campo2.monstruosInvocados();
 
 		assertEquals(0,zonaMonstruosJugador1.size());
 		assertEquals(0,zonaMonstruosJugador2.size());

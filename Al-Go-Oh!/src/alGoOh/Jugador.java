@@ -3,6 +3,7 @@ package alGoOh;
 public class Jugador {
 
 	private int puntosVida = 8000;
+	private Campo campo;
 
 
 	public void recibirDaniosVitales(int danio) {
@@ -14,6 +15,11 @@ public class Jugador {
 
 	public int getPtsVida() {
 		return puntosVida;
+	}
+
+	public void setCampo(Campo campo) {
+		this.campo =campo ;
+		
 	}
 	
 }

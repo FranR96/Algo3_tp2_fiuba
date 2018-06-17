@@ -5,7 +5,7 @@ import alGoOh.*;
 public class AgujeroNegro extends CartaMagica {
 	
 	
-	public void efecto(Campo campo) {
+	public void efecto() {
 		Tablero tablero = Tablero.getInstance();
 		Campo campo1 = tablero.getCampo1();
 		Campo campo2= tablero.getCampo2();

@@ -37,37 +37,6 @@ public class Tablero {
 	public Campo getCampo2() {
 		return campo2;
 	}
-
-	public void colocarCartaEnCampoJugador1(CartaMonstruo monstruo, PosicionCarta posicion,
-			LadoCarta lado) {
-		this.colocarCartaEnCampo(monstruo, posicion,lado,campo1);	
-	}
 	
-	public void colocarCartaEnCampoJugador2(CartaMonstruo monstruo, PosicionCarta posicion,
-			LadoCarta lado) {
-		this.colocarCartaEnCampo(monstruo, posicion,lado,campo2);	
-	}
-	
-	public void colocarCartaEnCampoJugador1(CartaEspecial especial, LadoCarta lado) {
-		this.colocarCartaEnCampo(especial, lado, campo1);
-	}
-	
-	public void colocarCartaEnCampoJugador2(CartaEspecial especial, LadoCarta lado) {
-		this.colocarCartaEnCampo(especial, lado, campo2);
-	}
-	
-	public void colocarCartaEnCampo(CartaMonstruo monstruo, PosicionCarta posicion,
-			LadoCarta lado,Campo campo) {
-		campo.colocarCarta(monstruo, posicion, lado);
-	}
-
-	public void colocarCartaEnCampo(CartaEspecial especial, LadoCarta lado, Campo campo) {
-		campo.colocarCarta(especial, lado);
-	}
-	
-	public void atacarACon(CartaMonstruo monstruo1, CartaMonstruo monstruo2) {
-		monstruo2.atacar(monstruo1);
-		
-	}
 	
 }

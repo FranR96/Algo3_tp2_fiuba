@@ -40,14 +40,16 @@ class CampoTest {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		tablero.inicializarTablero(jugador1, jugador2);
+		Campo campo1 = tablero.getCampo1();
+		Campo campo2= tablero.getCampo2();
 
 		CartaMonstruo monstruo1 = new AbismoReluciente();
 		CartaMonstruo monstruo2 = new HuevoMonstruoso();
-		tablero.colocarCartaEnCampoJugador1(monstruo1, new PosicionAtaque(), new BocaArriba());
-		tablero.colocarCartaEnCampoJugador2(monstruo2, new PosicionDefensa(), new BocaArriba());
+		campo1.colocarCarta(monstruo1, new PosicionAtaque(), new BocaArriba());
+		campo2.colocarCarta(monstruo2, new PosicionDefensa(), new BocaArriba());
 
 		CartaMagica agujeroNegro = new AgujeroNegro();
-		tablero.colocarCartaEnCampoJugador1(agujeroNegro, new BocaAbajo());
+		campo1.colocarCarta(agujeroNegro, new BocaAbajo());
 
 		Collection<CartaMonstruo> zonaMonstruosJugador1 = tablero.getCampo1().monstruosInvocados();
 		Collection<CartaMonstruo> zonaMonstruosJugador2 = tablero.getCampo2().monstruosInvocados();
@@ -72,13 +74,15 @@ class CampoTest {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		tablero.inicializarTablero(jugador1, jugador2);
-
+		Campo campo1= tablero.getCampo1();
+		Campo campo2 = tablero.getCampo2();
+		
 		CartaMonstruo monstruo1 = new AbismoReluciente();
 		CartaMonstruo monstruo2 = new HuevoMonstruoso();
-		tablero.colocarCartaEnCampoJugador1(monstruo1, new PosicionAtaque(), new BocaArriba());
-		tablero.colocarCartaEnCampoJugador2(monstruo2, new PosicionAtaque(), new BocaArriba());
+		campo1.colocarCarta(monstruo1, new PosicionAtaque(), new BocaArriba());
+		campo2.colocarCarta(monstruo2, new PosicionAtaque(), new BocaArriba());
 
-		tablero.atacarACon(monstruo2, monstruo1);
+		monstruo1.atacar(monstruo2);
 		Collection<Carta> cementerioJugador2 = tablero.getCampo2().cartasEnCementerio();
 
 		assertTrue(cementerioJugador2.contains(monstruo2));

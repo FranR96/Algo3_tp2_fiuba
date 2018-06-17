@@ -2,7 +2,10 @@ package cartas;
 
 import alGoOh.Campo;
 
-public interface Carta {
+public abstract class Carta {
 	
-	void efecto(Campo campo);
+	protected LadoCarta lado;
+	protected Campo campo;
+	
+	public abstract void efecto();
 }
