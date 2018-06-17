@@ -19,8 +19,7 @@ public class PosicionAtaque implements PosicionCarta {
 			this.carta.getCampo().atacarJugador(diferencia);
 		}
 		else if(this.carta.getPtsAtaque()>danio) {
-			int diferencia= this.carta.getPtsAtaque()- danio;
-			return diferencia;
+			return this.carta.getPtsAtaque()- danio;
 		}
 		else {
 			this.carta.getCampo().eliminarMonstruo(this.carta);
