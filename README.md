@@ -2,7 +2,7 @@
  
 
 ## Integrantes:
-- Bertella, Mauricio 
+- Rodríguez, Mauricio 
 - Crespo, Julian
 - Priano, Matias
 - Ruiz, Francisco
