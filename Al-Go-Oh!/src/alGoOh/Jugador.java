@@ -22,4 +22,6 @@ public class Jugador {
 		
 	}
 	
+	public void tomarCartaDelMazo() {}
+	
 }
