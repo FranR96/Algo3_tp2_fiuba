@@ -8,6 +8,7 @@ public class Tablero {
 	private Campo campo2= new Campo();
 	private Jugador jugador1;
 	private Jugador jugador2;
+	private Juego juego;
 
 	public Jugador getJugador2() {
 		return jugador2;
@@ -34,6 +35,8 @@ public class Tablero {
 		campo2.setTablero(this);
 		this.jugador1 = jugador1;
 		this.jugador2 = jugador2;
+
+		juego.sortearInicio(this,jugador1,jugador2);
 	}
 	
 	public Campo getCampo1() {
