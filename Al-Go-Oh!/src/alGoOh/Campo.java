@@ -11,39 +11,41 @@ public class Campo {
 	private Jugador jugador;
 	private Tablero tablero;
 	private ArrayList<Carta> cementerio= new ArrayList<Carta>();
-	
-	
-	public void colocarCarta(CartaMonstruo monstruo, PosicionCarta posicion,LadoCarta lado) {
-		int sacrificiosNecesarios = monstruo.invocar(posicion, lado,this);
-		if((this.zonaMonstruos.size()-sacrificiosNecesarios)<5) {
-			this.cartaRequiereSacrificio(sacrificiosNecesarios);
-			this.zonaMonstruos.add(monstruo);
-		}
-		else {
-			throw new CapacidadMaximaEnZonaMonstruosException();
-		}
-		
-	}
+
 
 	public void setTablero(Tablero tablero) {
-		
 		this.tablero=tablero;
-	}
-	
-	public void colocarCarta(CartaEspecial carta, LadoCarta lado) {
-		if(this.zonaEspeciales.size()< 5) {
-			this.zonaEspeciales.add(carta);
-			carta.invocar(lado,this);
-		}
-		else {
-			throw new CapacidadMaximaEnZonaEspecialesException();
-		}
 	}
 
 	public void setJugador(Jugador jugador) {
 		this.jugador=jugador;
 		this.jugador.setCampo(this);
 	}
+
+	public void colocarCarta(CartaMonstruo monstruo, PosicionCarta posicion,LadoCarta lado) {
+		int sacrificiosNecesarios = monstruo.requiereSacrificio();
+		if((this.zonaMonstruos.size()-sacrificiosNecesarios)<5) {
+			this.realizarSacrificio(sacrificiosNecesarios);
+			this.zonaMonstruos.add(monstruo);
+			monstruo.invocar(posicion, lado,this, tablero.getCampo2(), this.jugador, tablero.getJugador2());
+		}
+		else {
+			throw new CapacidadMaximaEnZonaMonstruosException();
+		}
+		
+	}
+	
+	public void colocarCarta(CartaEspecial carta, LadoCarta lado) {
+		if(this.zonaEspeciales.size()< 5) {
+			this.zonaEspeciales.add(carta);
+			carta.invocar(lado,this, tablero.getCampo2(), this.jugador, tablero.getJugador2());
+		}
+		else {
+			throw new CapacidadMaximaEnZonaEspecialesException();
+		}
+	}
+
+
 
 	public void eliminarMonstruo(CartaMonstruo carta) {
 		int celda = this.zonaMonstruos.indexOf(carta);
@@ -58,19 +60,19 @@ public class Campo {
 	}
 	public void atacarJugador(int danio) {
 		this.jugador.recibirDaniosVitales(danio);
-		
 	}
+
+
 
 	public Collection<Carta> cartasEnCementerio() {
 		return this.cementerio;
-		
 	}
 
 	public ArrayList<CartaMonstruo> monstruosInvocados() {
 		return this.zonaMonstruos;
 	}
 
-	public void cartaRequiereSacrificio(int cantSacrificios) {
+	public void realizarSacrificio(int cantSacrificios) {
 		if(this.zonaMonstruos.size()>=cantSacrificios) {
 			for(int i = 0;i<cantSacrificios;i++) {
 				Carta cartaMuerta = this.zonaMonstruos.remove(0);
@@ -80,13 +82,11 @@ public class Campo {
 		else {
 			throw new NoHaySuficientesCartasParaElSacrificioException();
 		}
-		
 	}
 
 	public ArrayList<CartaEspecial> cartasEspeciales() {
 		return this.zonaEspeciales;
 	}
-	
 
 
 }

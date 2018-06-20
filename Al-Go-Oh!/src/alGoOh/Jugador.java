@@ -21,5 +21,7 @@ public class Jugador {
 		this.campo =campo ;
 		
 	}
+
+	public void tomarCartaDelMazo() {}
 	
 }

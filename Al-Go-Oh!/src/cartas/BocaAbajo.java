@@ -1,6 +1,7 @@
 package cartas;
 
 import alGoOh.Campo;
+import alGoOh.Jugador;
 
 public class BocaAbajo implements LadoCarta {
 
@@ -12,5 +13,8 @@ public class BocaAbajo implements LadoCarta {
 
 	}
 
-	public void invocar(){};
+	@Override
+	public void invocar(Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente) {
+
+	}
 }

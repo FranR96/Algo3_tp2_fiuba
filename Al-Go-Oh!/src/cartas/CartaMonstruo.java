@@ -15,6 +15,22 @@ public abstract class CartaMonstruo extends Carta{
 		this.ptsDefensa= defensa;
 		this.estrellas = estrellas;
 	}
+
+    public int requiereSacrificio(){
+        if(this.estrellas >= 5) { //Requiere sacrificio
+            return ((this.estrellas-1)/3);
+        }
+        return 0;
+    }
+
+    public void invocar(PosicionCarta posicion,LadoCarta lado,Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente) {
+        this.posicion= posicion;
+        this.lado = lado;
+        this.posicion.setCarta(this);
+        this.lado.setCarta(this);
+        this.campo= campo;
+        this.lado.invocar(campo, campoEnemigo, activo, oponente);
+    }
 	
 	public void atacar(CartaMonstruo monstruo) {
 		this.posicion.atacar(this,monstruo);
@@ -22,19 +38,6 @@ public abstract class CartaMonstruo extends Carta{
 	
 	public int recibirDanio(int danio) {
 		return (this.posicion.recibirDanio(danio));
-	}
-	
-	
-	public int invocar(PosicionCarta posicion,LadoCarta lado,Campo campo) {
-		this.posicion= posicion;
-		this.lado = lado;
-		this.posicion.setCarta(this);
-		this.lado.setCarta(this);
-		this.campo= campo;
-		if(this.estrellas >= 5) { //Requiere sacrificio
-			return ((this.estrellas-1)/3);
-		}
-		return 0;
 	}
 
 	public int getPtsAtaque() {
@@ -56,4 +59,6 @@ public abstract class CartaMonstruo extends Carta{
 	public boolean enPosicionDeAtaque(){
 		return this.posicion instanceof PosicionAtaque;
 	}
+
+
 }
