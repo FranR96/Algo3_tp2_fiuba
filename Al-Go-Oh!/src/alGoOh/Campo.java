@@ -18,7 +18,7 @@ public class Campo {
 		int sacrificiosNecesarios = monstruo.requiereSacrificio();
 		if((this.zonaMonstruos.size()-sacrificiosNecesarios)<5) {
 			this.realizarSacrificio(sacrificiosNecesarios);
-			this.zonaMonstruos.add(monstruo);
+			this.zonaMonstruos.colocarCarta(monstruo);
 			monstruo.invocar(posicion, lado,this, tablero.getCampo2(), this.jugador, tablero.getJugador2());
 		}
 		else {

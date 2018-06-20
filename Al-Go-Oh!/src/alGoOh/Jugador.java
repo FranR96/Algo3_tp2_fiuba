@@ -30,7 +30,6 @@ public class Jugador {
 		
 	}
 
-	public void tomarCartaDelMazo() {}
 	public void tomarCartaDelMazo() {
 		Carta carta = mazo.tomarCartaDelMazo();
 		mano.add(carta);

@@ -153,7 +153,7 @@ class TableroTest {
 		campo2.colocarCarta(monstruo2, new PosicionDefensa(), new BocaArriba());
 		
 		CartaMagica agujeroNegro = new AgujeroNegro();
-		campo1.colocarCarta(agujeroNegro);
+		campo1.colocarCarta(agujeroNegro,new BocaArriba());
 
 		Collection<CartaMonstruo> zonaMonstruosJugador1 = campo1.monstruosInvocados();
 		Collection<CartaMonstruo> zonaMonstruosJugador2 = campo2.monstruosInvocados();

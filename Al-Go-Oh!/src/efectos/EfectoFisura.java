@@ -1,8 +1,8 @@
-package cartas;
+package efectos;
 
 import java.util.ArrayList;
-
-import alGoOh.*;
+import cartas.CartaMonstruo;
+import alGoOh.Campo;
 
 
 public class EfectoFisura extends Efecto {

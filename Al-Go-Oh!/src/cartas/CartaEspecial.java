@@ -12,7 +12,7 @@ public abstract class CartaEspecial extends Carta{
 		
 	}
 
-	public void Voltear() {
+	public void voltear() {
 		this.lado = new BocaArriba();
 		this.efecto();
 		this.campo.eliminarCartaEspecial(this); // El metodo va a ser utilizado en los hijos, pero java me

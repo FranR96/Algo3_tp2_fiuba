@@ -1,7 +1,8 @@
-package cartas;
+package cartasConcretas;
 
-import alGoOh.Campo;
-import alGoOh.Jugador;
+import alGoOh.*;
+import cartas.CartaTrampa;
+import efectos.EfectoCilindroMagico;
 
 public class CilindroMagico extends CartaTrampa {
 

@@ -19,4 +19,8 @@ public class ZonaMonstruos {
             throw new CartaMonstruoNoExistenteException();
         }
     }
+
+	public int size() {
+		return zonaMonstruos.size();
+	}
 }

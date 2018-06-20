@@ -1,6 +1,6 @@
-package cartas;
+package efectos;
 
-import alGoOh.*;
+import alGoOh.Campo;
 
 public class EfectoAgujeroNegro extends Efecto {
 

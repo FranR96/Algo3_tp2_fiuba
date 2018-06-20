@@ -2,6 +2,7 @@ package cartas;
 
 import alGoOh.Campo;
 import alGoOh.Jugador;
+import efectos.Efecto;
 
 public abstract class Carta {
 	
@@ -10,7 +11,7 @@ public abstract class Carta {
 	protected Efecto efecto;
 
 	public void aplicarEfecto(Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente){
+		
 	}
-	public abstract void efecto();
-	public abstract void Voltear();
+	public abstract void voltear();
 }
