@@ -17,4 +17,5 @@ public class BocaAbajo implements LadoCarta {
 	public void invocar(Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente) {
 
 	}
+
 }
