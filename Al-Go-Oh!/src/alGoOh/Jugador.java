@@ -45,5 +45,15 @@ public class Jugador {
 		}
 		
 	}
+
+	public boolean estaVivo() {
+		if(puntosVida<=0)
+			return false;
+		return true;
+	}
+
+	public boolean tieneCartasEnMazo() {
+		return mazo.estaVacio();
+	}
 	
 }

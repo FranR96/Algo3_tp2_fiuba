@@ -23,6 +23,10 @@ public class Mazo {
 	public Carta tomarCartaDelMazo() {
 		return mazo.pop();
 	}
+
+	public boolean estaVacio() {
+		return mazo.empty();
+	}
 	
 	
 }
