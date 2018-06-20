@@ -15,9 +15,6 @@ public class Jugador {
 
 
 	public void recibirDaniosVitales(int danio) {
-		if(puntosVida <= 0) {
-			throw new PartidaFinalizadaException();
-		}
 		puntosVida -=danio;
 	}
 
