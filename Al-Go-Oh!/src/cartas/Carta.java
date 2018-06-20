@@ -11,4 +11,6 @@ public abstract class Carta {
 
 	public void aplicarEfecto(Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente){
 	}
+	public abstract void efecto();
+	public abstract void Voltear();
 }

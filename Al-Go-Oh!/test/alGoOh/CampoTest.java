@@ -47,7 +47,7 @@ class CampoTest {
 		campo2.colocarCarta(monstruo2, new PosicionDefensa(), new BocaArriba());
 
 		CartaMagica agujeroNegro = new AgujeroNegro();
-		campo1.colocarCarta(agujeroNegro, new BocaAbajo());
+		campo1.colocarCarta(agujeroNegro);
 
 		Collection<CartaMonstruo> zonaMonstruosJugador1 = tablero.getCampo1().monstruosInvocados();
 		Collection<CartaMonstruo> zonaMonstruosJugador2 = tablero.getCampo2().monstruosInvocados();
@@ -61,7 +61,7 @@ class CampoTest {
 		Campo campo = new Campo();
 		CartaTrampa cilindroMagico = new CilindroMagico();
 
-		campo.colocarCarta(cilindroMagico, new BocaAbajo());
+		campo.colocarCarta(cilindroMagico);
 
 		assertTrue(cilindroMagico.estaBocaAbajo());
 	}
@@ -137,12 +137,12 @@ class CampoTest {
 		
 		for(int i = 0; i<5;i++) {
 			CartaMagica agujeroNegro = new AgujeroNegro();
-			campo.colocarCarta(agujeroNegro, new BocaAbajo());
+			campo.colocarCarta(agujeroNegro);
 		}
 		assertThrows(CapacidadMaximaEnZonaEspecialesException.class,
 				()->{
 					CartaMagica agujeroNegro = new AgujeroNegro();
-					campo.colocarCarta(agujeroNegro, new BocaAbajo());
+					campo.colocarCarta(agujeroNegro);
 				});
 		
 	}
