@@ -1,9 +1,17 @@
 package alGoOh;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import cartas.*;
+
+
 public class Jugador {
 
 	private int puntosVida = 8000;
 	private Campo campo;
+	private Mazo mazo;
+	private Collection<Carta> mano = new ArrayList<Carta>();
 
 
 	public void recibirDaniosVitales(int danio) {
@@ -23,5 +31,20 @@ public class Jugador {
 	}
 
 	public void tomarCartaDelMazo() {}
+	public void tomarCartaDelMazo() {
+		Carta carta = mazo.tomarCartaDelMazo();
+		mano.add(carta);
+	}
+	
+	public Collection<Carta> cartasEnLaMano() {
+		return mano;
+	}
+
+	public void obtenerManoInicial() {
+		for(int i = 0 ; i<5; i++) {
+			this.tomarCartaDelMazo();
+		}
+		
+	}
 	
 }
