@@ -1,5 +1,6 @@
 package alGoOh;
 
+import cartas.Carta;
 import cartas.CartaMonstruo;
 import cartas.CartaMonstruoNoExistenteException;
 
@@ -14,13 +15,25 @@ public class ZonaMonstruos {
         }
     }
 
-    public void elminarCarta(CartaMonstruo cartaMonstruo) {
+    public void eliminarCarta(CartaMonstruo cartaMonstruo) {
         if (!this.zonaMonstruos.remove(cartaMonstruo)) {
             throw new CartaMonstruoNoExistenteException();
         }
     }
 
-	public int size() {
-		return zonaMonstruos.size();
-	}
+    public ArrayList<CartaMonstruo> obtenerMonstruos() {
+        return (ArrayList<CartaMonstruo>) zonaMonstruos.clone();
+    }
+
+    public int cantidadMonstruosEnZona() {
+        return this.zonaMonstruos.size();
+    }
+
+    public void voltearMonstruo(CartaMonstruo cartaMonstruo) {
+        cartaMonstruo.voltear();
+    }
+
+    public void realizarSacrificios(int sacrificiosNecesarios) {
+
+    }
 }
