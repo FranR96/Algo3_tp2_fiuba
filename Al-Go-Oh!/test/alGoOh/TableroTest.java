@@ -167,4 +167,70 @@ class TableroTest {
 		assertEquals(ptsDeVidaEsperados,jugador2.getPtsVida());
 	}
 	
+	@Test
+	void test07ColocarCartaMagicaBocaAbajoYNoActiveNingunEfecto() {
+		Tablero tablero = Tablero.getInstance();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		tablero.inicializarTablero(jugador1, jugador2);
+		Campo campo1 = tablero.getCampo1();
+		Campo campo2= tablero.getCampo2();
+
+		CartaMonstruo monstruo1 = new AbismoReluciente();
+		CartaMonstruo monstruo2 = new HuevoMonstruoso();
+		campo1.colocarCarta(monstruo1, new PosicionAtaque(), new BocaArriba());
+		campo2.colocarCarta(monstruo2, new PosicionDefensa(), new BocaArriba());
+
+		CartaMagica agujeroNegro = new AgujeroNegro();
+		campo1.colocarCarta(agujeroNegro, new BocaAbajo());
+
+		Collection<CartaMonstruo> zonaMonstruosJugador1 = tablero.getCampo1().monstruosInvocados();
+		Collection<CartaMonstruo> zonaMonstruosJugador2 = tablero.getCampo2().monstruosInvocados();
+
+		assertEquals(1,zonaMonstruosJugador1.size());
+		assertEquals(1,zonaMonstruosJugador2.size());
+	}
+
+	@Test
+	void test08MandarCartaAlCementerio(){
+		Tablero tablero = Tablero.getInstance();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		tablero.inicializarTablero(jugador1, jugador2);
+		Campo campo1= tablero.getCampo1();
+		Campo campo2 = tablero.getCampo2();
+		
+		CartaMonstruo monstruo1 = new AbismoReluciente();
+		CartaMonstruo monstruo2 = new HuevoMonstruoso();
+		campo1.colocarCarta(monstruo1, new PosicionAtaque(), new BocaArriba());
+		campo2.colocarCarta(monstruo2, new PosicionAtaque(), new BocaArriba());
+
+		monstruo1.atacar(monstruo2);
+		Collection<Carta> cementerioJugador2 = tablero.getCampo2().cartasEnCementerio();
+
+		assertTrue(cementerioJugador2.contains(monstruo2));
+	}
+	
+	@Test
+	void test09ColocarDosCartasEnCampoEnemigoYCartaFisuraDestruyeAlDeMenorAtaque() {
+		Tablero tablero = Tablero.getInstance();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		tablero.inicializarTablero(jugador1, jugador2);
+		Campo campo1= tablero.getCampo1();
+		Campo campo2 = tablero.getCampo2();
+		
+		CartaMonstruo abismoReluciente = new AbismoReluciente();
+		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
+		campo1.colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
+		campo1.colocarCarta(huevoMonstruoso, new PosicionAtaque(), new BocaArriba());
+	
+		CartaEspecial fisura = new Fisura();
+		campo2.colocarCarta(fisura, new BocaArriba());
+		
+		Collection<Carta> cementerioJugador1 = campo1.cartasEnCementerio();
+
+		assertTrue(cementerioJugador1.contains(huevoMonstruoso));
+
+	}
 }
