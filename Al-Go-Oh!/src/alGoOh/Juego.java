@@ -23,7 +23,32 @@ public class Juego {
 	
 	}
 	
+	public void faseInicial() {
+		jugadorActivo.tomarCartaDelMazo();
+	}
 	
+	public Jugador hayGanador() {
+		if(!jugadorActivo.estaVivo() || !jugadorActivo.tieneCartasEnMazo()) {
+			return oponente;
+		}
+		if(!oponente.estaVivo() || !oponente.tieneCartasEnMazo()) {
+			return jugadorActivo;
+		}
+		else {
+			return null;
+		}
+	}
+	
+	public void terminarTurno() {
+		this.cambiarJugadores();
+	}
+
+	private void cambiarJugadores() {
+		Jugador anteriorJugadorActivo = jugadorActivo;
+        jugadorActivo = oponente;
+        oponente = anteriorJugadorActivo;
+		
+	}
 	
 
 }

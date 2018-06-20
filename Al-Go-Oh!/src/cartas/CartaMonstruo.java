@@ -1,6 +1,7 @@
 package cartas;
 
 import alGoOh.*;
+import efectos.Efecto;
 
 public abstract class CartaMonstruo extends Carta{
 	
@@ -10,10 +11,11 @@ public abstract class CartaMonstruo extends Carta{
 	private PosicionCarta posicion;
 	
 	
-	public CartaMonstruo(int ataque,int defensa, int estrellas) {
+	public CartaMonstruo(int ataque,int defensa, int estrellas,Efecto efecto) {
 		this.ptsAtaque= ataque;
 		this.ptsDefensa= defensa;
 		this.estrellas = estrellas;
+		this.efecto = efecto;
 	}
 
     public int requiereSacrificio(){

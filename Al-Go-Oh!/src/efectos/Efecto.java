@@ -1,4 +1,4 @@
-package cartas;
+package efectos;
 
 import alGoOh.Campo;
 import alGoOh.Jugador;

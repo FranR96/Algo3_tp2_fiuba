@@ -36,7 +36,7 @@ public class Tablero {
 		this.jugador1 = jugador1;
 		this.jugador2 = jugador2;
 
-		juego.sortearInicio(this,jugador1,jugador2);
+		//juego.sortearInicio(this,jugador1,jugador2);
 	}
 	
 	public Campo getCampo1() {

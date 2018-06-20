@@ -1,6 +1,6 @@
-package cartas;
+package efectos;
 
-import alGoOh.*;
+import alGoOh.Jugador;
 
 public class EfectoOllaDeLaCodicia extends Efecto {
 
@@ -8,7 +8,6 @@ public class EfectoOllaDeLaCodicia extends Efecto {
     public void aplicarEfectoSobreJugadorActivo(Jugador jugador) {
 
         for(int i=0; i<2; i++) {
-            jugador.tomarCartaDelMazo();
             jugador.tomarCartaDelMazo();
         }
     }

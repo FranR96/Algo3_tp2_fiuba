@@ -147,8 +147,6 @@ class CampoTest {
 		
 		assertEquals(jugador.cartasEnLaMano().size(),2);
 	}
-	
-	
 }
 
 

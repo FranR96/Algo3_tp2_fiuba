@@ -153,7 +153,7 @@ class TableroTest {
 		campo2.colocarCarta(monstruo2, new PosicionDefensa(), new BocaArriba());
 		
 		CartaMagica agujeroNegro = new AgujeroNegro();
-		campo1.colocarCarta(agujeroNegro);
+		campo1.colocarCarta(agujeroNegro,new BocaArriba());
 
 		Collection<CartaMonstruo> zonaMonstruosJugador1 = campo1.monstruosInvocados();
 		Collection<CartaMonstruo> zonaMonstruosJugador2 = campo2.monstruosInvocados();
@@ -184,8 +184,8 @@ class TableroTest {
 		CartaMagica agujeroNegro = new AgujeroNegro();
 		campo1.colocarCarta(agujeroNegro, new BocaAbajo());
 
-		Collection<CartaMonstruo> zonaMonstruosJugador1 = tablero.getCampo1().monstruosInvocados();
-		Collection<CartaMonstruo> zonaMonstruosJugador2 = tablero.getCampo2().monstruosInvocados();
+		Collection<CartaMonstruo> zonaMonstruosJugador1 = campo1.monstruosInvocados();
+		Collection<CartaMonstruo> zonaMonstruosJugador2 = campo2.monstruosInvocados();
 
 		assertEquals(1,zonaMonstruosJugador1.size());
 		assertEquals(1,zonaMonstruosJugador2.size());
@@ -206,7 +206,7 @@ class TableroTest {
 		campo2.colocarCarta(monstruo2, new PosicionAtaque(), new BocaArriba());
 
 		monstruo1.atacar(monstruo2);
-		Collection<Carta> cementerioJugador2 = tablero.getCampo2().cartasEnCementerio();
+		Collection<Carta> cementerioJugador2 = campo2.cartasEnCementerio();
 
 		assertTrue(cementerioJugador2.contains(monstruo2));
 	}
