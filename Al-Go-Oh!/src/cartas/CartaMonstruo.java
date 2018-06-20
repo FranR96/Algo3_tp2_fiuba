@@ -40,7 +40,7 @@ public abstract class CartaMonstruo extends Carta{
 		return (this.posicion.recibirDanio(danio));
 	}
 
-	public void Voltear() {
+	public void voltear() {
 	    this.lado = new BocaArriba();
     }
 
