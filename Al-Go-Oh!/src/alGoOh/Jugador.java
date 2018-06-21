@@ -52,5 +52,9 @@ public class Jugador {
 	public boolean tieneCartasEnMazo() {
 		return mazo.estaVacio();
 	}
+
+	public Campo getCampo() {
+		return campo;
+	}
 	
 }

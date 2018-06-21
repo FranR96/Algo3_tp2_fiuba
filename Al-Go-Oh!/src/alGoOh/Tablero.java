@@ -4,16 +4,17 @@ import cartas.*;
 
 public class Tablero {
 	private static Tablero INSTANCE =null;
-	private Campo campo1= new Campo();
-	private Campo campo2= new Campo();
-	private Jugador jugador1;
-	private Jugador jugador2;
-	private Juego juego;
+	private Campo campo1;
+	private Campo campo2;
+	private Juego juego = new Juego();
 
-	public Jugador getJugador2() {
-		return jugador2;
+	public Jugador getOponente() {
+		return juego.getOponente();
 	}
 	
+	public Jugador getJugadorActivo() {
+		return juego.getJugadorActivo();
+	}
 	private Tablero() {}
 
 	private synchronized static void createInstance() {
@@ -29,22 +30,19 @@ public class Tablero {
 	}
 	
 	public void inicializarTablero(Jugador jugador1, Jugador jugador2) {
+		campo1 = new Campo();
+		campo2= new Campo();
 		campo1.setJugador(jugador1);
 		campo2.setJugador(jugador2);
 		campo1.setTablero(this);
 		campo2.setTablero(this);
-		this.jugador1 = jugador1;
-		this.jugador2 = jugador2;
 
-		//juego.sortearInicio(this,jugador1,jugador2);
+		juego.sortearInicio(this,jugador1,jugador2);
 	}
 	
-	public Campo getCampo1() {
-		return campo1;
-	}
-	
-	public Campo getCampo2() {
-		return campo2;
+	public Campo getCampoOponente() {
+		Jugador oponente = juego.getOponente();
+		return oponente.getCampo();
 	}
 	
 	

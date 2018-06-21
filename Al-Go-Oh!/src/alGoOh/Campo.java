@@ -14,12 +14,12 @@ public class Campo {
 
 
 	// Hay que borrar esto y reemplazar con los metodos de ZonaMonstruo
-    public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado, Campo campoEnemigo, Jugador oponente) {
+    public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
 		int sacrificiosNecesarios = carta.requiereSacrificio();
 		if((this.zonaMonstruos.cantidadMonstruosEnZona() - sacrificiosNecesarios) < 5) {
 			this.realizarSacrificio(sacrificiosNecesarios);
 			this.zonaMonstruos.colocarCarta(carta);
-			carta.invocar(posicion, lado,this, campoEnemigo, this.jugador, oponente);
+			carta.invocar(posicion, lado,this, tablero.getOponente().getCampo(), this.jugador, tablero.getOponente());
 		}
 		else {
 			throw new CapacidadMaximaEnZonaMonstruosException();
@@ -27,14 +27,14 @@ public class Campo {
 
 	}
 	
-	public void colocarCarta(CartaTrampa carta,LadoCarta lado, Campo campoEnemigo, Jugador oponente) {
+	public void colocarCarta(CartaTrampa carta,LadoCarta lado) {
 		this.zonaEspeciales.colocarCarta(carta);
-		carta.invocar(lado, this, campoEnemigo, this.jugador, oponente);
+		carta.invocar(lado, this, tablero.getOponente().getCampo(), this.jugador,  tablero.getOponente());
 	}
 
-	public void colocarCarta(CartaMagica carta, LadoCarta lado, Campo campoEnemigo, Jugador oponente) {
+	public void colocarCarta(CartaMagica carta, LadoCarta lado) {
 	    this.zonaEspeciales.colocarCarta(carta);
-        carta.invocar(lado, this, campoEnemigo, this.jugador, oponente);
+        carta.invocar(lado, this, tablero.getOponente().getCampo(), this.jugador,  tablero.getOponente());
     }
 
     public void setTablero(Tablero tablero) {

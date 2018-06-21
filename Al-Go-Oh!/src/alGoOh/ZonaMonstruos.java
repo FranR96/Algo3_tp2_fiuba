@@ -1,6 +1,5 @@
 package alGoOh;
 
-import cartas.Carta;
 import cartas.CartaMonstruo;
 import cartas.CartaMonstruoNoExistenteException;
 
@@ -22,7 +21,7 @@ public class ZonaMonstruos {
     }
 
     public ArrayList<CartaMonstruo> obtenerMonstruos() {
-        return (ArrayList<CartaMonstruo>) zonaMonstruos.clone();
+        return zonaMonstruos;
     }
 
     public int cantidadMonstruosEnZona() {

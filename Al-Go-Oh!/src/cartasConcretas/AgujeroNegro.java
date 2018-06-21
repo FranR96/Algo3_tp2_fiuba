@@ -3,7 +3,7 @@ package cartasConcretas;
 import alGoOh.Campo;
 import alGoOh.Jugador;
 import cartas.CartaMagica;
-import cartas.EfectoAgujeroNegro;
+import efectos.EfectoAgujeroNegro;
 
 public class AgujeroNegro extends CartaMagica {
 

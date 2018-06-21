@@ -19,8 +19,11 @@ public abstract class CartaMonstruo extends Carta{
 	}
 
     public int requiereSacrificio(){
-        if(this.estrellas >= 5) { //Requiere sacrificio
+        if(this.estrellas >= 5 && this.estrellas<10) { //Requiere sacrificio
             return ((this.estrellas-1)/3);
+        }
+        if(this.estrellas >= 10) {
+        	return 2;
         }
         return 0;
     }

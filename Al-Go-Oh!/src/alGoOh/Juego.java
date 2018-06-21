@@ -18,8 +18,8 @@ public class Juego {
 			oponente = jugador1;
 		}
 		
-		jugadorActivo.obtenerManoInicial();
-		oponente.obtenerManoInicial();
+		//jugadorActivo.obtenerManoInicial();
+		//oponente.obtenerManoInicial();
 	
 	}
 	
@@ -48,6 +48,14 @@ public class Juego {
         jugadorActivo = oponente;
         oponente = anteriorJugadorActivo;
 		
+	}
+
+	public Jugador getOponente() {
+		return oponente;
+	}
+
+	public Jugador getJugadorActivo() {
+		return jugadorActivo;
 	}
 	
 

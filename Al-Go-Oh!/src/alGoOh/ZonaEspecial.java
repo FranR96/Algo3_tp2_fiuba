@@ -46,13 +46,13 @@ public class ZonaEspecial{
 
     public void voltearCartaTrampa() {
         if (!zonaTrampa.isEmpty()) {
-            zonaTrampa.get(0).Voltear();
+            zonaTrampa.get(0).voltear();
         }
     }
 
     public void voltearCartaMagica(CartaMagica cartaMagica) {
         if (zonaMagica.contains(cartaMagica)) {
-            zonaMagica.get(zonaMagica.indexOf(cartaMagica)).Voltear();
+            zonaMagica.get(zonaMagica.indexOf(cartaMagica)).voltear();
         }
         else {
             throw new CartaMagicaNoExistenteException(); // Tiene sentido esta excepcion?, en que escenario se puede lanzar?
