@@ -221,4 +221,134 @@ class TableroTest {
 		assertTrue(cementerioOponente.contains(huevoMonstruoso));
 
 	}
+	
+	@Test
+	void test10ColocarUnaCartaMonstruoEnCadaCampoYLuegoCartaWastelandYVerificarQueSeRealizanLosIncrementos() {
+		
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		Jugador oponente = tablero.getOponente();
+		
+		CartaMonstruo abismoReluciente = new AbismoReluciente();
+		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
+		activo.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
+		oponente.getCampo().colocarCarta(huevoMonstruoso, new PosicionDefensa(), new BocaArriba());
+		
+		CartaCampo wasteland = new Wasteland();
+		activo.getCampo().colocarCarta(wasteland, new BocaArriba());
+		
+		int ptsAtaqueEsperados = 1600 + 200;
+		int ptsDefensaEsperados = 900 + 300;
+		
+		assertEquals(ptsAtaqueEsperados, abismoReluciente.getPtsAtaque());
+		assertEquals(ptsDefensaEsperados, huevoMonstruoso.getPtsDefensa());	
+	}
+	
+	@Test
+	void test11ColocarUnaCartaMonstruoEnCadaCampoYLuegoCartaSogenYVerificarQueSeRealizanLosIncrementos() {
+		
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		Jugador oponente = tablero.getOponente();
+		
+		CartaMonstruo abismoReluciente = new AbismoReluciente();
+		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
+		activo.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
+		oponente.getCampo().colocarCarta(huevoMonstruoso, new PosicionDefensa(), new BocaArriba());
+		
+		CartaCampo sogen = new Sogen();
+		activo.getCampo().colocarCarta(sogen, new BocaArriba());
+		
+		int ptsDefensaEsperados = 1800 + 500;
+		int ptsAtaqueEsperados = 600 + 200;
+		
+		assertEquals(ptsDefensaEsperados, abismoReluciente.getPtsDefensa());
+		assertEquals(ptsAtaqueEsperados, huevoMonstruoso.getPtsAtaque());
+	}
+	
+	@Test
+	void test12ColocarJinzo7YUnMonstruoEnCampoOponenteAtacarYVerificarQueSeDanioAlJugadorOponente() {
+		
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		Jugador oponente = tablero.getOponente();
+		
+		CartaMonstruo jinzo7 = new Jinzo7();
+		CartaMonstruo abismoReluciente = new AbismoReluciente();
+		activo.getCampo().colocarCarta(jinzo7, new PosicionAtaque(), new BocaArriba());
+		oponente.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
+		
+		jinzo7.atacar(abismoReluciente);
+		
+		int ptsDeVidaEsperados = 8000 - 500;
+		
+		assertEquals(ptsDeVidaEsperados, oponente.getPtsVida());
+	}
+	
+	@Test
+	void test12ColocoInsectoComeHombresBocaAbajoYLuegoDeSerAtacadoDestruyoElMonstruoEnemigo() {
+		
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		Jugador oponente = tablero.getOponente();
+		
+		CartaMonstruo insectoComeHombres = new InsectoComeHombres();
+		CartaMonstruo abismoReluciente = new AbismoReluciente();
+		activo.getCampo().colocarCarta(insectoComeHombres, new PosicionDefensa(), new BocaAbajo());
+		oponente.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
+		
+		abismoReluciente.atacar(insectoComeHombres);
+		
+		Collection<Carta> cementerioOponente = oponente.getCampo().cartasEnCementerio();
+
+		assertTrue(cementerioOponente.contains(abismoReluciente));
+	}
+	
+	@Test
+	void test13ColocoUnMonstruoEnCadaCampoYLuegoLaCartaReinforcementsCuandoElEnemigoAtacaSeActivaLaTrampaYVerQueAplicaElEfecto() {
+		
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		Jugador oponente = tablero.getOponente();
+		
+		CartaMonstruo monstruo1 = new AbismoReluciente();
+		CartaMonstruo monstruo2 = new DragonDeAlexandrita();
+		activo.getCampo().colocarCarta(monstruo1, new PosicionAtaque(), new BocaArriba());
+		oponente.getCampo().colocarCarta(monstruo2, new PosicionAtaque(), new BocaArriba());
+		
+		CartaTrampa reinforcements = new Reinforcements();
+		activo.getCampo().colocarCarta(reinforcements, new BocaAbajo());
+		
+		monstruo2.atacar(monstruo1);
+		
+		int ptsDeVidaEsperados = 8000 - 100;
+		
+		assertEquals(ptsDeVidaEsperados, activo.getPtsVida());
+		
+	}
+	
+	
+	@Test
+	void test14ColocoUnMonstruoEnemigoYColocoCilindroMagicoEnMiCampoLuegoElMonstruoEnemigoAtacaYVerQueSeAplicaElEfecto() {
+
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		Jugador oponente = tablero.getOponente();
+		
+		CartaMonstruo abismoReluciente = new AbismoReluciente();
+		oponente.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
+		
+		CartaTrampa cilindroMagico = new CilindroMagico();
+		activo.getCampo().colocarCarta(cilindroMagico, new BocaAbajo());
+		
+		//
+	}
+	
+	//falta escribir prueba de las 5 partes de exodia
 }
