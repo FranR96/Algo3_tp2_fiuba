@@ -8,4 +8,9 @@ public class Fisura extends CartaTrampa{
 	public Fisura() {
 		this.efecto= new EfectoFisura();
 	}
+	
+	public void aplicarEfecto(Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente) {
+		
+		this.efecto.aplicarEfectoSobreCampoOponente(campoEnemigo);
+	}
 }
