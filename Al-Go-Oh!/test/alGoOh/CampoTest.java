@@ -147,6 +147,39 @@ class CampoTest {
 		
 		assertEquals(jugador.cartasEnLaMano().size(),2);
 	}
+	
+	@Test
+	void test10Invoco3DragonesBlancosYLuegoLosSacrificoParaInvocarAlDragonDefinitivo() {
+		
+		Campo campo = new Campo();
+				
+		//cada dragon requiere otros dos sacrificios para invocarlos
+		campo.colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
+		campo.colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
+		campo.colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
+		
+		CartaMonstruo dragonDefinitivo = new DragonDefinitivoDeOjosAzules();
+		campo.colocarCarta(dragonDefinitivo, new PosicionAtaque(), new BocaArriba());
+		
+		assertEquals(campo.monstruosInvocados().size(),1);
+		
+		assertTrue(campo.monstruosInvocados().contains(dragonDefinitivo));
+	}
+	
+	@Test
+	void test11ExtraigoTodasLasCartasDelMazoYVerificoQueElJugadorPierde() {
+		
+		Campo campo = new Campo();
+		
+		Jugador jugador = new Jugador();
+		
+		campo.setJugador(jugador);
+		
+		for(int i=0; i<40; i++)
+			jugador.tomarCartaDelMazo();
+		
+		//
+	}
 }
 
 
