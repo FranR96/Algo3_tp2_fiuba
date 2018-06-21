@@ -68,6 +68,14 @@ public abstract class CartaMonstruo extends Carta{
 	public boolean enPosicionDeAtaque(){
 		return this.posicion instanceof PosicionAtaque;
 	}
+	
+	public void setPtsAtaque(int ptsAtaque) {
+		this.ptsAtaque = ptsAtaque;
+	}
+	
+	public void setPtsDefensa(int ptsDefensa) {
+		this.ptsDefensa = ptsDefensa;
+	}
 
 
 }
