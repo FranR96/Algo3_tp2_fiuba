@@ -14,4 +14,8 @@ public abstract class Carta {
 		
 	}
 	public abstract void voltear();
+	
+	public Efecto getEfecto() {
+		return efecto;
+	}
 }

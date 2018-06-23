@@ -3,6 +3,7 @@ package alGoOh;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import cartas.*;
+import cartasConcretas.*;
 
 import java.util.Collection;
 

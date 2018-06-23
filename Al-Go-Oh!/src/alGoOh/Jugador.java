@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import cartas.*;
+import cartasConcretas.ExodiaCompleto;
 
 
 public class Jugador {
 
+	private String nombre;
 	private int puntosVida = 8000;
 	private Campo campo;
 	private Mazo mazo;
-	private Collection<Carta> mano = new ArrayList<Carta>();
+	private ArrayList<Carta> mano = new ArrayList<Carta>();
+	private ExodiaCompleto exodia = new ExodiaCompleto(); 
 
 
 	public void recibirDaniosVitales(int danio) {
@@ -30,9 +33,10 @@ public class Jugador {
 	public void tomarCartaDelMazo() {
 		Carta carta = mazo.tomarCartaDelMazo();
 		mano.add(carta);
+		exodia.cartasActualesEnMano(mano);
 	}
 	
-	public Collection<Carta> cartasEnLaMano() {
+	public ArrayList<Carta> cartasEnLaMano() {
 		return mano;
 	}
 
@@ -57,4 +61,11 @@ public class Jugador {
 		return campo;
 	}
 	
+	public void setNombre(String nombre) {
+		this.nombre=nombre;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
 }

@@ -1,5 +1,7 @@
 package cartasConcretas;
 
+import alGoOh.Campo;
+import alGoOh.Jugador;
 import cartas.CartaMonstruo;
 import efectos.EfectoJinzo7;
 

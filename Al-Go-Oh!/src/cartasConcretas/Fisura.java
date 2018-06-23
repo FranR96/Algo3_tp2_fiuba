@@ -1,5 +1,7 @@
 package cartasConcretas;
 
+import alGoOh.Campo;
+import alGoOh.Jugador;
 import cartas.CartaTrampa;
 import efectos.EfectoFisura;
 

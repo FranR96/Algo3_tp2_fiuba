@@ -2,6 +2,7 @@ package efectos;
 
 import alGoOh.Campo;
 import alGoOh.Jugador;
+import cartasConcretas.ExodiaCompleto;
 
 public abstract class Efecto {
 
@@ -17,4 +18,6 @@ public abstract class Efecto {
     public void aplicarEfectoSobreJugadorOponente(Jugador jugador){
     }
 
+    public void aplicarEfectoExodia(ExodiaCompleto exodia) {
+    }
 }
