@@ -46,8 +46,8 @@ public abstract class CartaMonstruo extends Carta{
 	}
 
 	public void voltear() {
-	    this.lado = new BocaArriba();
-    }
+		this.lado= new BocaArriba();
+	}
 
 	public int getPtsAtaque() {
 		return this.ptsAtaque;

@@ -2,10 +2,10 @@ package cartasConcretas;
 
 import alGoOh.Campo;
 import alGoOh.Jugador;
-import cartas.CartaTrampa;
+import cartas.CartaMagica;
 import efectos.EfectoFisura;
 
-public class Fisura extends CartaTrampa{
+public class Fisura extends CartaMagica{
 
 	public Fisura() {
 		this.efecto= new EfectoFisura();

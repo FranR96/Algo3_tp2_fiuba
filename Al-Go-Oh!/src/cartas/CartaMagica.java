@@ -1,7 +1,6 @@
 package cartas;
 
-import alGoOh.Campo;
-import alGoOh.Jugador;
+
 
 public abstract class CartaMagica extends CartaEspecial {
 

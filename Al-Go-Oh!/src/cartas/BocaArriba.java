@@ -14,4 +14,9 @@ public class BocaArriba implements LadoCarta {
 	public void invocar(Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente) {
 		this.carta.aplicarEfecto(campo, campoEnemigo, activo, oponente);
 	}
+	
+	public Campo getCampoEnemigo() {
+		return null;
+
+	}
 }

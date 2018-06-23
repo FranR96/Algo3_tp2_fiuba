@@ -11,10 +11,4 @@ public abstract class CartaEspecial extends Carta{
 		this.lado.invocar(campo, campoEnemigo, activo, oponente);
 	}
 
-	public abstract void voltear();
-
-	public boolean estaBocaAbajo(){
-		return lado instanceof BocaAbajo;
-	}
-
 }

@@ -13,9 +13,14 @@ public abstract class Carta {
 	public void aplicarEfecto(Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente){
 		
 	}
+	
 	public abstract void voltear();
 	
 	public Efecto getEfecto() {
 		return efecto;
+	}
+	
+	public boolean estaBocaAbajo(){
+		return lado instanceof BocaAbajo;
 	}
 }

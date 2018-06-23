@@ -213,7 +213,7 @@ class TableroTest {
 		oponente.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
 		oponente.getCampo().colocarCarta(huevoMonstruoso, new PosicionAtaque(), new BocaArriba());
 	
-		CartaTrampa fisura = new Fisura();
+		CartaMagica fisura = new Fisura();
 		activo.getCampo().colocarCarta(fisura, new BocaArriba());
 		
 		Collection<Carta> cementerioOponente = oponente.getCampo().cartasEnCementerio();
@@ -289,7 +289,7 @@ class TableroTest {
 	}
 	
 	@Test
-	void test12ColocoInsectoComeHombresBocaAbajoYLuegoDeSerAtacadoDestruyoElMonstruoEnemigo() {
+	void test13ColocoInsectoComeHombresBocaAbajoYLuegoDeSerAtacadoDestruyoElMonstruoEnemigo() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -309,7 +309,27 @@ class TableroTest {
 	}
 	
 	@Test
-	void test13ColocoUnMonstruoEnCadaCampoYLuegoLaCartaReinforcementsCuandoElEnemigoAtacaSeActivaLaTrampaYVerQueAplicaElEfecto() {
+	void test14ColocoInsectoComeHombreBocaArribaYLuegoDeSerAtacadoNoAplicaSuEfecto() {
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		Jugador oponente = tablero.getOponente();
+		
+		CartaMonstruo insectoComeHombres = new InsectoComeHombres();
+		CartaMonstruo abismoReluciente = new AbismoReluciente();
+		activo.getCampo().colocarCarta(insectoComeHombres, new PosicionDefensa(), new BocaArriba());
+		oponente.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
+		
+		abismoReluciente.atacar(insectoComeHombres);
+		
+		Collection<Carta> cementerioOponente = oponente.getCampo().cartasEnCementerio();
+
+		assertFalse(cementerioOponente.contains(abismoReluciente));
+
+	}
+	
+	@Test
+	void test15ColocoUnMonstruoEnCadaCampoYLuegoLaCartaReinforcementsCuandoElEnemigoAtacaSeActivaLaTrampaYVerQueAplicaElEfecto() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -334,7 +354,7 @@ class TableroTest {
 	
 	
 	@Test
-	void test14ColocoUnMonstruoEnemigoYColocoCilindroMagicoEnMiCampoLuegoElMonstruoEnemigoAtacaYVerQueSeAplicaElEfecto() {
+	void test16ColocoUnMonstruoEnemigoYColocoCilindroMagicoEnMiCampoLuegoElMonstruoEnemigoAtacaYVerQueSeAplicaElEfecto() {
 
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());

@@ -51,11 +51,7 @@ public class ZonaEspecial{
     }
 
     public void voltearCartaMagica(CartaMagica cartaMagica) {
-        if (zonaMagica.contains(cartaMagica)) {
-            zonaMagica.get(zonaMagica.indexOf(cartaMagica)).voltear();
-        }
-        else {
-            throw new CartaMagicaNoExistenteException(); // Tiene sentido esta excepcion?, en que escenario se puede lanzar?
-        }
+    	zonaMagica.get(zonaMagica.indexOf(cartaMagica)).voltear();
+ 
     }
 }

@@ -87,8 +87,7 @@ public class Campo {
         }
 	}
 
-	private void voltearCartaTrampa() { // Es privado porque el usuario no puede dar vuelta una carta trampa
-	    // el juego/campo es quien se va a encargar de darla vuelta cuando ataquen
+	public void voltearCartaTrampa() {
         zonaEspeciales.voltearCartaTrampa();
     }
 
