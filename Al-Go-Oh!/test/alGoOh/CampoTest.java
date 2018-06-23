@@ -11,22 +11,27 @@ class CampoTest {
 
 	@Test
 	void test01ColocarCartaMonstruoEnPoscicionAtaqueYPuedaAtacar() {
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+
 		
-		Campo campo = new Campo();
 		CartaMonstruo abismoReluciente = new AbismoReluciente();
-		campo.colocarCarta(abismoReluciente, new PosicionAtaque(),new BocaArriba());
+		activo.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(),new BocaArriba());
 
 		assertTrue(abismoReluciente.enPosicionDeAtaque());
 	}
 
 	@Test
 	void test02ColocarCartaMonstruoEnPosicionDefensaYNoPuedeAtacar() {
-		Campo campo = new Campo();
-
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		
 		CartaMonstruo abismoReluciente = new AbismoReluciente();
 		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 
-		campo.colocarCarta(abismoReluciente, new PosicionDefensa(), new BocaArriba());
+		activo.getCampo().colocarCarta(abismoReluciente, new PosicionDefensa(), new BocaArriba());
 
 		assertThrows(MonstruoNoPuedeAtacarEstaEnPosicionDefensaException.class,
 				()-> abismoReluciente.atacar(huevoMonstruoso));
@@ -35,29 +40,34 @@ class CampoTest {
 
 	@Test
 	void test03ColocarCartaTrampaBocaAbajo(){
-		Campo campo = new Campo();
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+
 		CartaTrampa cilindroMagico = new CilindroMagico();
 
-		campo.colocarCarta(cilindroMagico, new BocaAbajo());
+		activo.getCampo().colocarCarta(cilindroMagico, new BocaAbajo());
 
 		assertTrue(cilindroMagico.estaBocaAbajo());
 	}
 	
 	@Test
 	void test04ColocoUnMonstruoYLuegoColocoUnMonstruoQueRequiereUnSacrificioElPrimeroNoEstaYElUltimoSi() {
-		Campo campo = new Campo();
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
 		
 		CartaMonstruo abismoReluciente = new AbismoReluciente();
-		campo.colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
+		activo.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
 		
 		CartaMonstruo maldicionDeDragon = new MaldicionDeDragon();
-		campo.colocarCarta(maldicionDeDragon, new PosicionAtaque(), new BocaArriba());
+		activo.getCampo().colocarCarta(maldicionDeDragon, new PosicionAtaque(), new BocaArriba());
 		
-		Collection<Carta> cementerio = campo.cartasEnCementerio();
+		Collection<Carta> cementerio = activo.getCampo().cartasEnCementerio();
 		
 		assertTrue(cementerio.contains(abismoReluciente));
 		
-		Collection<CartaMonstruo> zonaMonstruosInvocados = campo.monstruosInvocados();
+		Collection<CartaMonstruo> zonaMonstruosInvocados = activo.getCampo().monstruosInvocados();
 		
 		assertTrue(zonaMonstruosInvocados.contains(maldicionDeDragon));
 
@@ -65,23 +75,25 @@ class CampoTest {
 	
 	@Test 
 	void test05ColocoDosMonstruosYLuegoColocoUnMonstruoQueRequiereDosSacrificiosAmbosNoEstanYElUltimoSi() {
-		Campo campo = new Campo();
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
 		
 		CartaMonstruo abismoReluciente = new AbismoReluciente();
-		campo.colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
+		activo.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
 		
 		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
-		campo.colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaArriba());
+		activo.getCampo().colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaArriba());
 		
 		CartaMonstruo dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
-		campo.colocarCarta(dragonBlancoDeOjosAzules, new PosicionAtaque(), new BocaArriba());
+		activo.getCampo().colocarCarta(dragonBlancoDeOjosAzules, new PosicionAtaque(), new BocaArriba());
 		
-		Collection<Carta> cementerio = campo.cartasEnCementerio();
+		Collection<Carta> cementerio = activo.getCampo().cartasEnCementerio();
 		
 		assertTrue(cementerio.contains(abismoReluciente));
 		assertTrue(cementerio.contains(huevoMonstruoso));
 		
-		Collection<CartaMonstruo> zonaMonstruosInvocados = campo.monstruosInvocados();
+		Collection<CartaMonstruo> zonaMonstruosInvocados = activo.getCampo().monstruosInvocados();
 		
 		assertTrue(zonaMonstruosInvocados.contains(dragonBlancoDeOjosAzules));
 
@@ -90,16 +102,18 @@ class CampoTest {
 	
 	@Test
 	void test06ColocoMasDeCincoCartasEspecialesBocaAbajoYMeSaltaUnaExcepcion() {
-		Campo campo = new Campo();
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
 		
 		for(int i = 0; i<5;i++) {
 			CartaMagica agujeroNegro = new AgujeroNegro();
-			campo.colocarCarta(agujeroNegro, new BocaAbajo());
+			activo.getCampo().colocarCarta(agujeroNegro, new BocaAbajo());
 		}
 		assertThrows(CapacidadMaximaEnZonaEspecialesException.class,
 				()->{
 					CartaMagica agujeroNegro = new AgujeroNegro();
-					campo.colocarCarta(agujeroNegro, new BocaAbajo());
+					activo.getCampo().colocarCarta(agujeroNegro, new BocaAbajo());
 				});
 		
 	}
@@ -107,79 +121,81 @@ class CampoTest {
 	@Test
 	void test07ColocoMasDeCincoCartasMonstruosYMeSaltaUnaExcepcion() {
 
-		Campo campo = new Campo();
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
 		
 		for(int i = 0; i<5;i++) {
 			CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
-			campo.colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
+			activo.getCampo().colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
 		}
 		assertThrows(CapacidadMaximaEnZonaMonstruosException.class,
 				()->{
 					CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
-					campo.colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
+					activo.getCampo().colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
 				});
 	}
 	
 	@Test
 	void test08TengoLaZonaDeMonstruosCompletaPeroQuieroInvocarAUnMonstruoQueRequiereSacrificioYPuedo() {
-		Campo campo = new Campo();
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
 		
 		for(int i = 0; i<5;i++) {
 			CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
-			campo.colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
+			activo.getCampo().colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
 		}
 		
 		CartaMonstruo maldicionDeDragon = new MaldicionDeDragon();
-		campo.colocarCarta(maldicionDeDragon,new PosicionAtaque(),new BocaArriba());
+		activo.getCampo().colocarCarta(maldicionDeDragon,new PosicionAtaque(),new BocaArriba());
 		
-		assertTrue(campo.monstruosInvocados().contains(maldicionDeDragon));
+		assertTrue(activo.getCampo().monstruosInvocados().contains(maldicionDeDragon));
 	}
 
 
 	@Test
 	void test09ColocoOllaDeLaCodiciaBocaArribaYObtengoDosCartasDelMazo() {
-		Campo campo = new Campo();
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+						
+		activo.getCampo().colocarCarta(new OllaDeLaCodicia(), new BocaArriba());
 		
-		Jugador jugador = new Jugador();
-		
-		campo.setJugador(jugador);
-		
-		campo.colocarCarta(new OllaDeLaCodicia(), new BocaArriba());
-		
-		assertEquals(jugador.cartasEnLaMano().size(),2);
+		assertEquals(activo.cartasEnLaMano().size(),2);
 	}
 	
 	@Test
 	void test10Invoco3DragonesBlancosYLuegoLosSacrificoParaInvocarAlDragonDefinitivo() {
 		
-		Campo campo = new Campo();
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
 				
 		//cada dragon requiere otros dos sacrificios para invocarlos
-		campo.colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
-		campo.colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
-		campo.colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
+		activo.getCampo().colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
+		activo.getCampo().colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
+		activo.getCampo().colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
 		
 		CartaMonstruo dragonDefinitivo = new DragonDefinitivoDeOjosAzules();
-		campo.colocarCarta(dragonDefinitivo, new PosicionAtaque(), new BocaArriba());
+		activo.getCampo().colocarCarta(dragonDefinitivo, new PosicionAtaque(), new BocaArriba());
 		
-		assertEquals(campo.monstruosInvocados().size(),1);
+		assertEquals(activo.getCampo().monstruosInvocados().size(),1);
 		
-		assertTrue(campo.monstruosInvocados().contains(dragonDefinitivo));
+		assertTrue(activo.getCampo().monstruosInvocados().contains(dragonDefinitivo));
 	}
 	
 	@Test
 	void test11ExtraigoTodasLasCartasDelMazoYVerificoQueElJugadorPierde() {
 		
-		Campo campo = new Campo();
-		
-		Jugador jugador = new Jugador();
-		
-		campo.setJugador(jugador);
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();		
 		
 		for(int i=0; i<40; i++)
-			jugador.tomarCartaDelMazo();
+			activo.tomarCartaDelMazo();
 		
-		//
+		//falta hacer el assert para chequear que el ganador es el oponente
 	}
 }
 

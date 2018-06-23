@@ -12,7 +12,7 @@ public class Jugador {
 	private String nombre;
 	private int puntosVida = 8000;
 	private Campo campo;
-	private Mazo mazo;
+	private Mazo mazo= new Mazo();
 	private ArrayList<Carta> mano = new ArrayList<Carta>();
 	private ExodiaCompleto exodia = new ExodiaCompleto(); 
 

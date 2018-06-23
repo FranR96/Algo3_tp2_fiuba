@@ -79,7 +79,7 @@ public class Campo {
         if(this.zonaMonstruos.cantidadMonstruosEnZona() >= cantSacrificios) {
             ArrayList<CartaMonstruo> monstruosEnCampo = monstruosInvocados();
             for(int i = 0; i<cantSacrificios; i++) {
-                this.eliminarMonstruo(monstruosEnCampo.get(i));
+                this.eliminarMonstruo(monstruosEnCampo.get(0));
             }
         }
         else {
