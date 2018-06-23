@@ -9,7 +9,7 @@ public class ZonaMonstruos {
     private ArrayList<CartaMonstruo> zonaMonstruos = new ArrayList<>();
 
     public void colocarCarta(CartaMonstruo cartaMonstruo) {
-        if (zonaMonstruos.size() < 5) { // Falta chequear lo de los sacrificios e invocar
+        if (zonaMonstruos.size() < 5) {
             zonaMonstruos.add(cartaMonstruo);
         }
     }
@@ -18,6 +18,7 @@ public class ZonaMonstruos {
         if (!this.zonaMonstruos.remove(cartaMonstruo)) {
             throw new CartaMonstruoNoExistenteException();
         }
+        cartaMonstruo.getCampo().agregarAlCementerio(cartaMonstruo);
     }
 
     public ArrayList<CartaMonstruo> obtenerMonstruos() {
@@ -26,10 +27,6 @@ public class ZonaMonstruos {
 
     public int cantidadMonstruosEnZona() {
         return this.zonaMonstruos.size();
-    }
-
-    public void voltearMonstruo(CartaMonstruo cartaMonstruo) {
-        cartaMonstruo.voltear();
     }
 
     public void realizarSacrificios(int sacrificiosNecesarios) {

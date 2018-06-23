@@ -13,8 +13,7 @@ public class Campo {
 	private ArrayList<Carta> cementerio= new ArrayList<Carta>();
 
 
-	// Hay que borrar esto y reemplazar con los metodos de ZonaMonstruo
-    public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
+	public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
 		int sacrificiosNecesarios = carta.requiereSacrificio();
 		if((this.zonaMonstruos.cantidadMonstruosEnZona() - sacrificiosNecesarios) < 5) {
 			this.realizarSacrificio(sacrificiosNecesarios);
@@ -53,23 +52,23 @@ public class Campo {
 
 	public void eliminarMonstruo(CartaMonstruo carta) {
 		this.zonaMonstruos.eliminarCarta(carta);
-		this.cementerio.add(carta);
 	}
 
 	public void eliminarCartaEspecial(CartaMagica cartaMagica) {
         this.zonaEspeciales.eliminarCarta(cartaMagica);
-		this.cementerio.add(cartaMagica);
 	}
 
     public void eliminarCartaEspecial(CartaTrampa cartaTrampa) {
         this.zonaEspeciales.eliminarCarta(cartaTrampa);
-        this.cementerio.add(cartaTrampa);
     }
+
+    public void agregarAlCementerio(Carta carta){
+		this.cementerio.add(carta);
+	}
+
 	public void atacarJugador(int danio) {
 		this.jugador.recibirDaniosVitales(danio);
 	}
-
-
 
 	public Collection<Carta> cartasEnCementerio() {
 		return this.cementerio;
@@ -95,9 +94,6 @@ public class Campo {
         zonaEspeciales.voltearCartaMagica(cartaMagica);
     }
 
-    public void voltearCarta(CartaMonstruo cartaMonstruo) {
-        zonaMonstruos.voltearMonstruo(cartaMonstruo);
-    }
 
 }
 

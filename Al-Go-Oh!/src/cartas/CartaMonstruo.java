@@ -45,10 +45,6 @@ public abstract class CartaMonstruo extends Carta{
 		return (this.posicion.recibirDanio(danio));
 	}
 
-	public void voltear() {
-		this.lado= new BocaArriba();
-	}
-
 	public int getPtsAtaque() {
 		return this.ptsAtaque;
 	}
@@ -59,10 +55,6 @@ public abstract class CartaMonstruo extends Carta{
 	
 	public int getEstrellas() {
 		return this.estrellas;
-	}
-
-	public Campo getCampo() {
-		return campo;
 	}
 	
 	public boolean enPosicionDeAtaque(){
