@@ -50,6 +50,7 @@ public class ZonaEspecial{
         return false;
     }
 
+    //No se usa nunca
     public void voltearCartaMagica(CartaMagica cartaMagica) {
     	zonaMagica.get(zonaMagica.indexOf(cartaMagica)).voltear();
  

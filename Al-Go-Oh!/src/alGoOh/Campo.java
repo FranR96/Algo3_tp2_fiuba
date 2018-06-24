@@ -8,6 +8,7 @@ import cartas.*;
 public class Campo {
 	private ZonaMonstruos zonaMonstruos = new ZonaMonstruos();
 	private ZonaEspecial zonaEspeciales = new ZonaEspecial();
+	private CartaCampo cartaCampo = null;
 	private Jugador jugador;
 	private Tablero tablero;
 	private ArrayList<Carta> cementerio= new ArrayList<Carta>();
@@ -37,6 +38,10 @@ public class Campo {
 	    this.zonaEspeciales.colocarCarta(carta);
         carta.invocar(lado, this, tablero.getOponente().getCampo(), this.jugador,  tablero.getOponente());
     }
+
+    public void colocarCarta(CartaCampo carta, LadoCarta lado){
+    	this.cartaCampo = carta;
+	}
 
     public void setTablero(Tablero tablero) {
 
@@ -102,10 +107,12 @@ public class Campo {
         return false;
     }
 
+	//No se usa nunca
     public void voltearCarta(CartaMagica cartaMagica) {
         zonaEspeciales.voltearCartaMagica(cartaMagica);
     }
 
+	//No se usa nunca
     public void voltearCarta(CartaMonstruo cartaMonstruo) {
         zonaMonstruos.voltearMonstruo(cartaMonstruo);
     }
@@ -129,6 +136,34 @@ public class Campo {
 	public void reiniciarAtaques() {
 		monstruosQueAtacaron.clear();
 		
+	}
+
+	public int obtenerAdicionalAtkAtacante(){
+		if(cartaCampo != null){
+			return cartaCampo.getPtsAdicionalAtkAtacante();
+		}
+		return 0;
+	}
+
+	public int obtenerAdicionalAtkAtacado(){
+		if(cartaCampo != null){
+			return cartaCampo.getPtsAdicionalAtkAtacado();
+		}
+		return 0;
+	}
+
+	public int obtenerAdicionalDefAtacante(){
+		if(cartaCampo != null){
+			return cartaCampo.getPtsAdicionalDefAtacante();
+		}
+		return 0;
+	}
+
+	public int obtenerAdicionalDefAtacado(){
+		if(cartaCampo != null){
+			return cartaCampo.getPtsAdicionalDefAtacado();
+		}
+		return 0;
 	}
 
 }
