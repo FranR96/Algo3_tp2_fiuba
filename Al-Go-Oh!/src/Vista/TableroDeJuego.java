@@ -16,7 +16,7 @@ public class TableroDeJuego extends HBox {
 
         Canvas canvas = new Canvas(640, 480);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        String imagePath = "file:src/Imagenes/Tablero-Juego.png";
+        String imagePath = "Vista/Imagenes/Tablero-Juego.png";
         Image image = new Image(imagePath);
 
         gc.drawImage(image, 0, 0, 640, 480);
