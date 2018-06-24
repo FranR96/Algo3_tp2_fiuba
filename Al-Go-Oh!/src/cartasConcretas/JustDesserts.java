@@ -15,7 +15,6 @@ public class JustDesserts extends CartaTrampa {
 	public void aplicarEfecto(Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente) {
 		
 		this.efecto.aplicarEfectoSobreJugadorOponente(oponente);
-		this.campo.eliminarCartaEspecial(this);
 	}
 
 }
