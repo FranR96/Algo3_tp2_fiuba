@@ -40,6 +40,7 @@ public class Juego {
 	}
 	
 	public void terminarTurno() {
+		jugadorActivo.getCampo().reiniciarAtaques();
 		this.cambiarJugadores();
 	}
 

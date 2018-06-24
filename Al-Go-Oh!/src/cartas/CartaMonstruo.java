@@ -38,10 +38,13 @@ public abstract class CartaMonstruo extends Carta{
     }
 	
 	public void atacar(CartaMonstruo monstruo) {
+		this.voltear();
+		campo.atacoEnTurno(this);
 		this.posicion.atacar(this,monstruo);
 	}
 	
 	public int recibirDanio(int danio) {
+		this.voltear();
 		return (this.posicion.recibirDanio(danio));
 	}
 

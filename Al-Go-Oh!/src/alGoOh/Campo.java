@@ -11,9 +11,11 @@ public class Campo {
 	private Jugador jugador;
 	private Tablero tablero;
 	private ArrayList<Carta> cementerio= new ArrayList<Carta>();
+	private ArrayList<CartaMonstruo> monstruosQueAtacaron = new ArrayList<CartaMonstruo>();
 
 
-	public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
+	// Hay que borrar esto y reemplazar con los metodos de ZonaMonstruo
+    public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
 		int sacrificiosNecesarios = carta.requiereSacrificio();
 		if((this.zonaMonstruos.cantidadMonstruosEnZona() - sacrificiosNecesarios) < 5) {
 			this.realizarSacrificio(sacrificiosNecesarios);
@@ -52,23 +54,23 @@ public class Campo {
 
 	public void eliminarMonstruo(CartaMonstruo carta) {
 		this.zonaMonstruos.eliminarCarta(carta);
+		this.cementerio.add(carta);
 	}
 
 	public void eliminarCartaEspecial(CartaMagica cartaMagica) {
         this.zonaEspeciales.eliminarCarta(cartaMagica);
+		this.cementerio.add(cartaMagica);
 	}
 
     public void eliminarCartaEspecial(CartaTrampa cartaTrampa) {
         this.zonaEspeciales.eliminarCarta(cartaTrampa);
+        this.cementerio.add(cartaTrampa);
     }
-
-    public void agregarAlCementerio(Carta carta){
-		this.cementerio.add(carta);
-	}
-
 	public void atacarJugador(int danio) {
 		this.jugador.recibirDaniosVitales(danio);
 	}
+
+
 
 	public Collection<Carta> cartasEnCementerio() {
 		return this.cementerio;
@@ -86,14 +88,38 @@ public class Campo {
         }
 	}
 
-	public void voltearCartaTrampa() {
-        zonaEspeciales.voltearCartaTrampa();
+	public boolean voltearCartaTrampa() {
+        return(zonaEspeciales.voltearCartaTrampa());
     }
 
     public void voltearCarta(CartaMagica cartaMagica) {
         zonaEspeciales.voltearCartaMagica(cartaMagica);
     }
 
+    public void voltearCarta(CartaMonstruo cartaMonstruo) {
+        zonaMonstruos.voltearMonstruo(cartaMonstruo);
+    }
+
+	public CartaMonstruo cartaAtacante() {
+		int cantidadAtaques= monstruosQueAtacaron.size();
+		return monstruosQueAtacaron.get(cantidadAtaques-1);
+		
+
+	}
+
+	public void atacoEnTurno(CartaMonstruo cartaMonstruo) {
+		if(!monstruosQueAtacaron.contains(cartaMonstruo))
+			monstruosQueAtacaron.add(cartaMonstruo);
+		else {
+			throw  new EstaCartaYaAtacoException();
+		}
+		
+	}
+
+	public void reiniciarAtaques() {
+		monstruosQueAtacaron.clear();
+		
+	}
 
 }
 

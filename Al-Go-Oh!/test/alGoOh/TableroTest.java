@@ -364,10 +364,16 @@ class TableroTest {
 		CartaMonstruo abismoReluciente = new AbismoReluciente();
 		oponente.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
 		
+		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 		CartaTrampa cilindroMagico = new CilindroMagico();
 		activo.getCampo().colocarCarta(cilindroMagico, new BocaAbajo());
+		activo.getCampo().colocarCarta(huevoMonstruoso, new PosicionAtaque(), new BocaAbajo());
+	
+		abismoReluciente.atacar(huevoMonstruoso);
 		
-		//
+		int ptsDeVidaEsperados = 8000-1600;
+		
+		assertEquals(ptsDeVidaEsperados,oponente.getPtsVida());
 	}
 	
 	//falta escribir prueba de las 5 partes de exodia

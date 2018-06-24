@@ -32,25 +32,28 @@ public class ZonaEspecial{
         if (!this.zonaMagica.remove(cartaMagica)) {
             throw new CartaMagicaNoExistenteException();
         }
-        cartaMagica.getCampo().agregarAlCementerio(cartaMagica);
 
     }
 
     public void eliminarCarta(CartaTrampa cartaTrampa) {
-        if(!this.zonaTrampa.remove(cartaTrampa)){
+        if (!zonaTrampa.isEmpty()) {
+            zonaTrampa.remove(0); // Las cartas trampa se activan de izq a der
+        }
+        else {
             throw new CartaTrampaNoExistenteException();
         }
-        cartaTrampa.getCampo().agregarAlCementerio(cartaTrampa);
     }
 
-    public void voltearCartaTrampa() {
+    public boolean voltearCartaTrampa() {
         if (!zonaTrampa.isEmpty()) {
-            CartaTrampa carta = zonaTrampa.remove(0);
-            carta.getCampo().colocarCarta(carta, new BocaArriba());
+            zonaTrampa.get(0).voltear();
+            return true;
         }
+        return false;
     }
 
     public void voltearCartaMagica(CartaMagica cartaMagica) {
-    	zonaMagica.get(zonaMagica.indexOf(cartaMagica)).getCampo().colocarCarta(cartaMagica, new BocaArriba());
+    	zonaMagica.get(zonaMagica.indexOf(cartaMagica)).voltear();
+ 
     }
 }

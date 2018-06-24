@@ -18,7 +18,6 @@ public class ZonaMonstruos {
         if (!this.zonaMonstruos.remove(cartaMonstruo)) {
             throw new CartaMonstruoNoExistenteException();
         }
-        cartaMonstruo.getCampo().agregarAlCementerio(cartaMonstruo);
     }
 
     public ArrayList<CartaMonstruo> obtenerMonstruos() {
@@ -32,4 +31,9 @@ public class ZonaMonstruos {
     public void realizarSacrificios(int sacrificiosNecesarios) {
 
     }
+
+	public void voltearMonstruo(CartaMonstruo cartaMonstruo) {
+		zonaMonstruos.get(zonaMonstruos.indexOf(cartaMonstruo)).voltear();
+		
+	}
 }
