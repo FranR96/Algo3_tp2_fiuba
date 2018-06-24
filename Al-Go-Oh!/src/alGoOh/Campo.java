@@ -57,15 +57,16 @@ public class Campo {
 		this.cementerio.add(carta);
 	}
 
-	public void eliminarCartaEspecial(CartaMagica cartaMagica) {
+	public void eliminarCartaMagica(CartaMagica cartaMagica) {
         this.zonaEspeciales.eliminarCarta(cartaMagica);
 		this.cementerio.add(cartaMagica);
 	}
 
-    public void eliminarCartaEspecial(CartaTrampa cartaTrampa) {
-        this.zonaEspeciales.eliminarCarta(cartaTrampa);
+ /*   public void eliminarCartaTrampa() {
+        CartaTrampa cartaTrampa= this.zonaEspeciales.eliminarCarta();
         this.cementerio.add(cartaTrampa);
-    }
+    }*/ // Me parece que no se utiliza en ningún lado. Se usa solo el eliminar CartaTrampa de Zona Especiales
+	
 	public void atacarJugador(int danio) {
 		this.jugador.recibirDaniosVitales(danio);
 	}
@@ -89,7 +90,16 @@ public class Campo {
 	}
 
 	public boolean voltearCartaTrampa() {
-        return(zonaEspeciales.voltearCartaTrampa());
+        if(zonaEspeciales.voltearCartaTrampa()) {
+        	try {
+        		CartaTrampa carta = zonaEspeciales.eliminarCarta();
+        		carta.invocar(new BocaArriba(),this,tablero.getCampoOponente(),this.jugador,tablero.getOponente());
+        		this.cementerio.add(carta);
+        		}
+        	catch (CartaTrampaNoExistenteException e){	
+        	}
+        }
+        return false;
     }
 
     public void voltearCarta(CartaMagica cartaMagica) {

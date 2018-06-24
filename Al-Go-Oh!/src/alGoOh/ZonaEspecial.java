@@ -35,18 +35,16 @@ public class ZonaEspecial{
 
     }
 
-    public void eliminarCarta(CartaTrampa cartaTrampa) {
-        if (!zonaTrampa.isEmpty()) {
-            zonaTrampa.remove(0); // Las cartas trampa se activan de izq a der
-        }
-        else {
-            throw new CartaTrampaNoExistenteException();
-        }
+    public CartaTrampa eliminarCarta() {
+       // if (!zonaTrampa.isEmpty()) {
+            return (zonaTrampa.remove(0)); // Las cartas trampa se activan de izq a der
+        //}
     }
 
     public boolean voltearCartaTrampa() {
         if (!zonaTrampa.isEmpty()) {
-            zonaTrampa.get(0).voltear();
+            CartaTrampa carta =zonaTrampa.get(0);
+            carta.voltear();
             return true;
         }
         return false;
