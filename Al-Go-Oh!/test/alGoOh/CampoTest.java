@@ -171,11 +171,12 @@ class CampoTest {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
-				
-		//cada dragon requiere otros dos sacrificios para invocarlos
-		activo.getCampo().colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
-		activo.getCampo().colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
-		activo.getCampo().colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
+		
+		
+		activo.getCampo().getZonaMonstruos().colocarCarta(new DragonBlancoDeOjosAzules());
+		activo.getCampo().getZonaMonstruos().colocarCarta(new DragonBlancoDeOjosAzules());
+		activo.getCampo().getZonaMonstruos().colocarCarta(new DragonBlancoDeOjosAzules());
+		System.out.println(activo.getCampo().monstruosInvocados().size());
 		
 		CartaMonstruo dragonDefinitivo = new DragonDefinitivoDeOjosAzules();
 		activo.getCampo().colocarCarta(dragonDefinitivo, new PosicionAtaque(), new BocaArriba());

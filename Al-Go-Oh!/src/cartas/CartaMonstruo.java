@@ -1,5 +1,7 @@
 package cartas;
 
+import java.util.ArrayList;
+
 import alGoOh.*;
 import efectos.Efecto;
 
@@ -70,6 +72,17 @@ public abstract class CartaMonstruo extends Carta{
 	
 	public void setPtsDefensa(int ptsDefensa) {
 		this.ptsDefensa = ptsDefensa;
+	}
+
+	//Esto lo hace cuando no requiere de ningún monstruo especial
+	public ArrayList<CartaMonstruo> elegirSacrificios(ArrayList<CartaMonstruo> monstruosEnCampo) {
+		int cantSacrificios = this.requiereSacrificio();
+		 ArrayList<CartaMonstruo> monstruosASacrificar = new ArrayList<CartaMonstruo>();
+        for(int i = 0; i<cantSacrificios; i++) {
+        	monstruosASacrificar.add(monstruosEnCampo.get(i));
+        }
+        return monstruosASacrificar;
+		
 	}
 
 

@@ -18,9 +18,12 @@ public class Campo {
     public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
 		int sacrificiosNecesarios = carta.requiereSacrificio();
 		if((this.zonaMonstruos.cantidadMonstruosEnZona() - sacrificiosNecesarios) < 5) {
-			this.realizarSacrificio(sacrificiosNecesarios);
-			this.zonaMonstruos.colocarCarta(carta);
-			carta.invocar(posicion, lado,this, tablero.getOponente().getCampo(), this.jugador, tablero.getOponente());
+			if(this.realizarSacrificioPara(sacrificiosNecesarios,carta)) {
+				this.zonaMonstruos.colocarCarta(carta);
+				carta.invocar(posicion, lado,this, tablero.getOponente().getCampo(), this.jugador, tablero.getOponente());
+			}
+			else
+				throw new NoSePuedoInvocarElMonstruoException();
 		}
 		else {
 			throw new CapacidadMaximaEnZonaMonstruosException();
@@ -77,16 +80,18 @@ public class Campo {
 		return this.cementerio;
 	}
 
-	public void realizarSacrificio(int cantSacrificios) {
+	public boolean realizarSacrificioPara(int cantSacrificios, CartaMonstruo carta) {
         if(this.zonaMonstruos.cantidadMonstruosEnZona() >= cantSacrificios) {
-            ArrayList<CartaMonstruo> monstruosEnCampo = monstruosInvocados();
-            for(int i = 0; i<cantSacrificios; i++) {
-                this.eliminarMonstruo(monstruosEnCampo.get(0));
+            ArrayList<CartaMonstruo> monstruosEnCampo = this.monstruosInvocados();
+            ArrayList<CartaMonstruo> monstruosASacrificar = carta.elegirSacrificios(monstruosEnCampo);
+            if(!monstruosASacrificar.isEmpty()) {
+            	for(int i = 0; i<monstruosASacrificar.size();i++) {
+            		this.eliminarMonstruo(monstruosASacrificar.get(i));
+            	}
+            	return true;
             }
         }
-        else {
-            throw new NoHaySuficientesCartasParaElSacrificioException();
-        }
+        return false;
 	}
 
 	public boolean voltearCartaTrampa() {
@@ -131,6 +136,9 @@ public class Campo {
 		
 	}
 
+	public ZonaMonstruos getZonaMonstruos(){
+		return zonaMonstruos;
+	}
 }
 
 
