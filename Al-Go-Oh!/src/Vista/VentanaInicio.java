@@ -24,7 +24,7 @@ public class VentanaInicio extends HBox
 
         Canvas canvas = new Canvas(400, 300);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        String imagePath = "file:src/imagenes/Al-Go-Oh-Logo.png";
+        String imagePath = "file:src/Imagenes/Al-Go-Oh-Logo.png";
         Image image = new Image(imagePath);
 
         gc.drawImage(image, 0, 0, 400, 300);

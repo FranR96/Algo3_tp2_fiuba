@@ -24,7 +24,7 @@ public class Aplicacion extends Application
 
         VentanaInicio ventanaInicio = new VentanaInicio(stage, escenaTablero);
         Scene escenaVentanaInicio = new Scene(ventanaInicio, 640, 480);
-        escenaVentanaInicio.getStylesheets().add("file:src/estilos/estilos.css");
+        escenaVentanaInicio.getStylesheets().add("file:src/Estilos/estilos.css");
 
         stage.addEventHandler(KeyEvent.KEY_RELEASED, new BotonEscapeHandler(stage));
 
