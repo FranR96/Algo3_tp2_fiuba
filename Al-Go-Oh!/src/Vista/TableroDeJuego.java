@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.util.Stack;
+
 public class TableroDeJuego extends HBox {
     private Stage stage;
     private Label jugador1;
@@ -24,9 +26,20 @@ public class TableroDeJuego extends HBox {
         String imagePath = "Vista/Imagenes/Tablero_de_juego.jpg";
         Image image = new Image(imagePath);
 
+        StackPane contieneImagen = new StackPane(canvas);
+        contieneImagen.setMaxSize(canvas.getWidth(), canvas.getHeight());
+        contieneImagen.getStyleClass().add("tablero");
+
+        StackPane.setAlignment(jugador2, Pos.BOTTOM_LEFT);
+        StackPane.setAlignment(jugador1, Pos.TOP_RIGHT);
+
+        jugador1.getStyleClass().add("nombre-usuario");
+        jugador2.getStyleClass().add("nombre-usuario");
+
+        contieneImagen.getChildren().addAll(jugador1, jugador2);
         gc.drawImage(image, 0, 0, 712, 680);
 
-        HBox tablero = new HBox(canvas, jugador1, jugador2);
+        HBox tablero = new HBox(contieneImagen);
         tablero.setAlignment(Pos.CENTER);
 
         this.setAlignment(Pos.CENTER);
