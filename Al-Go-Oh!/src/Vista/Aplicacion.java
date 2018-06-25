@@ -21,15 +21,15 @@ public class Aplicacion extends Application
         InfoContainer informacion = new InfoContainer();
 
         TableroDeJuego tableroDeJuego = new TableroDeJuego(stage);
-        Scene escenaTablero = new Scene(tableroDeJuego, 712, 680);
+        Scene escenaTablero = new Scene(tableroDeJuego, 722, 690);
         escenaTablero.getStylesheets().add("Vista/Estilos/estilos.css");
 
         VentanaNombreJugadores ventanaNombreJugadores = new VentanaNombreJugadores(stage, escenaTablero, informacion, tableroDeJuego);
-        Scene escenaNombreJugadores = new Scene(ventanaNombreJugadores, 712, 680);
+        Scene escenaNombreJugadores = new Scene(ventanaNombreJugadores, 722, 690);
         escenaNombreJugadores.getStylesheets().add("Vista/Estilos/estilos.css");
 
         VentanaInicio ventanaInicio = new VentanaInicio(stage, escenaNombreJugadores);
-        Scene escenaVentanaInicio = new Scene(ventanaInicio, 712, 680);
+        Scene escenaVentanaInicio = new Scene(ventanaInicio, 722, 690);
         escenaVentanaInicio.getStylesheets().add("Vista/Estilos/estilos.css");
 
         stage.addEventHandler(KeyEvent.KEY_RELEASED, new BotonEscapeHandler(stage));
