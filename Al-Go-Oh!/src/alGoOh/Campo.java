@@ -139,6 +139,10 @@ public class Campo {
 		
 	}
 
+    public ZonaMonstruos getZonaMonstruos(){
+        return zonaMonstruos;
+    }
+
 	public int obtenerAdicionalAtkAtacante(){
 		if(cartaCampo != null){
 			return cartaCampo.getPtsAdicionalAtkAtacante();
