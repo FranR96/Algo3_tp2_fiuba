@@ -45,6 +45,7 @@ public class ZonaEspecial{
         return !zonaTrampa.isEmpty();
     }
 
+    //No se usa nunca
     public void voltearCartaMagica(CartaMagica cartaMagica) {
     	zonaMagica.get(zonaMagica.indexOf(cartaMagica)).voltear();
  

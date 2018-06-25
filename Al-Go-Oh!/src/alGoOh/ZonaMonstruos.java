@@ -29,6 +29,7 @@ public class ZonaMonstruos {
     }
 
 
+    //No se usa nunca
 	public void voltearMonstruo(CartaMonstruo cartaMonstruo) {
 		zonaMonstruos.get(zonaMonstruos.indexOf(cartaMonstruo)).voltear();
 		

@@ -8,11 +8,10 @@ public class BocaAbajo implements LadoCarta {
 	private Carta carta;
 	private Campo campoEnemigo;
 	private Jugador oponente;
-	
+
 	@Override
 	public void setCarta(Carta carta) {
 		this.carta=carta;
-
 	}
 
 	@Override

@@ -30,6 +30,7 @@ public class Aplicacion extends Application
 
         VentanaInicio ventanaInicio = new VentanaInicio(stage, escenaNombreJugadores);
         Scene escenaVentanaInicio = new Scene(ventanaInicio, 722, 690);
+
         escenaVentanaInicio.getStylesheets().add("Vista/Estilos/estilos.css");
 
         stage.addEventHandler(KeyEvent.KEY_RELEASED, new BotonEscapeHandler(stage));

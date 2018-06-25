@@ -51,6 +51,7 @@ public abstract class CartaMonstruo extends Carta{
 	}
 
 	public int getPtsAtaque() {
+
 		return this.ptsAtaque;
 	}
 	

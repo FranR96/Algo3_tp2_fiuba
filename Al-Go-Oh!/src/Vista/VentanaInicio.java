@@ -23,6 +23,7 @@ public class VentanaInicio extends HBox
         this.stage = stage;
 
         Canvas canvas = new Canvas(500, 350);
+
         GraphicsContext gc = canvas.getGraphicsContext2D();
         String imagePath = "Vista/Imagenes/Al-Go-Oh-Logo.png";
         Image image = new Image(imagePath);
