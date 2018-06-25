@@ -1,20 +1,11 @@
 package alGoOh;
 
-import cartas.*;
-
 public class Tablero {
 	private static Tablero INSTANCE =null;
 	private Campo campo1;
 	private Campo campo2;
 	private Juego juego = new Juego();
 
-	public Jugador getOponente() {
-		return juego.getOponente();
-	}
-	
-	public Jugador getJugadorActivo() {
-		return juego.getJugadorActivo();
-	}
 	private Tablero() {}
 
 	private synchronized static void createInstance() {
@@ -37,12 +28,24 @@ public class Tablero {
 		campo1.setTablero(this);
 		campo2.setTablero(this);
 
-		juego.sortearInicio(this,jugador1,jugador2);
+		juego.sortearInicio(jugador1,jugador2);
+	}
+	
+	public Jugador getOponente() {
+		return juego.getOponente();
+	}
+	
+	public Jugador getJugadorActivo() {
+		return juego.getJugadorActivo();
 	}
 	
 	public Campo getCampoOponente() {
 		Jugador oponente = juego.getOponente();
 		return oponente.getCampo();
+	}
+	
+	public Jugador hayGanador() {
+		return juego.hayGanador();
 	}
 	
 	

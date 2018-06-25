@@ -1,7 +1,6 @@
 package alGoOh;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import cartas.*;
 import cartasConcretas.ExodiaCompleto;
@@ -10,12 +9,18 @@ import cartasConcretas.ExodiaCompleto;
 public class Jugador {
 
 	private String nombre;
-	private int puntosVida = 8000;
+	private int puntosVida;
 	private Campo campo;
-	private Mazo mazo= new Mazo();
-	private ArrayList<Carta> mano = new ArrayList<Carta>();
-	private ExodiaCompleto exodia = new ExodiaCompleto(); 
-
+	private Mazo mazo;
+	private ArrayList<Carta> mano;
+	private ExodiaCompleto exodia;
+	
+	public Jugador() {
+		puntosVida = 8000;
+		mazo = new Mazo();
+		mano = new ArrayList<Carta>();
+		exodia = new ExodiaCompleto();
+	}
 
 	public void recibirDaniosVitales(int danio) {
 		puntosVida -=danio;
@@ -67,5 +72,10 @@ public class Jugador {
 	
 	public String getNombre() {
 		return nombre;
+	}
+	
+	public boolean completoAExodia() {
+		System.out.println("Esta Completo  "+ exodia.exodiaEstaCompleto());
+		return (exodia.exodiaEstaCompleto());
 	}
 }

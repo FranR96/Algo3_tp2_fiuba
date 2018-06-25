@@ -4,10 +4,8 @@ public class Juego {
 	
 	private Jugador jugadorActivo;
 	private Jugador oponente;
-	private Tablero tablero;
 
-	public void sortearInicio(Tablero tablero, Jugador jugador1, Jugador jugador2) {
-		this.tablero = tablero;
+	public void sortearInicio(Jugador jugador1, Jugador jugador2) {
 		Seleccionador seleccionador = new Seleccionador();
 		jugadorActivo = seleccionador.elegirEntre(jugador1,jugador2);
 		
@@ -18,8 +16,8 @@ public class Juego {
 			oponente = jugador1;
 		}
 		
-		//jugadorActivo.obtenerManoInicial();
-		//oponente.obtenerManoInicial();
+		jugadorActivo.obtenerManoInicial();
+		oponente.obtenerManoInicial();
 	
 	}
 	
@@ -28,11 +26,11 @@ public class Juego {
 	}
 	
 	public Jugador hayGanador() {
-		if(!jugadorActivo.estaVivo() || !jugadorActivo.tieneCartasEnMazo()) {
-			return oponente;
-		}
-		if(!oponente.estaVivo() || !oponente.tieneCartasEnMazo()) {
+		if(jugadorActivo.completoAExodia() ||!oponente.estaVivo() || !oponente.tieneCartasEnMazo()) {
 			return jugadorActivo;
+		}
+		else if(oponente.completoAExodia() || !jugadorActivo.estaVivo() || !jugadorActivo.tieneCartasEnMazo()) {
+			return oponente;
 		}
 		else {
 			return null;
@@ -58,6 +56,7 @@ public class Juego {
 	public Jugador getJugadorActivo() {
 		return jugadorActivo;
 	}
+	
 	
 
 }

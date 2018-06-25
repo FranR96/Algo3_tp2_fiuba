@@ -28,10 +28,6 @@ public class ZonaMonstruos {
         return this.zonaMonstruos.size();
     }
 
-    public void realizarSacrificios(int sacrificiosNecesarios) {
-
-    }
-
 	public void voltearMonstruo(CartaMonstruo cartaMonstruo) {
 		zonaMonstruos.get(zonaMonstruos.indexOf(cartaMonstruo)).voltear();
 		

@@ -13,7 +13,8 @@ public class PosicionDefensa implements PosicionCarta {
 		this.carta.getCampo().voltearCartaTrampa();
 		if(this.carta.getPtsDefensa()< danio) {
 			this.carta.getCampo().eliminarMonstruo(this.carta);
-		}else if(this.carta.getPtsDefensa()>danio) {
+		}
+		else if(this.carta.getPtsDefensa()>danio) {
 			int diferencia = this.carta.getPtsDefensa()- danio;
 			return diferencia;
 		}

@@ -10,20 +10,7 @@ import java.util.Collection;
 class CampoTest {
 
 	@Test
-	void test01ColocarCartaMonstruoEnPoscicionAtaqueYPuedaAtacar() {
-		Tablero tablero = Tablero.getInstance();
-		tablero.inicializarTablero(new Jugador(), new Jugador());
-		Jugador activo = tablero.getJugadorActivo();
-
-		
-		CartaMonstruo abismoReluciente = new AbismoReluciente();
-		activo.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(),new BocaArriba());
-
-		assertTrue(abismoReluciente.enPosicionDeAtaque());
-	}
-
-	@Test
-	void test02ColocarCartaMonstruoEnPosicionDefensaYNoPuedeAtacar() {
+	void test01ColocarCartaMonstruoEnPosicionDefensaYNoPuedeAtacar() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -39,7 +26,7 @@ class CampoTest {
 	}
 
 	@Test
-	void test03ColocarCartaTrampaBocaAbajo(){
+	void test02ColocarCartaTrampaBocaAbajo(){
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -52,7 +39,7 @@ class CampoTest {
 	}
 	
 	@Test
-	void test04ColocoUnMonstruoYLuegoColocoUnMonstruoQueRequiereUnSacrificioElPrimeroNoEstaYElUltimoSi() {
+	void test03ColocoUnMonstruoYLuegoColocoMaldicionDeDragonQueRequiereUnSacrificioElPrimeroNoEstaYElUltimoSi() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -74,7 +61,7 @@ class CampoTest {
 	}
 	
 	@Test 
-	void test05ColocoDosMonstruosYLuegoColocoUnMonstruoQueRequiereDosSacrificiosAmbosNoEstanYElUltimoSi() {
+	void test04ColocoDosMonstruosYLuegoColocoDragonBlancoDeOjosAzulesQueRequiereDosSacrificiosAmbosNoEstanYElUltimoSi() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -98,10 +85,11 @@ class CampoTest {
 		assertTrue(zonaMonstruosInvocados.contains(dragonBlancoDeOjosAzules));
 
 	}
+	
 
 	
 	@Test
-	void test06ColocoMasDeCincoCartasEspecialesBocaAbajoYMeSaltaUnaExcepcion() {
+	void test05ColocoMasDeCincoCartasEspecialesBocaAbajoYMeSaltaUnaExcepcion() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -119,7 +107,7 @@ class CampoTest {
 	}
 	
 	@Test
-	void test07ColocoMasDeCincoCartasMonstruosYMeSaltaUnaExcepcion() {
+	void test06ColocoMasDeCincoCartasMonstruosYMeSaltaUnaExcepcion() {
 
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -137,7 +125,7 @@ class CampoTest {
 	}
 	
 	@Test
-	void test08TengoLaZonaDeMonstruosCompletaPeroQuieroInvocarAUnMonstruoQueRequiereSacrificioYPuedo() {
+	void test07TengoLaZonaDeMonstruosCompletaPeroQuieroInvocarAUnMonstruoQueRequiereSacrificioYPuedo() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -152,30 +140,18 @@ class CampoTest {
 		
 		assertTrue(activo.getCampo().monstruosInvocados().contains(maldicionDeDragon));
 	}
-
-
-	@Test
-	void test09ColocoOllaDeLaCodiciaBocaArribaYObtengoDosCartasDelMazo() {
-		Tablero tablero = Tablero.getInstance();
-		tablero.inicializarTablero(new Jugador(), new Jugador());
-		Jugador activo = tablero.getJugadorActivo();
-						
-		activo.getCampo().colocarCarta(new OllaDeLaCodicia(), new BocaArriba());
-		
-		assertEquals(activo.cartasEnLaMano().size(),2);
-	}
 	
 	@Test
-	void test10Invoco3DragonesBlancosYLuegoLosSacrificoParaInvocarAlDragonDefinitivo() {
+	void test09Invoco3DragonesBlancosYLuegoLosSacrificoParaInvocarAlDragonDefinitivo() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
-				
-		//cada dragon requiere otros dos sacrificios para invocarlos
-		activo.getCampo().colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
-		activo.getCampo().colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
-		activo.getCampo().colocarCarta(new DragonBlancoDeOjosAzules(), new PosicionAtaque(), new BocaArriba());
+		
+		
+		activo.getCampo().getZonaMonstruos().colocarCarta(new DragonBlancoDeOjosAzules());
+		activo.getCampo().getZonaMonstruos().colocarCarta(new DragonBlancoDeOjosAzules());
+		activo.getCampo().getZonaMonstruos().colocarCarta(new DragonBlancoDeOjosAzules());
 		
 		CartaMonstruo dragonDefinitivo = new DragonDefinitivoDeOjosAzules();
 		activo.getCampo().colocarCarta(dragonDefinitivo, new PosicionAtaque(), new BocaArriba());
@@ -191,11 +167,13 @@ class CampoTest {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();		
+		Jugador oponente = tablero.getOponente();
 		
-		for(int i=0; i<40; i++)
+		while(activo.tieneCartasEnMazo()) {
 			activo.tomarCartaDelMazo();
-		
-		//falta hacer el assert para chequear que el ganador es el oponente
+		}
+			
+		assertEquals(oponente,tablero.hayGanador());
 	}
 }
 
