@@ -16,22 +16,25 @@ public class Campo {
 
 
 	// Hay que borrar esto y reemplazar con los metodos de ZonaMonstruo
-    public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
-		int sacrificiosNecesarios = carta.requiereSacrificio();
-		if((this.zonaMonstruos.cantidadMonstruosEnZona() - sacrificiosNecesarios) < 5) {
-			if(this.realizarSacrificioPara(sacrificiosNecesarios,carta)) {
-				this.zonaMonstruos.colocarCarta(carta);
-				carta.invocar(posicion, lado,this, tablero.getOponente().getCampo(), this.jugador, tablero.getOponente());
-			}
-			else
-				throw new NoSePuedoInvocarElMonstruoException();
-		}
-		else {
-			throw new CapacidadMaximaEnZonaMonstruosException();
-		}
-
-
-		}
+     public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
+    	if (this.jugador.yaColocoMonstruo(carta)) {
+    		throw new YaSeHaInvocadoMonstruoEnTurnoException();
+    	} else {
+    		int sacrificiosNecesarios = carta.requiereSacrificio();
+    		if((this.zonaMonstruos.cantidadMonstruosEnZona() - sacrificiosNecesarios) < 5) {
+    			if(this.realizarSacrificioPara(sacrificiosNecesarios,carta)) {
+    				this.zonaMonstruos.colocarCarta(carta);
+    				carta.invocar(posicion, lado,this, tablero.getOponente().getCampo(), this.jugador, tablero.getOponente());
+    			}
+    			else
+    				throw new NoSePuedoInvocarElMonstruoException();
+    		}
+    		else {
+    			throw new CapacidadMaximaEnZonaMonstruosException();
+    		}
+    	}
+    }
+	
 	public void colocarCarta(CartaTrampa carta,LadoCarta lado) {
 		this.zonaEspeciales.colocarCarta(carta);
 		carta.invocar(lado, this, tablero.getOponente().getCampo(), this.jugador,  tablero.getOponente());
@@ -166,6 +169,15 @@ public class Campo {
 			return cartaCampo.getPtsAdicionalDefAtacado();
 		}
 		return 0;
+	}
+	
+	public void cambiarPosicionDeMonstruo(CartaMonstruo monstruo) {
+		
+		if (!this.jugador.yaColocoMonstruo(monstruo)) {        //si el monstruo fue recien colocado entonces
+			throw new NoSePuedeCambiarPosicionMonstruoException();    //no se le puede cambiar la posicion
+		} else {
+			monstruo.cambiarPosicion();
+		}
 	}
 }
 
