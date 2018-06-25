@@ -22,6 +22,10 @@
     -fx-opacity: 1;
 }
 
+.botones-inicio:pressed {
+    -fx-opacity: 0.4;
+}
+
 .ventana-inicio {
     -fx-padding: 10;
     -fx-border-style: solid inside;
@@ -29,5 +33,18 @@
     -fx-border-insets: 5;
     -fx-border-radius: 5;
     -fx-border-color: saddlebrown;
-    -fx-background-color: black
+    -fx-background-color: black;
 }
+
+.ventana-tablero {
+
+}
+
+.texto-pedir-nombre {
+    -fx-color: #FFFFFF;
+}
+
+.tooltip {
+    -fx-background-color: gold;
+}
+

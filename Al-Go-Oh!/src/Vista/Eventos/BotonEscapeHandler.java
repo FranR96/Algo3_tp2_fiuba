@@ -1,6 +1,7 @@
 package Vista.Eventos;
 
 import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -13,6 +14,8 @@ public class BotonEscapeHandler implements EventHandler<KeyEvent> {
 
     @Override
     public void handle(KeyEvent event) {
-        stage.close();
+        if (event.getCode() == KeyCode.ESCAPE) {
+            stage.close();
+        }
     }
 }

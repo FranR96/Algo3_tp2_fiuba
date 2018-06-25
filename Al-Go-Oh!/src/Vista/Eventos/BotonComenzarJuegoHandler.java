@@ -20,6 +20,7 @@ public class BotonComenzarJuegoHandler implements EventHandler<ActionEvent> {
     }
     @Override
     public void handle(ActionEvent event) {
+        // Efecto de transicion luego de la pantalla de inicio
         Timeline timeline = new Timeline();
         KeyFrame key = new KeyFrame(Duration.millis(1500), new KeyValue(stage.getScene().getRoot().opacityProperty(), 0));
         timeline.getKeyFrames().add(key);
