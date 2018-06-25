@@ -176,6 +176,35 @@ class CampoTest {
 		
 		assertEquals(oponente,tablero.hayGanador());
 	}
+	
+	@Test
+	void test12SoloSePuedeInvocarUnMonstruoPorTurno() {
+		
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		
+		activo.getCampo().colocarCarta(new HuevoMonstruoso(),new PosicionAtaque(), new BocaAbajo());
+		
+		assertThrows(YaSeHaInvocadoMonstruoEnTurnoException.class,
+				()->{ 
+					activo.getCampo().colocarCarta(new AbismoReluciente(),new PosicionAtaque(), new BocaAbajo());
+				});
+	}
+	
+	@Test
+	void test13NoSePuedeCambiarLaPosicionDelMonstruoRecienColocado() {
+		
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		
+		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
+		activo.getCampo().colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaArriba());
+		
+		assertThrows(NoSePuedeCambiarPosicionMonstruoException.class,
+				()-> activo.getCampo().cambiarPosicionDeMonstruo(huevoMonstruoso) );
+	}
 }
 
 
