@@ -32,4 +32,9 @@ public class PosicionAtaque implements PosicionCarta {
 	public void setCarta(CartaMonstruo carta) {
 		this.carta=carta;
 	}
+	
+	public PosicionCarta cambiarPosicion() {
+		
+		return (new PosicionDefensa());
+	}
 }
