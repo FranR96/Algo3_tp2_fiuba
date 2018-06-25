@@ -82,5 +82,9 @@ public abstract class CartaMonstruo extends Carta{
 		
 	}
 
+	public void cambiarPosicion() {
+		
+		this.posicion = this.posicion.cambiarPosicion();
+	}
 
 }
