@@ -4,7 +4,11 @@ import Vista.Eventos.BotonEscapeHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 
 public class Aplicacion extends Application
@@ -19,6 +23,11 @@ public class Aplicacion extends Application
         stage.setTitle("Al-Go-Oh!");
 
         InfoContainer informacion = new InfoContainer();
+
+        File f = new File( "Al-Go-Oh!/src/Vista/Sonidos/9fe8a8ba.mp3");
+        Media media = new Media(f.toURI().toString());
+        MediaPlayer player = new MediaPlayer(media);
+        player.setAutoPlay(true);
 
         TableroDeJuego tableroDeJuego = new TableroDeJuego(stage);
         Scene escenaTablero = new Scene(tableroDeJuego, 722, 690);
