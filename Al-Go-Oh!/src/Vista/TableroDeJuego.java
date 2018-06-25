@@ -8,12 +8,11 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-import java.util.Stack;
-
 public class TableroDeJuego extends HBox {
     private Stage stage;
     private Label jugador1;
     private Label jugador2;
+
 
     public TableroDeJuego(Stage stage) {
         super();
@@ -40,6 +39,7 @@ public class TableroDeJuego extends HBox {
         gc.drawImage(image, 0, 0, 712, 680);
 
         HBox tablero = new HBox(contieneImagen);
+
         tablero.setAlignment(Pos.CENTER);
 
         this.setAlignment(Pos.CENTER);

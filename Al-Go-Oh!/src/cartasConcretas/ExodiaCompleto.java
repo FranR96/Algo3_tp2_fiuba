@@ -3,6 +3,7 @@ package cartasConcretas;
 
 import java.util.ArrayList;
 
+
 import cartas.Carta;
 import cartas.CartaMonstruo;
 import efectos.EfectoNulo;
@@ -29,7 +30,6 @@ public class ExodiaCompleto extends CartaMonstruo{
 	public boolean exodiaEstaCompleto() {
 		if(cabeza && brazoDerecho && brazoIzquierdo && piernaDerecha && piernaIzquierda) {
 			completo= true;
-			System.out.println("Aguante River");
 		}
 		this.reiniciarPartes();
 		return completo;
@@ -66,6 +66,6 @@ public class ExodiaCompleto extends CartaMonstruo{
 		for(int i = 0 ; i< cantidadCartas ; i++) {
 			mano.get(i).getEfecto().aplicarEfectoExodia(this);
 		}
-		this.exodiaEstaCompleto();
+		//this.exodiaEstaCompleto();
 	}
 }

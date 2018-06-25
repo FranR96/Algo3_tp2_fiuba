@@ -75,7 +75,6 @@ public class Jugador {
 	}
 	
 	public boolean completoAExodia() {
-		System.out.println("Esta Completo  "+ exodia.exodiaEstaCompleto());
 		return (exodia.exodiaEstaCompleto());
 	}
 }

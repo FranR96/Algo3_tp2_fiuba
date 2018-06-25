@@ -8,25 +8,28 @@ import cartas.*;
 public class Campo {
 	private ZonaMonstruos zonaMonstruos = new ZonaMonstruos();
 	private ZonaEspecial zonaEspeciales = new ZonaEspecial();
+	private CartaCampo cartaCampo = new CartaCampoVacia();
 	private Jugador jugador;
 	private Tablero tablero;
 	private ArrayList<Carta> cementerio= new ArrayList<Carta>();
 	private ArrayList<CartaMonstruo> monstruosQueAtacaron = new ArrayList<CartaMonstruo>();
 
 
-	 public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
-			int sacrificiosNecesarios = carta.requiereSacrificio();
-			if((this.zonaMonstruos.cantidadMonstruosEnZona() - sacrificiosNecesarios) < 5) {
-				if(this.realizarSacrificioPara(sacrificiosNecesarios,carta)) {
-					this.zonaMonstruos.colocarCarta(carta);
-					carta.invocar(posicion, lado,this, tablero.getOponente().getCampo(), this.jugador, tablero.getOponente());
-				}
-				else
-					throw new NoSePuedoInvocarElMonstruoException();
+	// Hay que borrar esto y reemplazar con los metodos de ZonaMonstruo
+    public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
+		int sacrificiosNecesarios = carta.requiereSacrificio();
+		if((this.zonaMonstruos.cantidadMonstruosEnZona() - sacrificiosNecesarios) < 5) {
+			if(this.realizarSacrificioPara(sacrificiosNecesarios,carta)) {
+				this.zonaMonstruos.colocarCarta(carta);
+				carta.invocar(posicion, lado,this, tablero.getOponente().getCampo(), this.jugador, tablero.getOponente());
 			}
-			else {
-				throw new CapacidadMaximaEnZonaMonstruosException();
-			}
+			else
+				throw new NoSePuedoInvocarElMonstruoException();
+		}
+		else {
+			throw new CapacidadMaximaEnZonaMonstruosException();
+		}
+
 
 		}
 	public void colocarCarta(CartaTrampa carta,LadoCarta lado) {
@@ -38,6 +41,10 @@ public class Campo {
 	    this.zonaEspeciales.colocarCarta(carta);
         carta.invocar(lado, this, tablero.getOponente().getCampo(), this.jugador,  tablero.getOponente());
     }
+
+    public void colocarCarta(CartaCampo carta, LadoCarta lado){
+    	this.cartaCampo = carta;
+	}
 
     public void setTablero(Tablero tablero) {
 
@@ -87,23 +94,23 @@ public class Campo {
         }
         return false;
 	}
-	public boolean voltearCartaTrampa() {
-        if(zonaEspeciales.voltearCartaTrampa()) {
-        	try {
-        		CartaTrampa carta = zonaEspeciales.eliminarCarta();
-        		carta.invocar(new BocaArriba(),this,tablero.getCampoOponente(),this.jugador,tablero.getOponente());
-        		this.cementerio.add(carta);
-        		}
-        	catch (CartaTrampaNoExistenteException e){	
-        	}
-        }
-        return false;
-    }
 
+
+	public void voltearCartaTrampa() {
+        if(zonaEspeciales.hayCartaTrampa()) {
+        	CartaTrampa carta = zonaEspeciales.eliminarCarta();
+        	carta.invocar(new BocaArriba(),this,tablero.getCampoOponente(),this.jugador,tablero.getOponente());
+        	this.cementerio.add(carta);
+        }
+	}
+
+
+	//No se usa nunca
     public void voltearCarta(CartaMagica cartaMagica) {
         zonaEspeciales.voltearCartaMagica(cartaMagica);
     }
 
+	//No se usa nunca
     public void voltearCarta(CartaMonstruo cartaMonstruo) {
         zonaMonstruos.voltearMonstruo(cartaMonstruo);
     }
@@ -133,6 +140,33 @@ public class Campo {
 		return zonaMonstruos;
 	}
 
+	public int obtenerAdicionalAtkAtacante(){
+		if(cartaCampo != null){
+			return cartaCampo.getPtsAdicionalAtkAtacante();
+		}
+		return 0;
+	}
+
+	public int obtenerAdicionalAtkAtacado(){
+		if(cartaCampo != null){
+			return cartaCampo.getPtsAdicionalAtkAtacado();
+		}
+		return 0;
+	}
+
+	public int obtenerAdicionalDefAtacante(){
+		if(cartaCampo != null){
+			return cartaCampo.getPtsAdicionalDefAtacante();
+		}
+		return 0;
+	}
+
+	public int obtenerAdicionalDefAtacado(){
+		if(cartaCampo != null){
+			return cartaCampo.getPtsAdicionalDefAtacado();
+		}
+		return 0;
+	}
 }
 
 

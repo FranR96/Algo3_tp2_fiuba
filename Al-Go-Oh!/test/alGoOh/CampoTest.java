@@ -152,7 +152,7 @@ class CampoTest {
 		activo.getCampo().getZonaMonstruos().colocarCarta(new DragonBlancoDeOjosAzules());
 		activo.getCampo().getZonaMonstruos().colocarCarta(new DragonBlancoDeOjosAzules());
 		activo.getCampo().getZonaMonstruos().colocarCarta(new DragonBlancoDeOjosAzules());
-		
+
 		CartaMonstruo dragonDefinitivo = new DragonDefinitivoDeOjosAzules();
 		activo.getCampo().colocarCarta(dragonDefinitivo, new PosicionAtaque(), new BocaArriba());
 		
@@ -172,7 +172,6 @@ class CampoTest {
 		while(activo.tieneCartasEnMazo()) {
 			activo.tomarCartaDelMazo();
 		}
-			
 		assertEquals(oponente,tablero.hayGanador());
 	}
 }

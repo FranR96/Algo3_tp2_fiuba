@@ -14,7 +14,7 @@ public class DragonDefinitivoDeOjosAzules extends CartaMonstruo {
 		
 		super(4500,3800,12,new EfectoNulo());
 	}
-		
+	
 	@Override
 	public int requiereSacrificio() {
 		return 3;

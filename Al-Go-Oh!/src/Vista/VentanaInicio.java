@@ -22,12 +22,13 @@ public class VentanaInicio extends HBox
 
         this.stage = stage;
 
-        Canvas canvas = new Canvas(400, 300);
+        Canvas canvas = new Canvas(500, 350);
+
         GraphicsContext gc = canvas.getGraphicsContext2D();
         String imagePath = "Vista/Imagenes/Al-Go-Oh-Logo.png";
         Image image = new Image(imagePath);
 
-        gc.drawImage(image, 0, 0, 400, 300);
+        gc.drawImage(image, 0, 0, 500, 350);
 
         HBox logo = new HBox(canvas);
         logo.setAlignment(Pos.CENTER);
@@ -49,7 +50,7 @@ public class VentanaInicio extends HBox
         VBox botonesInicioFin = new VBox(comenzarJuego, salir);
         botonesInicioFin.setSpacing(10);
         botonesInicioFin.setAlignment(Pos.CENTER);
-        botonesInicioFin.setMaxWidth(150);
+        botonesInicioFin.setMaxWidth(180);
 
         VBox cajaPrincipal = new VBox(logo, botonesInicioFin);
         cajaPrincipal.setSpacing(20);

@@ -68,9 +68,9 @@ public class Mazo {
 	}
 	
 	public Carta tomarCartaDelMazo() {
-		if(!this.estaVacio())
-			return mazo.remove(0);
-		return null;
+		
+		return mazo.remove(0);
+		
 	}
 
 	public boolean estaVacio() {

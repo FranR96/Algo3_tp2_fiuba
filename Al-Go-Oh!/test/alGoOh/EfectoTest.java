@@ -18,15 +18,20 @@ import cartas.PosicionAtaque;
 import cartas.PosicionDefensa;
 import cartasConcretas.AbismoReluciente;
 import cartasConcretas.AgujeroNegro;
+import cartasConcretas.BrazoDerechoExodia;
+import cartasConcretas.BrazoIzquierdoExodia;
 import cartasConcretas.CilindroMagico;
 import cartasConcretas.DianKetoLaCurandera;
 import cartasConcretas.DragonDeAlexandrita;
+import cartasConcretas.Exodia;
 import cartasConcretas.Fisura;
 import cartasConcretas.HuevoMonstruoso;
 import cartasConcretas.InsectoComeHombres;
 import cartasConcretas.Jinzo7;
 import cartasConcretas.JustDesserts;
 import cartasConcretas.OllaDeLaCodicia;
+import cartasConcretas.PiernaDerechaExodia;
+import cartasConcretas.PiernaIzquierdaExodia;
 import cartasConcretas.Reinforcements;
 
 public class EfectoTest {
@@ -261,11 +266,12 @@ public class EfectoTest {
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
 		
-		while(!activo.completoAExodia()) {
-			System.out.println("Agarro Carta"+ activo.cartasEnLaMano().size());
-			activo.tomarCartaDelMazo();
-		}
-		
+		activo.cartasEnLaMano().add(new Exodia());
+		activo.cartasEnLaMano().add(new BrazoDerechoExodia());
+		activo.cartasEnLaMano().add(new BrazoIzquierdoExodia());
+		activo.cartasEnLaMano().add(new PiernaDerechaExodia());
+		activo.cartasEnLaMano().add(new PiernaIzquierdaExodia());
+				
 		assertEquals(activo,tablero.hayGanador());
 	}
 }
