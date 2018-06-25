@@ -43,9 +43,13 @@ class CampoTest {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
+		Juego juego = tablero.getJuego();
 		
 		CartaMonstruo abismoReluciente = new AbismoReluciente();
 		activo.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
+		
+		juego.terminarTurno();
+		juego.terminarTurno();
 		
 		CartaMonstruo maldicionDeDragon = new MaldicionDeDragon();
 		activo.getCampo().colocarCarta(maldicionDeDragon, new PosicionAtaque(), new BocaArriba());
@@ -65,12 +69,19 @@ class CampoTest {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
+		Juego juego = tablero.getJuego();
 		
 		CartaMonstruo abismoReluciente = new AbismoReluciente();
 		activo.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
 		
+		juego.terminarTurno();
+		juego.terminarTurno();
+		
 		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 		activo.getCampo().colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaArriba());
+		
+		juego.terminarTurno();
+		juego.terminarTurno();
 		
 		CartaMonstruo dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
 		activo.getCampo().colocarCarta(dragonBlancoDeOjosAzules, new PosicionAtaque(), new BocaArriba());
@@ -112,10 +123,13 @@ class CampoTest {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
+		Juego juego = tablero.getJuego();
 		
 		for(int i = 0; i<5;i++) {
 			CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 			activo.getCampo().colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
+			juego.terminarTurno();
+			juego.terminarTurno();
 		}
 		assertThrows(CapacidadMaximaEnZonaMonstruosException.class,
 				()->{
@@ -129,10 +143,13 @@ class CampoTest {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
+		Juego juego = tablero.getJuego();
 		
 		for(int i = 0; i<5;i++) {
 			CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 			activo.getCampo().colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
+			juego.terminarTurno();
+			juego.terminarTurno();
 		}
 		
 		CartaMonstruo maldicionDeDragon = new MaldicionDeDragon();
