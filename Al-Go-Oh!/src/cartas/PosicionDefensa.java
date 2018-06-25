@@ -26,5 +26,10 @@ public class PosicionDefensa implements PosicionCarta {
 		throw new MonstruoNoPuedeAtacarEstaEnPosicionDefensaException();
 
 	}
+	
+	public PosicionCarta cambiarPosicion() {
+
+		return (new PosicionAtaque());
+	}
 
 }
