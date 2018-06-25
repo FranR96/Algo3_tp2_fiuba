@@ -29,6 +29,7 @@ public class ExodiaCompleto extends CartaMonstruo{
 	
 	public boolean exodiaEstaCompleto() {
 		if(cabeza && brazoDerecho && brazoIzquierdo && piernaDerecha && piernaIzquierda) {
+			System.out.println("Se completo");
 			completo= true;
 		}
 		this.reiniciarPartes();
@@ -66,6 +67,6 @@ public class ExodiaCompleto extends CartaMonstruo{
 		for(int i = 0 ; i< cantidadCartas ; i++) {
 			mano.get(i).getEfecto().aplicarEfectoExodia(this);
 		}
-		//this.exodiaEstaCompleto();
+		this.exodiaEstaCompleto();
 	}
 }

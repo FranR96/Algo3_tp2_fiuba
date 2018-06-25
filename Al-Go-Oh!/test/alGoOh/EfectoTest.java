@@ -272,6 +272,8 @@ public class EfectoTest {
 		activo.cartasEnLaMano().add(new PiernaDerechaExodia());
 		activo.cartasEnLaMano().add(new PiernaIzquierdaExodia());
 				
+		activo.tomarCartaDelMazo();
+		
 		assertEquals(activo,tablero.hayGanador());
 	}
 }

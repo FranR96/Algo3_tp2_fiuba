@@ -26,10 +26,10 @@ public class Juego {
 	}
 	
 	public Jugador hayGanador() {
-		if(jugadorActivo.completoAExodia() ||!oponente.estaVivo() || !oponente.tieneCartasEnMazo()) {
+		if(jugadorActivo.completoAExodia() ||!oponente.estaVivo()) {
 			return jugadorActivo;
 		}
-		else if(oponente.completoAExodia() || !jugadorActivo.estaVivo() || !jugadorActivo.tieneCartasEnMazo()) {
+		else if( !jugadorActivo.estaVivo() || !jugadorActivo.tieneCartasEnMazo()) {
 			return oponente;
 		}
 		else {

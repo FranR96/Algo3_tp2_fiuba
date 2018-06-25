@@ -171,7 +171,9 @@ class CampoTest {
 		
 		while(activo.tieneCartasEnMazo()) {
 			activo.tomarCartaDelMazo();
+			activo.cartasEnLaMano().clear();
 		}
+		
 		assertEquals(oponente,tablero.hayGanador());
 	}
 }
