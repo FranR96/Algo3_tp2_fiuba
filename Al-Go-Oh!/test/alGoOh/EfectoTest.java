@@ -8,31 +8,9 @@ import java.util.Collection;
 
 import org.junit.jupiter.api.Test;
 
-import cartas.BocaAbajo;
-import cartas.BocaArriba;
-import cartas.Carta;
-import cartas.CartaMagica;
-import cartas.CartaMonstruo;
-import cartas.CartaTrampa;
-import cartas.PosicionAtaque;
-import cartas.PosicionDefensa;
-import cartasConcretas.AbismoReluciente;
-import cartasConcretas.AgujeroNegro;
-import cartasConcretas.BrazoDerechoExodia;
-import cartasConcretas.BrazoIzquierdoExodia;
-import cartasConcretas.CilindroMagico;
-import cartasConcretas.DianKetoLaCurandera;
-import cartasConcretas.DragonDeAlexandrita;
-import cartasConcretas.Exodia;
-import cartasConcretas.Fisura;
-import cartasConcretas.HuevoMonstruoso;
-import cartasConcretas.InsectoComeHombres;
-import cartasConcretas.Jinzo7;
-import cartasConcretas.JustDesserts;
-import cartasConcretas.OllaDeLaCodicia;
-import cartasConcretas.PiernaDerechaExodia;
-import cartasConcretas.PiernaIzquierdaExodia;
-import cartasConcretas.Reinforcements;
+import cartas.*;
+import cartasConcretas.*;
+
 
 public class EfectoTest {
 	
@@ -94,10 +72,15 @@ public class EfectoTest {
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
 		Jugador oponente = tablero.getOponente();
+		Juego juego = tablero.getJuego();
 		
 		CartaMonstruo abismoReluciente = new AbismoReluciente();
 		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 		oponente.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
+		
+		juego.terminarTurno();
+		juego.terminarTurno();
+		
 		oponente.getCampo().colocarCarta(huevoMonstruoso, new PosicionAtaque(), new BocaArriba());
 	
 		CartaMagica fisura = new Fisura();
@@ -244,6 +227,7 @@ public class EfectoTest {
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
 		Jugador oponente = tablero.getOponente();
+		Juego juego = tablero.getJuego();
 		
 		CartaMonstruo abismoReluciente = new AbismoReluciente();
 		oponente.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
@@ -251,6 +235,10 @@ public class EfectoTest {
 		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 		CartaTrampa justDesserts = new JustDesserts();
 		activo.getCampo().colocarCarta(justDesserts, new BocaAbajo());
+		
+		juego.terminarTurno();
+		juego.terminarTurno();
+		
 		activo.getCampo().colocarCarta(huevoMonstruoso, new PosicionAtaque(), new BocaAbajo());
 	
 		CartaMonstruo abismoReluciente2 = new AbismoReluciente();
