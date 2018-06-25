@@ -14,6 +14,7 @@ public class Jugador {
 	private Mazo mazo;
 	private ArrayList<Carta> mano;
 	private ExodiaCompleto exodia;
+	private CartaMonstruo monstruoColocadoEnTurno = null;
 	
 	public Jugador() {
 		puntosVida = 8000;
@@ -76,5 +77,18 @@ public class Jugador {
 	
 	public boolean completoAExodia() {
 		return (exodia.exodiaEstaCompleto());
+	}
+	
+	public boolean yaColocoMonstruo(CartaMonstruo monstruo) {
+		
+		if (this.monstruoColocadoEnTurno == null)
+			this.monstruoColocadoEnTurno = monstruo;
+		
+		return (this.monstruoColocadoEnTurno != monstruo);
+	}
+	
+	public void reiniciarMonstruoColocadoPorTurno() {
+		
+		this.monstruoColocadoEnTurno = null;
 	}
 }
