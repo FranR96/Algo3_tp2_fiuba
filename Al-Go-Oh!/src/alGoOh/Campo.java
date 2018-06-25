@@ -85,26 +85,21 @@ public class Campo {
             ArrayList<CartaMonstruo> monstruosEnCampo = this.monstruosInvocados();
             ArrayList<CartaMonstruo> monstruosASacrificar = carta.elegirSacrificios(monstruosEnCampo);
             if(!monstruosASacrificar.isEmpty()) {
-            	for(int i = 0; i<monstruosASacrificar.size();i++) {
-            		this.eliminarMonstruo(monstruosASacrificar.get(i));
-            	}
+                for (CartaMonstruo aMonstruosASacrificar : monstruosASacrificar) {
+                    this.eliminarMonstruo(aMonstruosASacrificar);
+                }
             	return true;
             }
         }
         return false;
 	}
 
-	public boolean voltearCartaTrampa() {
-        if(zonaEspeciales.voltearCartaTrampa()) {
-        	try {
-        		CartaTrampa carta = zonaEspeciales.eliminarCarta();
-        		carta.invocar(new BocaArriba(),this,tablero.getCampoOponente(),this.jugador,tablero.getOponente());
-        		this.cementerio.add(carta);
-        		}
-        	catch (CartaTrampaNoExistenteException e){	
-        	}
+	public void voltearCartaTrampa() {
+        if(zonaEspeciales.hayCartaTrampa()) {
+        	CartaTrampa carta = zonaEspeciales.eliminarCarta();
+        	carta.invocar(new BocaArriba(),this,tablero.getCampoOponente(),this.jugador,tablero.getOponente());
+        	this.cementerio.add(carta);
         }
-        return false;
     }
 
     public void voltearCarta(CartaMagica cartaMagica) {

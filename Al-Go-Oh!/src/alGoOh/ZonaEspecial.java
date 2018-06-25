@@ -41,13 +41,8 @@ public class ZonaEspecial{
         //}
     }
 
-    public boolean voltearCartaTrampa() {
-        if (!zonaTrampa.isEmpty()) {
-            CartaTrampa carta =zonaTrampa.get(0);
-            carta.voltear();
-            return true;
-        }
-        return false;
+    public boolean hayCartaTrampa() {
+        return !zonaTrampa.isEmpty();
     }
 
     public void voltearCartaMagica(CartaMagica cartaMagica) {

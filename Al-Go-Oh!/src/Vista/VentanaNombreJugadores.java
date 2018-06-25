@@ -1,5 +1,6 @@
 package Vista;
 
+import Vista.Eventos.EnviarConEnterHandler;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -32,6 +33,7 @@ public class VentanaNombreJugadores extends VBox {
                 info.setNombreJugador1(obtenerNombre.getText());
                 ingresarNombre.setText("Ingrese un nombre para el segundo jugador");
                 obtenerNombre.setText("");
+                obtenerNombre.requestFocus();
                 botonEnviar.setOnAction(event1 -> {
                     if (obtenerNombre.getText().trim().equals("")) {
                         mostrarToolTip(stage, obtenerNombre, "Nombre no valido");
@@ -39,7 +41,6 @@ public class VentanaNombreJugadores extends VBox {
                     else {
                         info.setNombreJugador2(obtenerNombre.getText());
                         obtenerNombre.setText("");
-                        obtenerNombre.requestFocus();
                         tablero.actualizarInfo(info);
                         stage.setScene(escenaProxima);
                     }
@@ -47,6 +48,7 @@ public class VentanaNombreJugadores extends VBox {
             }
         });
 
+        obtenerNombre.setOnKeyPressed(new EnviarConEnterHandler(botonEnviar));
 
         HBox containerIngresarNombre = new HBox(ingresarNombre, obtenerNombre);
         containerIngresarNombre.setSpacing(20);
