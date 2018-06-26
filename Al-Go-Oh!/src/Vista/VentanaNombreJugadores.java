@@ -1,6 +1,7 @@
 package Vista;
 
 import Vista.Eventos.EnviarConEnterHandler;
+import alGoOh.Jugador;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,7 +13,7 @@ import javafx.stage.Stage;
 
 public class VentanaNombreJugadores extends VBox {
 
-    public VentanaNombreJugadores(Stage stage, Scene escenaProxima, InfoContainer info, TableroDeJuego tablero) {
+    public VentanaNombreJugadores(Stage stage, Scene escenaProxima, TableroDeJuego tablero, Jugador jugador1, Jugador jugador2) {
         super();
 
         Label ingresarNombre = new Label();
@@ -30,7 +31,7 @@ public class VentanaNombreJugadores extends VBox {
                 mostrarToolTip(stage, obtenerNombre, "Nombre no valido");
             }
             else {
-                info.setNombreJugador1(obtenerNombre.getText());
+                jugador1.setNombre(obtenerNombre.getText());
                 ingresarNombre.setText("Ingrese un nombre para el segundo jugador");
                 obtenerNombre.setText("");
                 obtenerNombre.requestFocus();
@@ -39,9 +40,9 @@ public class VentanaNombreJugadores extends VBox {
                         mostrarToolTip(stage, obtenerNombre, "Nombre no valido");
                     }
                     else {
-                        info.setNombreJugador2(obtenerNombre.getText());
+                        jugador2.setNombre(obtenerNombre.getText());
                         obtenerNombre.setText("");
-                        tablero.actualizarInfo(info);
+                        tablero.actualizarInfo(jugador1, jugador2);
                         stage.setScene(escenaProxima);
                     }
                 });

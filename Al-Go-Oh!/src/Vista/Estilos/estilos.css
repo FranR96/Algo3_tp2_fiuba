@@ -59,3 +59,10 @@
     -fx-font-family: Arial;
 }
 
+.grilla-tablero {
+    -fx-background-image: url("../Imagenes/Tablero_de_juego.jpg");
+    -fx-border-width: 5;
+    -fx-border-radius: 2;
+    -fx-border-color: saddlebrown;
+}
+
