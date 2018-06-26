@@ -9,13 +9,21 @@ public abstract class Carta {
 	protected LadoCarta lado;
 	protected Campo campo;
 	protected Efecto efecto;
+	protected Campo campoEnemigo;
+	protected Jugador oponente;
+
+	public Campo getCampoEnemigo() {
+		return campoEnemigo;
+	}
+
 
 	public void aplicarEfecto(Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente){
 		
 	}
 
 	public void voltear() {
-		this.lado= new BocaArriba();
+		BocaArriba lado = new BocaArriba();
+		lado.setCarta(this);
 	}
 	
 	public Efecto getEfecto() {

@@ -8,7 +8,7 @@ import cartas.*;
 public class Campo {
 	private ZonaMonstruos zonaMonstruos = new ZonaMonstruos();
 	private ZonaEspecial zonaEspeciales = new ZonaEspecial();
-	private CartaCampo cartaCampo = new CartaCampoVacia();
+	private CartaCampo cartaCampo = null;
 	private Jugador jugador;
 	private Tablero tablero;
 	private ArrayList<Carta> cementerio= new ArrayList<Carta>();
@@ -27,7 +27,7 @@ public class Campo {
     				carta.invocar(posicion, lado,this, tablero.getOponente().getCampo(), this.jugador, tablero.getOponente());
     			}
     			else
-    				throw new NoSePuedoInvocarElMonstruoException();
+    				throw new NoSePudoInvocarElMonstruoException();
     		}
     		else {
     			throw new CapacidadMaximaEnZonaMonstruosException();
@@ -106,7 +106,6 @@ public class Campo {
         	this.cementerio.add(carta);
         }
 	}
-
 
 	//No se usa nunca
     public void voltearCarta(CartaMagica cartaMagica) {

@@ -113,7 +113,7 @@ public class EfectoTest {
 	}
 	
 	@Test
-	void test05ColocoInsectoComeHombresBocaAbajoYLuegoDeSerAtacadoDestruyoElMonstruoEnemigo() {
+	void test05ColocoInsectoComeHombresBocaAbajoYLuegoDeSerAtacadoDestruyeElMonstruoEnemigo() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());

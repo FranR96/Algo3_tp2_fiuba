@@ -36,6 +36,8 @@ public abstract class CartaMonstruo extends Carta{
         this.posicion.setCarta(this);
         this.lado.setCarta(this);
         this.campo= campo;
+		this.campoEnemigo = campoEnemigo;
+		this.oponente = oponente;
         this.lado.invocar(campo, campoEnemigo, activo, oponente);
     }
 	

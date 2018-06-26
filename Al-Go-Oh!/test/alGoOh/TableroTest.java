@@ -170,12 +170,10 @@ class TableroTest {
 		
 		CartaCampo wasteland = new Wasteland();
 		activo.getCampo().colocarCarta(wasteland, new BocaArriba());
-		
-		int ptsAtaqueEsperados = 1600 + 200;
-		int ptsDefensaEsperados = 900 + 300;
-		
-		assertEquals(ptsAtaqueEsperados, abismoReluciente.getPtsAtaque());
-		assertEquals(ptsDefensaEsperados, huevoMonstruoso.getPtsDefensa());	
+
+		int ptsDeVidaEsperados = 8000 - ((1600 + 200) - 600);
+
+		assertEquals(ptsDeVidaEsperados, activo.getPtsVida());
 	}
 	
 	@Test
@@ -189,15 +187,15 @@ class TableroTest {
 		CartaMonstruo abismoReluciente = new AbismoReluciente();
 		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 		activo.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
-		oponente.getCampo().colocarCarta(huevoMonstruoso, new PosicionDefensa(), new BocaArriba());
+		oponente.getCampo().colocarCarta(huevoMonstruoso, new PosicionAtaque(), new BocaArriba());
 		
 		CartaCampo sogen = new Sogen();
 		activo.getCampo().colocarCarta(sogen, new BocaArriba());
-		
-		int ptsDefensaEsperados = 1800 + 500;
-		int ptsAtaqueEsperados = 600 + 200;
-		
-		assertEquals(ptsDefensaEsperados, abismoReluciente.getPtsDefensa());
-		assertEquals(ptsAtaqueEsperados, huevoMonstruoso.getPtsAtaque());
+		abismoReluciente.atacar(huevoMonstruoso);
+
+		//Esto no funciona por culpa del tablero.getCampoOponente, para tablero nunca se cambia entre oponente y activo
+		int ptsDeVidaEsperados = 8000 - (1600 - (600 + 200));
+
+		assertEquals(ptsDeVidaEsperados, oponente.getPtsVida());
 	}
 }

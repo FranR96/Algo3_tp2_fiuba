@@ -159,7 +159,7 @@ class CampoTest {
 	}
 	
 	@Test
-	void test09Invoco3DragonesBlancosYLuegoLosSacrificoParaInvocarAlDragonDefinitivo() {
+	void test08Invoco3DragonesBlancosYLuegoLosSacrificoParaInvocarAlDragonDefinitivo() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -179,7 +179,7 @@ class CampoTest {
 	}
 	
 	@Test
-	void test11ExtraigoTodasLasCartasDelMazoYVerificoQueElJugadorPierde() {
+	void test09ExtraigoTodasLasCartasDelMazoYVerificoQueElJugadorPierde() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -195,7 +195,7 @@ class CampoTest {
 	}
 	
 	@Test
-	void test12SoloSePuedeInvocarUnMonstruoPorTurno() {
+	void test10SoloSePuedeInvocarUnMonstruoPorTurno() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -210,7 +210,7 @@ class CampoTest {
 	}
 	
 	@Test
-	void test13NoSePuedeCambiarLaPosicionDelMonstruoRecienColocado() {
+	void test11NoSePuedeCambiarLaPosicionDelMonstruoRecienColocado() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());

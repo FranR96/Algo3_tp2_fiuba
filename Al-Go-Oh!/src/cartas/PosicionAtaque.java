@@ -5,7 +5,8 @@ public class PosicionAtaque implements PosicionCarta {
 	private CartaMonstruo carta;
 	
 	public void atacar(CartaMonstruo monstruo1, CartaMonstruo monstruo2) {
-		int diferencia = monstruo2.recibirDanio(this.carta.getPtsAtaque() + this.carta.campo.obtenerAdicionalAtkAtacante() /*+ this.carta.lado.getCampoEnemigo().obtenerAdicionalAtkAtacante()*/);
+		int ptsAtaqueAdicional = this.carta.campo.obtenerAdicionalAtkAtacante() + this.carta.getCampoEnemigo().obtenerAdicionalAtkAtacante();
+		int diferencia = monstruo2.recibirDanio(this.carta.getPtsAtaque() + ptsAtaqueAdicional);
 		if(diferencia >=0) {
 			this.carta.getCampo().eliminarMonstruo(this.carta);
 			this.carta.getCampo().atacarJugador(diferencia);
@@ -14,8 +15,9 @@ public class PosicionAtaque implements PosicionCarta {
 	
 	public int recibirDanio(int danio) {		
 		this.carta.getCampo().voltearCartaTrampa();
-		if((this.carta.getPtsAtaque() + this.carta.campo.obtenerAdicionalAtkAtacado()/* + this.carta.lado.getCampoEnemigo().obtenerAdicionalAtkAtacado()*/) < danio) {
-			int diferencia= danio-this.carta.getPtsAtaque();
+		int ptsAtaqueAdicional = this.carta.campo.obtenerAdicionalAtkAtacado() + this.carta.getCampoEnemigo().obtenerAdicionalAtkAtacado();
+		if(this.carta.getPtsAtaque() + ptsAtaqueAdicional  < danio) {
+			int diferencia= danio- (this.carta.getPtsAtaque() + ptsAtaqueAdicional);
 			this.carta.getCampo().eliminarMonstruo(this.carta);
 			this.carta.getCampo().atacarJugador(diferencia);
 		}
@@ -32,9 +34,10 @@ public class PosicionAtaque implements PosicionCarta {
 	public void setCarta(CartaMonstruo carta) {
 		this.carta=carta;
 	}
-	
+
 	public PosicionCarta cambiarPosicion() {
-		
-		return (new PosicionDefensa());
+		PosicionDefensa pos = new PosicionDefensa();
+		pos.setCarta(this.carta);
+		return pos;
 	}
 }

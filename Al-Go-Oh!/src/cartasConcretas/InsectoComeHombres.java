@@ -17,7 +17,7 @@ public class InsectoComeHombres extends CartaMonstruo {
 	@Override
 	public void voltear() {
 		if(this.estaBocaAbajo()) {
-			campoEnemigo= this.lado.getCampoEnemigo();
+			campoEnemigo= this.getCampoEnemigo();
 			this.lado = new BocaArriba();
 			this.efecto.aplicarEfectoSobreCampoOponente(campoEnemigo);
 		}
