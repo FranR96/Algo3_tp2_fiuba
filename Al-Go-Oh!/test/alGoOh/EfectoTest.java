@@ -72,14 +72,13 @@ public class EfectoTest {
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
 		Jugador oponente = tablero.getOponente();
-		Juego juego = tablero.getJuego();
 		
 		CartaMonstruo abismoReluciente = new AbismoReluciente();
 		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 		oponente.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
 		
-		juego.terminarTurno();
-		juego.terminarTurno();
+		tablero.terminarTurno();
+		tablero.terminarTurno();
 		
 		oponente.getCampo().colocarCarta(huevoMonstruoso, new PosicionAtaque(), new BocaArriba());
 	
@@ -227,7 +226,6 @@ public class EfectoTest {
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
 		Jugador oponente = tablero.getOponente();
-		Juego juego = tablero.getJuego();
 		
 		CartaMonstruo abismoReluciente = new AbismoReluciente();
 		oponente.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
@@ -236,8 +234,8 @@ public class EfectoTest {
 		CartaTrampa justDesserts = new JustDesserts();
 		activo.getCampo().colocarCarta(justDesserts, new BocaAbajo());
 		
-		juego.terminarTurno();
-		juego.terminarTurno();
+		tablero.terminarTurno();
+		tablero.terminarTurno();
 		
 		activo.getCampo().colocarCarta(huevoMonstruoso, new PosicionAtaque(), new BocaAbajo());
 	

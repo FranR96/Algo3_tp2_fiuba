@@ -48,8 +48,8 @@ public class Tablero {
 		return juego.hayGanador();
 	}
 	
-	public Juego getJuego() {
+	public void terminarTurno() {
 		
-		return this.juego;
+		this.juego.terminarTurno();
 	}
 }
