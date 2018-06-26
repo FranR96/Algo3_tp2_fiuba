@@ -142,30 +142,30 @@ public class Campo {
 		return zonaMonstruos;
 	}
 
-	public int obtenerAdicionalAtkAtacante(){
+	public int obtenerAdicionalAtkPropio(){
 		if(cartaCampo != null){
-			return cartaCampo.getPtsAdicionalAtkAtacante();
+			return cartaCampo.getPtsAdicionalAtkPropio();
 		}
 		return 0;
 	}
 
-	public int obtenerAdicionalAtkAtacado(){
+	public int obtenerAdicionalAtkEnemigo(){
 		if(cartaCampo != null){
-			return cartaCampo.getPtsAdicionalAtkAtacado();
+			return cartaCampo.getPtsAdicionalAtkEnemigo();
 		}
 		return 0;
 	}
 
-	public int obtenerAdicionalDefAtacante(){
+	public int obtenerAdicionalDefPropio(){
 		if(cartaCampo != null){
-			return cartaCampo.getPtsAdicionalDefAtacante();
+			return cartaCampo.getPtsAdicionalDefPropio();
 		}
 		return 0;
 	}
 
-	public int obtenerAdicionalDefAtacado(){
+	public int obtenerAdicionalDefEnemigo(){
 		if(cartaCampo != null){
-			return cartaCampo.getPtsAdicionalDefAtacado();
+			return cartaCampo.getPtsAdicionalDefEnemigo();
 		}
 		return 0;
 	}

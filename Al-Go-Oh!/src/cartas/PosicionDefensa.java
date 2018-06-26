@@ -10,11 +10,10 @@ public class PosicionDefensa implements PosicionCarta {
 
 	public int recibirDanio(int danio) {
 		this.carta.getCampo().voltearCartaTrampa();
-		int ptsDefensaAdicional = this.carta.campo.obtenerAdicionalDefAtacado() + this.carta.getCampoEnemigo().obtenerAdicionalDefAtacado();
-		if (this.carta.getPtsDefensa() + ptsDefensaAdicional < danio) {
+		if (this.carta.getPtsDefensa() < danio) {
 			this.carta.getCampo().eliminarMonstruo(this.carta);
 		} else if (this.carta.getPtsDefensa() > danio) {
-			int diferencia = (this.carta.getPtsDefensa() + ptsDefensaAdicional) - danio;
+			int diferencia = (this.carta.getPtsDefensa()) - danio;
 			return diferencia;
 		}
 		return -1;

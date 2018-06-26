@@ -165,19 +165,41 @@ class TableroTest {
 		
 		CartaMonstruo abismoReluciente = new AbismoReluciente();
 		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
-		activo.getCampo().colocarCarta(abismoReluciente, new PosicionAtaque(), new BocaArriba());
-		oponente.getCampo().colocarCarta(huevoMonstruoso, new PosicionDefensa(), new BocaArriba());
+		activo.getCampo().colocarCarta(huevoMonstruoso, new PosicionAtaque(), new BocaArriba());
+		oponente.getCampo().colocarCarta(abismoReluciente, new PosicionDefensa(), new BocaArriba());
 		
 		CartaCampo wasteland = new Wasteland();
 		activo.getCampo().colocarCarta(wasteland, new BocaArriba());
 
-		int ptsDeVidaEsperados = 8000 - ((1600 + 200) - 600);
+		huevoMonstruoso.atacar(abismoReluciente);
+		int ptsDeVidaEsperados = 8000 - (1800-600);
+
+		assertEquals(ptsDeVidaEsperados, activo.getPtsVida());
+	}
+	
+	@Test 
+	void test08ColocarUnaCartaMonstruoEnCadaLadoElOponenteColocaWastelandYVerificoLosIncrementos() {
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		Jugador oponente = tablero.getOponente();
+		
+		CartaMonstruo abismoReluciente = new AbismoReluciente();
+		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
+		activo.getCampo().colocarCarta(huevoMonstruoso, new PosicionAtaque(), new BocaArriba());
+		oponente.getCampo().colocarCarta(abismoReluciente, new PosicionDefensa(), new BocaArriba());
+		
+		CartaCampo wasteland = new Wasteland();
+		oponente.getCampo().colocarCarta(wasteland, new BocaArriba());
+
+		huevoMonstruoso.atacar(abismoReluciente);
+		int ptsDeVidaEsperados = 8000 - ((1800+300)-(600+200));
 
 		assertEquals(ptsDeVidaEsperados, activo.getPtsVida());
 	}
 	
 	@Test
-	void test08ColocarUnaCartaMonstruoEnCadaCampoYLuegoCartaSogenYVerificarQueSeRealizanLosIncrementos() {
+	void test09ColocarUnaCartaMonstruoEnCadaCampoYLuegoCartaSogenYVerificarQueSeRealizanLosIncrementos() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -193,8 +215,28 @@ class TableroTest {
 		activo.getCampo().colocarCarta(sogen, new BocaArriba());
 		abismoReluciente.atacar(huevoMonstruoso);
 
-		//Esto no funciona por culpa del tablero.getCampoOponente, para tablero nunca se cambia entre oponente y activo
-		int ptsDeVidaEsperados = 8000 - (1600 - (600 + 200));
+		int ptsDeVidaEsperados = 8000 - ((1600+500) - (600));
+
+		assertEquals(ptsDeVidaEsperados, oponente.getPtsVida());
+	}
+	
+	@Test
+	void test10ColocarUnaCartaMonstruoEnCadaCampoYLuegoElOponentePoneLaCartaSogenYVerificarQueSeRealizanLosIncrementos() {
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		Jugador oponente = tablero.getOponente();
+		
+		CartaMonstruo abismoReluciente = new AbismoReluciente();
+		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
+		activo.getCampo().colocarCarta(abismoReluciente, new PosicionDefensa(), new BocaArriba());
+		oponente.getCampo().colocarCarta(huevoMonstruoso, new PosicionAtaque(), new BocaArriba());
+		
+		CartaCampo sogen = new Sogen();
+		oponente.getCampo().colocarCarta(sogen, new BocaArriba());
+		huevoMonstruoso.atacar(abismoReluciente);
+
+		int ptsDeVidaEsperados = 8000 - ((1800+200) - (600+500));
 
 		assertEquals(ptsDeVidaEsperados, oponente.getPtsVida());
 	}

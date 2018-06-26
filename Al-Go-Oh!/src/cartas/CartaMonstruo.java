@@ -42,23 +42,23 @@ public abstract class CartaMonstruo extends Carta{
     }
 	
 	public void atacar(CartaMonstruo monstruo) {
-		this.voltear();
+		//this.voltear();
 		campo.atacoEnTurno(this);
 		this.posicion.atacar(this,monstruo);
 	}
 	
 	public int recibirDanio(int danio) {
-		this.voltear();
+		//this.voltear();
 		return (this.posicion.recibirDanio(danio));
 	}
 
 	public int getPtsAtaque() {
 
-		return this.ptsAtaque;
+		return this.ptsAtaque + this.campo.obtenerAdicionalAtkPropio()+ this.campoEnemigo.obtenerAdicionalAtkEnemigo();
 	}
 	
 	public int getPtsDefensa() {
-		return this.ptsDefensa;
+		return this.ptsDefensa+ this.campo.obtenerAdicionalDefPropio() + this.campoEnemigo.obtenerAdicionalDefEnemigo();
 	}
 	
 	public int getEstrellas() {
