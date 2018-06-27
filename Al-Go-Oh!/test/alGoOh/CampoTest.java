@@ -220,6 +220,27 @@ class CampoTest {
 		assertThrows(NoSePuedeCambiarPosicionMonstruoException.class,
 				()-> activo.getCampo().cambiarPosicionDeMonstruo(huevoMonstruoso) );
 	}
+	
+	@Test
+	void test12ColocarUnMonstruoEnAtaqueLuegoCambiarSuPosicionYVerificarQueNoPuedoAtacar() {
+		
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		Jugador oponente = tablero.getOponente();
+		
+		CartaMonstruo monstruo1 = new AbismoReluciente();
+		CartaMonstruo monstruo2 = new HuevoMonstruoso();
+		activo.getCampo().colocarCarta(monstruo1, new PosicionAtaque(), new BocaArriba());
+		oponente.getCampo().colocarCarta(monstruo2, new PosicionDefensa(), new BocaArriba());
+		
+		tablero.terminarTurno();
+		
+		oponente.getCampo().cambiarPosicionDeMonstruo(monstruo1);
+		
+		assertThrows(MonstruoNoPuedeAtacarEstaEnPosicionDefensaException.class,
+			()-> monstruo1.atacar(monstruo2));
+	}
 }
 
 
