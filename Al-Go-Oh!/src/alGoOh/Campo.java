@@ -14,7 +14,7 @@ public class Campo {
 	private ArrayList<Carta> cementerio= new ArrayList<>();
 	private ArrayList<CartaMonstruo> monstruosQueAtacaron = new ArrayList<>();
 	private CartaMonstruo ultimoMonstruoAtacado;
-
+	private FiltroDeAtaque filtroDeAtaque = new FiltroDeAtaque();
 
 
      public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
@@ -94,7 +94,6 @@ public class Campo {
         }
 	}
 	
-	
 	public CartaMonstruo cartaAtacante() {
 		int cantidadAtaques= monstruosQueAtacaron.size();
 		return monstruosQueAtacaron.get(cantidadAtaques-1);
@@ -167,6 +166,21 @@ public class Campo {
 		this.ultimoMonstruoAtacado=cartaMonstruo;
 		
 	}
+
+	public boolean verificarFiltro(){
+     	return this.filtroDeAtaque.estaActivo();
+	}
+
+	public void activarFiltroDeAtaque(){
+     	this.filtroDeAtaque.activarFiltro();
+	}
+
+	public void desactivarFiltroDeAtaque(){
+     	this.filtroDeAtaque.desactivarFiltro();
+	}
+
+
+
 }
 
 

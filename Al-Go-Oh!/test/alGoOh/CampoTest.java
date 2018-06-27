@@ -142,7 +142,6 @@ class CampoTest {
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
 
-		
 		for(int i = 0; i<5;i++) {
 			CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 			activo.getCampo().colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());

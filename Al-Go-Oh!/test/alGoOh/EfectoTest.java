@@ -199,6 +199,11 @@ public class EfectoTest {
 		int ptsDeVidaEsperados = 8000-1600;
 		
 		assertEquals(ptsDeVidaEsperados,oponente.getPtsVida());
+
+		Collection<CartaMonstruo> zonaMonstruosActivo = oponente.getCampo().monstruosInvocados();
+
+		assertEquals(1, zonaMonstruosActivo.size());
+
 	}
 	
 	@Test

@@ -10,4 +10,9 @@ public class EfectoCilindroMagico extends Efecto {
 		CartaMonstruo atacante = campoOponente.cartaAtacante();
 		campoOponente.atacarJugador(atacante.getPtsAtaque());
 	}
+
+	@Override
+	public void aplicarEfectoSobreCampoActivo(Campo campoActivo){
+		campoActivo.activarFiltroDeAtaque();
+	}
 }
