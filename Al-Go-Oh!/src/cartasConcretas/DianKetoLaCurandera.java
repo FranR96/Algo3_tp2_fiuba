@@ -15,6 +15,6 @@ public class DianKetoLaCurandera extends CartaMagica{
 	public void aplicarEfecto(Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente){
 
 	    this.efecto.aplicarEfectoSobreJugadorActivo(activo);
-        this.campo.eliminarCartaMagica(this);
+        this.campo.eliminarCarta(this);
 	}
 }

@@ -39,7 +39,7 @@ public class ZonaMonstruos {
             ArrayList<CartaMonstruo> monstruosASacrificar = carta.elegirSacrificios(monstruosEnCampo);
             if(!monstruosASacrificar.isEmpty()) {
 				for (CartaMonstruo aMonstruosASacrificar : monstruosASacrificar)
-					this.campo.eliminarMonstruo(aMonstruosASacrificar);
+					this.campo.eliminarCarta(aMonstruosASacrificar);
             }
         	return true;
         }

@@ -73,14 +73,14 @@ public class Campo {
          return zonaMonstruos.hayLugar();
     }
 
-	public void eliminarMonstruo(CartaMonstruo carta) {
+	public void eliminarCarta(CartaMonstruo carta) {
 		this.zonaMonstruos.eliminarCarta(carta);
 		this.cementerio.add(carta);
 	}
 
-	public void eliminarCartaMagica(CartaMagica cartaMagica) {
-        this.zonaEspeciales.eliminarCarta(cartaMagica);
-		this.cementerio.add(cartaMagica);
+	public void eliminarCarta(CartaMagica carta) {
+        this.zonaEspeciales.eliminarCarta(carta);
+		this.cementerio.add(carta);
 	}
 
 	public void atacarJugador(int danio) {

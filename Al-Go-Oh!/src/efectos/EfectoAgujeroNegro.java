@@ -9,7 +9,7 @@ public class EfectoAgujeroNegro extends Efecto {
     public void aplicarEfectoSobreCampoActivo(Campo campo) {
         for(int i=0; i<=campo.monstruosInvocados().size(); i++) {
             CartaMonstruo carta = campo.monstruosInvocados().get(0);
-            campo.eliminarMonstruo(carta);
+            campo.eliminarCarta(carta);
         }
     }
 
@@ -17,7 +17,7 @@ public class EfectoAgujeroNegro extends Efecto {
     public void aplicarEfectoSobreCampoOponente(Campo campo){
         for(int i=0; i<=campo.monstruosInvocados().size(); i++) {
             CartaMonstruo carta = campo.monstruosInvocados().get(0);
-            campo.eliminarMonstruo(carta);
+            campo.eliminarCarta(carta);
         }
     }
 }
