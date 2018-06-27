@@ -6,17 +6,23 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.File;
 
 public class BotonComenzarJuegoHandler implements EventHandler<ActionEvent> {
 
     private Stage stage;
     private Scene proximaEscena;
+    private MediaPlayer player;
 
-    public BotonComenzarJuegoHandler(Stage stage, Scene proximaEscena) {
+    public BotonComenzarJuegoHandler(Stage stage, Scene proximaEscena, MediaPlayer player) {
         this.stage = stage;
         this.proximaEscena = proximaEscena;
+        this.player = player;
     }
     @Override
     public void handle(ActionEvent event) {
@@ -26,5 +32,13 @@ public class BotonComenzarJuegoHandler implements EventHandler<ActionEvent> {
         timeline.getKeyFrames().add(key);
         timeline.setOnFinished((ae) -> stage.setScene(proximaEscena));
         timeline.play();
+
+        File f = new File( "Al-Go-Oh!/src/Vista/Sonidos/30493c7c.mp3");
+        Media media = new Media(f.toURI().toString());
+        player.stop();
+        player = new MediaPlayer(media);
+        player.setAutoPlay(true);
+        player.setVolume(0.2);
+        player.setCycleCount(MediaPlayer.INDEFINITE);
     }
 }

@@ -44,7 +44,7 @@ public class Aplicacion extends Application
         Scene escenaNombreJugadores = new Scene(ventanaNombreJugadores, 842, 690);
         escenaNombreJugadores.getStylesheets().add("Vista/Estilos/estilos.css");
 
-        VentanaInicio ventanaInicio = new VentanaInicio(stage, escenaNombreJugadores);
+        VentanaInicio ventanaInicio = new VentanaInicio(stage, escenaNombreJugadores, player);
         Scene escenaVentanaInicio = new Scene(ventanaInicio, 842, 690);
 
         escenaVentanaInicio.getStylesheets().add("Vista/Estilos/estilos.css");

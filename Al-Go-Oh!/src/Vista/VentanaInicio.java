@@ -9,17 +9,20 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 
 public class VentanaInicio extends HBox
 {
     private Stage stage;
+    private MediaPlayer player;
 
-    public VentanaInicio(Stage stage, Scene proximaEscena) {
+    public VentanaInicio(Stage stage, Scene proximaEscena, MediaPlayer player) {
 
         super();
 
+        this.player = player;
         this.stage = stage;
 
         Canvas canvas = new Canvas(500, 350);
@@ -36,7 +39,7 @@ public class VentanaInicio extends HBox
         Button comenzarJuego = new Button();
         comenzarJuego.setText("Comenzar Partida");
         comenzarJuego.getStyleClass().add("botones-inicio");
-        comenzarJuego.setOnAction(new BotonComenzarJuegoHandler(stage, proximaEscena));
+        comenzarJuego.setOnAction(new BotonComenzarJuegoHandler(stage, proximaEscena, player));
 
         Button salir = new Button();
         salir.setText("Salir");
