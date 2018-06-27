@@ -88,11 +88,13 @@ public class Campo {
 	public void voltearCartaTrampa() {
         if(zonaEspeciales.hayCartaTrampa()) {
         	CartaTrampa carta = zonaEspeciales.eliminarCarta();
-        	carta.invocar(new BocaArriba(),this,tablero.getCampoOponente(),this.jugador,tablero.getOponente());
+        	//carta.invocar(new BocaArriba(),this,tablero.getCampoOponente(),this.jugador,tablero.getOponente());
+        	carta.voltear();
         	this.cementerio.add(carta);
         }
 	}
-
+	
+	
 	public CartaMonstruo cartaAtacante() {
 		int cantidadAtaques= monstruosQueAtacaron.size();
 		return monstruosQueAtacaron.get(cantidadAtaques-1);

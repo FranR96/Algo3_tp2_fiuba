@@ -11,18 +11,21 @@ public abstract class Carta {
 	protected Efecto efecto;
 	protected Campo campoEnemigo;
 	protected Jugador oponente;
-
+	protected Jugador activo;
+	
 	public void aplicarEfecto(Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente){
 		
 	}
 
 	public void voltear() {
-		BocaArriba lado = new BocaArriba();
-		lado.setCarta(this);
+		if(estaBocaAbajo()) {
+			BocaArriba lado = new BocaArriba();
+			lado.setCarta(this);
+			lado.invocar(campo, campoEnemigo, activo, oponente);
+		}
 	}
-	
 	public boolean estaBocaAbajo(){
-		return lado instanceof BocaAbajo;
+		return lado.estaBocaAbajo();
 	}
 
 	public Campo getCampo() {

@@ -17,4 +17,8 @@ public class BocaAbajo implements LadoCarta {
 
 	}
 
+	@Override
+	public boolean estaBocaAbajo() {
+		return true;
+	}
 }

@@ -15,5 +15,9 @@ public class BocaArriba implements LadoCarta {
 		this.carta.aplicarEfecto(campo, campoEnemigo, activo, oponente);
 	}
 
-
+	@Override
+	public boolean estaBocaAbajo() {
+		return false;
+	}
+	
 }

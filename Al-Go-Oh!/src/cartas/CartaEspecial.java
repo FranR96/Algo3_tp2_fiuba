@@ -9,6 +9,7 @@ public abstract class CartaEspecial extends Carta{
 		this.campo =campo;
 		this.campoEnemigo = campoEnemigo;
 		this.oponente = oponente;
+		this.activo = activo;
 		this.lado.setCarta(this);
 		this.lado.invocar(campo, campoEnemigo, activo, oponente);
 	}
