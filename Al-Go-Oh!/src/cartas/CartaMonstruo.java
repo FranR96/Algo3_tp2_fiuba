@@ -21,10 +21,10 @@ public abstract class CartaMonstruo extends Carta{
 	}
 
     public int requiereSacrificio(){
-        if(this.estrellas >= 5 && this.estrellas<10) { //Requiere sacrificio
+        if(this.estrellas >= 5 && this.estrellas<10) { 
             return ((this.estrellas-1)/3);
         }
-        if(this.estrellas >= 10) {
+        else if(this.estrellas >= 10) {
         	return 2;
         }
         return 0;
@@ -42,13 +42,13 @@ public abstract class CartaMonstruo extends Carta{
     }
 	
 	public void atacar(CartaMonstruo monstruo) {
-		//this.voltear();
+		this.voltear();
 		campo.atacoEnTurno(this);
 		this.posicion.atacar(this,monstruo);
 	}
 	
 	public int recibirDanio(int danio) {
-		//this.voltear();
+		this.voltear();
 		return (this.posicion.recibirDanio(danio));
 	}
 

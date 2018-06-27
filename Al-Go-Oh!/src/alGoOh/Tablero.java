@@ -49,7 +49,8 @@ public class Tablero {
 	}
 	
 	public void terminarTurno() {
-		
 		this.juego.terminarTurno();
+	//	this.campo1.terminarTurno();
+	//	this.campo2.terminarTurno();
 	}
 }

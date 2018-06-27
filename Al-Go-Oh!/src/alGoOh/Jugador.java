@@ -31,11 +31,6 @@ public class Jugador {
 		return puntosVida;
 	}
 
-	public void setCampo(Campo campo) {
-		this.campo =campo ;
-		
-	}
-
 	public void tomarCartaDelMazo() {
 		Carta carta = mazo.tomarCartaDelMazo();
 		mano.add(carta);
@@ -65,6 +60,10 @@ public class Jugador {
 		return campo;
 	}
 	
+	public void setCampo(Campo campo) {
+		this.campo =campo ;	
+	}
+	
 	public void setNombre(String nombre) {
 		this.nombre=nombre;
 	}
@@ -77,7 +76,7 @@ public class Jugador {
 		return (exodia.exodiaEstaCompleto());
 	}
 	
-	public boolean yaColocoElMonstruo(CartaMonstruo monstruo) {
+	public boolean colocoEsteMonstruoEnEsteTurno(CartaMonstruo monstruo) {
 		
 		return (this.monstruoColocadoEnTurno == monstruo);
 	}

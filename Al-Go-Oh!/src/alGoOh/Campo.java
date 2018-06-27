@@ -143,7 +143,7 @@ public class Campo {
 	
 	public void cambiarPosicionDeMonstruo(CartaMonstruo monstruo) {
 		
-		if (this.jugador.yaColocoElMonstruo(monstruo)) {        //si el monstruo fue recien colocado entonces
+		if (this.jugador.colocoEsteMonstruoEnEsteTurno(monstruo)) {        //si el monstruo fue recien colocado entonces
 			throw new NoSePuedeCambiarPosicionMonstruoException();    //no se le puede cambiar la posicion
 		} else {
 			monstruo.cambiarPosicion();

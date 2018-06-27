@@ -38,7 +38,7 @@ public class Juego {
 	}
 	
 	public void terminarTurno() {
-		jugadorActivo.getCampo().reiniciarAtaques();
+		//jugadorActivo.getCampo().reiniciarAtaques();
 		jugadorActivo.reiniciarMonstruoColocadoPorTurno();
 		this.cambiarJugadores();
 	}

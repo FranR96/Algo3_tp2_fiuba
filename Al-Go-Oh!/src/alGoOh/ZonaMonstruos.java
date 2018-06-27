@@ -42,8 +42,7 @@ public class ZonaMonstruos {
         return false;
 	}
 
-    
-    
+	
     public void eliminarCarta(CartaMonstruo cartaMonstruo) {
         if (!this.zonaMonstruos.remove(cartaMonstruo)) {
             throw new CartaMonstruoNoExistenteException();
