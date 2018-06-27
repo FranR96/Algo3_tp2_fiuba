@@ -8,7 +8,12 @@ import java.util.ArrayList;
 public class ZonaEspecial{
     private ArrayList<CartaMagica> zonaMagica = new ArrayList<>();
     private ArrayList<CartaTrampa> zonaTrampa = new ArrayList<>();
+	private Campo campo;
 
+    public ZonaEspecial(Campo campo) {
+    	this.campo = campo;
+ 
+    }
 
     public void colocarCarta(CartaMagica cartaMagica) {
         if(this.hayLugar()) {

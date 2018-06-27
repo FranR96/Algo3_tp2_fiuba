@@ -6,8 +6,8 @@ import java.util.Collection;
 import cartas.*;
 
 public class Campo {
-	private ZonaMonstruos zonaMonstruos = new ZonaMonstruos();
-	private ZonaEspecial zonaEspeciales = new ZonaEspecial();
+	private ZonaMonstruos zonaMonstruos = new ZonaMonstruos(this);
+	private ZonaEspecial zonaEspeciales = new ZonaEspecial(this);
 	private CartaCampo cartaCampo = null;
 	private Jugador jugador;
 	private Tablero tablero;
@@ -15,24 +15,18 @@ public class Campo {
 	private ArrayList<CartaMonstruo> monstruosQueAtacaron = new ArrayList<>();
 
 
-	// Hay que borrar esto y reemplazar con los metodos de ZonaMonstruo
+
      public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
     	if (this.jugador.coloqueMonstruo()) {
     		throw new YaSeHaInvocadoMonstruoEnTurnoException();
-    	} else {
-    		int sacrificiosNecesarios = carta.requiereSacrificio();
-    		if((this.zonaMonstruos.cantidadMonstruosEnZona() - sacrificiosNecesarios) < 5) {
-    			if(this.realizarSacrificioPara(sacrificiosNecesarios,carta)) {
-    				this.zonaMonstruos.colocarCarta(carta);
-    				this.jugador.setMonstruoColocadoEnTurno(carta);
-    				carta.invocar(posicion, lado,this, tablero.getOponente().getCampo(), this.jugador, tablero.getOponente());
-    			}
-    			else
-    				throw new NoSePudoInvocarElMonstruoException();
+    	} 
+    	else {
+    		if(this.zonaMonstruos.colocarCarta(carta)) {
+    			this.jugador.setMonstruoColocadoEnTurno(carta);
+    			carta.invocar(posicion, lado,this, tablero.getOponente().getCampo(), this.jugador, tablero.getOponente());
     		}
     		else {
-    			throw new CapacidadMaximaEnZonaMonstruosException();
-    		}
+    			throw new NoSePudoInvocarElMonstruoException();    		}
     	}
     }
 	
@@ -90,20 +84,6 @@ public class Campo {
 		return this.cementerio;
 	}
 
-	public boolean realizarSacrificioPara(int cantSacrificios, CartaMonstruo carta) {
-        if(this.zonaMonstruos.cantidadMonstruosEnZona() >= cantSacrificios) {
-            ArrayList<CartaMonstruo> monstruosEnCampo = this.monstruosInvocados();
-            ArrayList<CartaMonstruo> monstruosASacrificar = carta.elegirSacrificios(monstruosEnCampo);
-            if(!monstruosASacrificar.isEmpty()) {
-				for (CartaMonstruo aMonstruosASacrificar : monstruosASacrificar) {
-					this.eliminarMonstruo(aMonstruosASacrificar);
-				}
-            }
-        	return true;
-        }
-        return false;
-	}
-
 	public void voltearCartaTrampa() {
         if(zonaEspeciales.hayCartaTrampa()) {
         	CartaTrampa carta = zonaEspeciales.eliminarCarta();
@@ -111,16 +91,6 @@ public class Campo {
         	this.cementerio.add(carta);
         }
 	}
-
-	//No se usa nunca
-    public void voltearCarta(CartaMagica cartaMagica) {
-        zonaEspeciales.voltearCartaMagica(cartaMagica);
-    }
-
-	//No se usa nunca
-    public void voltearCarta(CartaMonstruo cartaMonstruo) {
-        zonaMonstruos.voltearMonstruo(cartaMonstruo);
-    }
 
 	public CartaMonstruo cartaAtacante() {
 		int cantidadAtaques= monstruosQueAtacaron.size();

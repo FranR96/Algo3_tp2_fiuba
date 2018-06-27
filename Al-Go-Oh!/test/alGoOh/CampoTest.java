@@ -129,7 +129,7 @@ class CampoTest {
 			tablero.terminarTurno();
 			tablero.terminarTurno();
 		}
-		assertThrows(CapacidadMaximaEnZonaMonstruosException.class,
+		assertThrows(NoSePudoInvocarElMonstruoException.class,
 				()->{
 					CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 					activo.getCampo().colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
@@ -164,9 +164,9 @@ class CampoTest {
 		Jugador activo = tablero.getJugadorActivo();
 		
 		
-		activo.getCampo().getZonaMonstruos().colocarCarta(new DragonBlancoDeOjosAzules());
-		activo.getCampo().getZonaMonstruos().colocarCarta(new DragonBlancoDeOjosAzules());
-		activo.getCampo().getZonaMonstruos().colocarCarta(new DragonBlancoDeOjosAzules());
+		activo.getCampo().getZonaMonstruos().agregarCarta(new DragonBlancoDeOjosAzules());
+		activo.getCampo().getZonaMonstruos().agregarCarta(new DragonBlancoDeOjosAzules());
+		activo.getCampo().getZonaMonstruos().agregarCarta(new DragonBlancoDeOjosAzules());
 
 		CartaMonstruo dragonDefinitivo = new DragonDefinitivoDeOjosAzules();
 		activo.getCampo().colocarCarta(dragonDefinitivo, new PosicionAtaque(), new BocaArriba());
