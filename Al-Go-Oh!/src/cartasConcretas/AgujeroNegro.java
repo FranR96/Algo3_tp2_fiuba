@@ -16,7 +16,7 @@ public class AgujeroNegro extends CartaMagica {
 
 	    this.efecto.aplicarEfectoSobreCampoActivo(campo);
 	    this.efecto.aplicarEfectoSobreCampoOponente(campoEnemigo);
-        this.campo.eliminarCartaMagica(this);
+        this.campo.eliminarCarta(this);
 	}
 
 }

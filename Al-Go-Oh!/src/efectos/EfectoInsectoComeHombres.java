@@ -10,7 +10,7 @@ public class EfectoInsectoComeHombres extends Efecto {
 		
 		if(campo.monstruosInvocados().size() != 0) {
 			CartaMonstruo monstruoADestruir = campo.cartaAtacante(); 
-			campo.eliminarMonstruo(monstruoADestruir);
+			campo.eliminarCarta(monstruoADestruir);
 		}
     }
 	

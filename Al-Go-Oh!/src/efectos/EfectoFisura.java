@@ -15,7 +15,7 @@ public class EfectoFisura extends Efecto {
             for(CartaMonstruo monstruo : zonaMonstruos)
                 if(monstruoConMenorAtaque.getPtsAtaque() > monstruo.getPtsAtaque())
                     monstruoConMenorAtaque = monstruo;
-            campo.eliminarMonstruo(monstruoConMenorAtaque);
+            campo.eliminarCarta(monstruoConMenorAtaque);
         }
     }
 

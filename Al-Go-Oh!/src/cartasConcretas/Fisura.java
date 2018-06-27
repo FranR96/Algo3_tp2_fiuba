@@ -14,5 +14,6 @@ public class Fisura extends CartaMagica{
 	public void aplicarEfecto(Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente) {
 		
 		this.efecto.aplicarEfectoSobreCampoOponente(campoEnemigo);
+		this.campo.eliminarCarta(this);
 	}
 }

@@ -7,7 +7,7 @@ public class PosicionAtaque implements PosicionCarta {
 	public void atacar(CartaMonstruo monstruo1, CartaMonstruo monstruo2) {
 		int diferencia = monstruo2.recibirDanio(this.carta.getPtsAtaque());
 		if(diferencia >=0) {
-			this.carta.getCampo().eliminarMonstruo(this.carta);
+			this.carta.getCampo().eliminarCarta(this.carta);
 			this.carta.getCampo().atacarJugador(diferencia);
 		}
 	}
@@ -17,12 +17,12 @@ public class PosicionAtaque implements PosicionCarta {
 		if(!this.carta.getCampo().verificarFiltro()) {
 			if (this.carta.getPtsAtaque() < danio) {
 				int diferencia = danio - (this.carta.getPtsAtaque());
-				this.carta.getCampo().eliminarMonstruo(this.carta);
+				this.carta.getCampo().eliminarCarta(this.carta);
 				this.carta.getCampo().atacarJugador(diferencia);
 			} else if (this.carta.getPtsAtaque() > danio) {
 				return this.carta.getPtsAtaque() - danio;
 			} else {
-				this.carta.getCampo().eliminarMonstruo(this.carta);
+				this.carta.getCampo().eliminarCarta(this.carta);
 				return 0;
 			}
 		}
