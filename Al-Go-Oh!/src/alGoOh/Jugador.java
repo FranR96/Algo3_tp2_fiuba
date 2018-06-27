@@ -1,9 +1,12 @@
 package alGoOh;
 
-import java.util.ArrayList;
-
-import cartas.*;
+import cartas.Carta;
+import cartas.CartaMonstruo;
+import cartas.Mazo;
 import cartasConcretas.ExodiaCompleto;
+
+import java.util.ArrayList;
+import java.util.Observer;
 
 
 public class Jugador {
@@ -15,16 +18,22 @@ public class Jugador {
 	private ArrayList<Carta> mano;
 	private ExodiaCompleto exodia;
 	private CartaMonstruo monstruoColocadoEnTurno = null;
-	
-	public Jugador() {
+	private ArrayList<Observer> observadoresVida;
+    private ArrayList<Observer> observadoresMano;
+
+
+    public Jugador() {
 		puntosVida = 8000;
 		mazo = new Mazo();
 		mano = new ArrayList<>();
 		exodia = new ExodiaCompleto();
+		observadoresMano = new ArrayList<>();
+		observadoresVida = new ArrayList<>();
 	}
 
 	public void recibirDaniosVitales(int danio) {
 		puntosVida -=danio;
+		notifyObserversVida();
 	}
 
 	public int getPtsVida() {
@@ -34,6 +43,7 @@ public class Jugador {
 	public void tomarCartaDelMazo() {
 		Carta carta = mazo.tomarCartaDelMazo();
 		mano.add(carta);
+		notifyObserversMano();
 	}
 	
 	public ArrayList<Carta> cartasEnLaMano() {
@@ -44,8 +54,27 @@ public class Jugador {
 		for(int i = 0 ; i<5; i++) {
 			this.tomarCartaDelMazo();
 		}
-		
 	}
+
+	public void agregarObserverVida(Observer observador) {
+        observadoresVida.add(observador);
+    }
+
+	private void notifyObserversVida() {
+        for (Observer observador: observadoresVida) {
+            observador.update(null, this);
+        }
+    }
+
+    public void agregarObserverMano(Observer observador) {
+        observadoresMano.add(observador);
+    }
+
+    private void notifyObserversMano() {
+        for (Observer observador: observadoresMano) {
+            observador.update(null, this);
+        }
+    }
 
 	public boolean estaVivo() {
 		return (puntosVida > 0);
@@ -89,7 +118,6 @@ public class Jugador {
 	}
 	
 	public void reiniciarMonstruoColocadoPorTurno() {
-		
 		this.monstruoColocadoEnTurno = null;
 	}
 
@@ -100,5 +128,6 @@ public class Jugador {
 
 	public void eliminarDeLaMano(Carta carta){
 		this.mano.remove(carta);
+		notifyObserversMano();
 	}
 }

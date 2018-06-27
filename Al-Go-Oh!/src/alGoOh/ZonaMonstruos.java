@@ -4,14 +4,16 @@ import cartas.CartaMonstruo;
 import cartas.CartaMonstruoNoExistenteException;
 
 import java.util.ArrayList;
+import java.util.Observer;
 
 public class ZonaMonstruos {
     private ArrayList<CartaMonstruo> zonaMonstruos = new ArrayList<>();
 	private Campo campo;
-    
+    private ArrayList<Observer> observers;
     
     public ZonaMonstruos(Campo campo) {
     	this.campo = campo;
+    	this.observers = new ArrayList<>();
     }
 
     public boolean colocarCarta(CartaMonstruo cartaMonstruo) {
@@ -19,6 +21,7 @@ public class ZonaMonstruos {
     	if((this.cantidadMonstruosEnZona() - sacrificiosNecesarios) < 5) {
     		if(this.realizarSacrificioPara(sacrificiosNecesarios,cartaMonstruo))
     			this.agregarCarta(cartaMonstruo);
+    		    notifyObservers();
     		return true;
         }
 		else
@@ -27,6 +30,7 @@ public class ZonaMonstruos {
 
 	public void agregarCarta(CartaMonstruo cartaMonstruo) {
 		this.zonaMonstruos.add(cartaMonstruo);
+		notifyObservers();
 	}
 
 	public boolean realizarSacrificioPara(int cantSacrificios, CartaMonstruo carta) {
@@ -46,6 +50,17 @@ public class ZonaMonstruos {
     public void eliminarCarta(CartaMonstruo cartaMonstruo) {
         if (!this.zonaMonstruos.remove(cartaMonstruo)) {
             throw new CartaMonstruoNoExistenteException();
+        }
+        notifyObservers();
+    }
+
+    public void agregarObserver(Observer observador) {
+        observers.add(observador);
+    }
+
+    private void notifyObservers() {
+        for (Observer observador: observers) {
+            observador.update(null, this);
         }
     }
 

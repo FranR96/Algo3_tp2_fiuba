@@ -4,16 +4,16 @@ import Vista.Eventos.ClickEnCartaHandler;
 import alGoOh.Jugador;
 import alGoOh.Tablero;
 import cartas.Carta;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.Observable;
+import java.util.Observer;
 
-public class VistaMano {
+
+public class VistaMano implements Observer {
     private VBox vistaDeCartas;
     private Tablero tablero;
     private Stage stage;
@@ -39,4 +39,8 @@ public class VistaMano {
         }
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        this.update();
+    }
 }

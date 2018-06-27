@@ -1,9 +1,9 @@
 package alGoOh;
 
+import cartas.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
-
-import cartas.*;
 
 public class Campo {
 	private ZonaMonstruos zonaMonstruos = new ZonaMonstruos(this);
@@ -15,9 +15,10 @@ public class Campo {
 	private ArrayList<CartaMonstruo> monstruosQueAtacaron = new ArrayList<>();
 	private CartaMonstruo ultimoMonstruoAtacado;
 	private FiltroDeAtaque filtroDeAtaque = new FiltroDeAtaque();
+	private ArrayList<Object> observers = new ArrayList<>();
 
 
-     public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
+	public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
     	if (this.jugador.coloqueMonstruo()) {
     		throw new YaSeHaInvocadoMonstruoEnTurnoException();
     	} 
@@ -47,6 +48,7 @@ public class Campo {
     public void colocarCarta(CartaCampo carta, LadoCarta lado){
     	this.cartaCampo = carta;
 		this.jugador.eliminarDeLaMano(carta);
+
 	}
 
     public void setTablero(Tablero tablero) {
@@ -181,6 +183,17 @@ public class Campo {
 
 	public void desactivarFiltroDeAtaque(){
      	this.filtroDeAtaque.desactivarFiltro();
+	}
+
+
+	public void agregarObserver(Object observador) {
+		observers.add(observador);
+	}
+
+	private void notifyObservers() {
+		for (Object observador: observers) {
+			observador.notify();
+		}
 	}
 
 

@@ -3,12 +3,7 @@ package Vista;
 import alGoOh.Jugador;
 import alGoOh.Tablero;
 import javafx.geometry.Pos;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -34,6 +29,8 @@ public class TableroDeJuego extends HBox {
         panelScrolleableDeCartas.setMinWidth(120);
         panelScrolleableDeCartas.setContent(cartasDeMano);
         VistaMano vistaMano = new VistaMano(cartasDeMano, tablero, stage);
+        jugador1.agregarObserverMano(vistaMano);
+        jugador1.agregarObserverMano(vistaMano);
         vistaMano.update();
 
         HBox boxTablero = new HBox(panelScrolleableDeCartas, cuadriculaTablero);

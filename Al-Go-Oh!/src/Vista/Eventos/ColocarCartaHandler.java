@@ -73,9 +73,9 @@ public class ColocarCartaHandler implements EventHandler<ActionEvent> {
                 }
                 else {
                     jugadorActivo.getCampo().colocarCarta((CartaMonstruo) carta, posiciones.get(finalElegirPosicion.getValue()), lados.get(elegirLado.getValue()));
-                    System.out.println("Coloque monstruo");
 
                 }
+                ventana.close();
             });
 
             VBox contenedor = new VBox(5);
@@ -92,12 +92,10 @@ public class ColocarCartaHandler implements EventHandler<ActionEvent> {
     private void colocarEnZonaEspecial(LadoCarta ladoCarta) {
         if (CartaMagica.class.isInstance(carta)) {
             jugadorActivo.getCampo().colocarCarta((CartaMagica) carta, ladoCarta);
-            System.out.println("Coloque magica");
         }
 
         else {
             jugadorActivo.getCampo().colocarCarta((CartaCampo) carta, ladoCarta);
-            System.out.println("Coloque campo");
 
         }
     }
