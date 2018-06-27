@@ -3,7 +3,6 @@ package Vista.Eventos;
 import Vista.VistaCarta;
 import alGoOh.Jugador;
 import alGoOh.Tablero;
-import cartas.Carta;
 import cartas.CartaEspecial;
 import cartas.CartaMonstruo;
 import javafx.event.EventHandler;
@@ -31,9 +30,10 @@ public class ClickEnCartaHandler implements EventHandler<MouseEvent> {
         colocarCarta.setOnAction(new ColocarCartaHandler(this.vistaCarta, this.jugadorActivo, this.stage));
         menuDeCarta.getItems().add(colocarCarta);
 
-        if (CartaMonstruo.class.isInstance(vistaCarta.getCarta()))
+        if (CartaMonstruo.class.isInstance(vistaCarta.getCarta())) {
             if (jugadorActivo.coloqueMonstruo() || !jugadorActivo.getCampo().puedoColocarMonstruo()) {
             colocarCarta.setDisable(true);
+            }
         }
         else if (CartaEspecial.class.isInstance(vistaCarta.getCarta()) && !jugadorActivo.getCampo().puedoColocarCartaEspecial()) {
             colocarCarta.setDisable(true);

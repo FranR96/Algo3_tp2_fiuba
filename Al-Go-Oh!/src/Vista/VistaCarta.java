@@ -14,4 +14,5 @@ public class VistaCarta extends ImageView {
     public Carta getCarta() {
         return carta;
     }
+
 }
