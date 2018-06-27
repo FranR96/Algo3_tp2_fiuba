@@ -10,15 +10,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 
 public class VistaMano {
     private VBox vistaDeCartas;
     private Tablero tablero;
+    private Stage stage;
 
-    public VistaMano(VBox vistaDeCartas, Tablero tablero) {
+    public VistaMano(VBox vistaDeCartas, Tablero tablero, Stage stage) {
         this.vistaDeCartas = vistaDeCartas;
         this.tablero = tablero;
+        this.stage = stage;
     }
 
     public void update() {
@@ -31,7 +34,7 @@ public class VistaMano {
             vistaDeCarta.setImage(imagenCarta);
             vistaDeCarta.setPreserveRatio(true);
             vistaDeCarta.setFitWidth(100);
-            vistaDeCarta.addEventHandler(MouseEvent.MOUSE_CLICKED, new ClickEnCartaHandler(vistaDeCarta, tablero));
+            vistaDeCarta.addEventHandler(MouseEvent.MOUSE_CLICKED, new ClickEnCartaHandler(vistaDeCarta, tablero, stage));
             vistaDeCartas.getChildren().add(vistaDeCarta);
         }
     }

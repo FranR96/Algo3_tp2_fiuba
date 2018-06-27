@@ -33,7 +33,7 @@ public class TableroDeJuego extends HBox {
         ScrollPane panelScrolleableDeCartas = new ScrollPane();
         panelScrolleableDeCartas.setMinWidth(120);
         panelScrolleableDeCartas.setContent(cartasDeMano);
-        VistaMano vistaMano = new VistaMano(cartasDeMano, tablero);
+        VistaMano vistaMano = new VistaMano(cartasDeMano, tablero, stage);
         vistaMano.update();
 
         HBox boxTablero = new HBox(panelScrolleableDeCartas, cuadriculaTablero);
