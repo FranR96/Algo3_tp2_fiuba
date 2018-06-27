@@ -68,4 +68,12 @@ public class ExodiaCompleto extends CartaMonstruo{
 		}
 		this.exodiaEstaCompleto();
 	}
+	
+	public int resetPtsAtaque() {
+		return 100000;
+	}
+	
+	public int resetPtsDefensa() {
+		return 100000;
+	}
 }

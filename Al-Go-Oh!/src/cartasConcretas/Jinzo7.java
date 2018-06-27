@@ -16,4 +16,13 @@ public class Jinzo7 extends CartaMonstruo{
 		
 		this.efecto.aplicarEfectoSobreJugadorOponente(oponente);
 	}
+
+	public int resetPtsAtaque() {
+		return 500;
+	}
+	
+	public int resetPtsDefensa() {
+		return 400;
+	}
+	
 }

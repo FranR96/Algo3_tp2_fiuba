@@ -34,7 +34,6 @@ public class Jugador {
 	public void tomarCartaDelMazo() {
 		Carta carta = mazo.tomarCartaDelMazo();
 		mano.add(carta);
-		exodia.cartasActualesEnMano(mano);
 	}
 	
 	public ArrayList<Carta> cartasEnLaMano() {
@@ -49,11 +48,11 @@ public class Jugador {
 	}
 
 	public boolean estaVivo() {
-		return puntosVida > 0;
+		return (puntosVida > 0);
 	}
 
 	public boolean tieneCartasEnMazo() {
-		return mazo.estaVacio();
+		return (!mazo.estaVacio());
 	}
 
 	public Campo getCampo() {
@@ -92,5 +91,10 @@ public class Jugador {
 	public void reiniciarMonstruoColocadoPorTurno() {
 		
 		this.monstruoColocadoEnTurno = null;
+	}
+
+	public void terminarTurno() {
+		reiniciarMonstruoColocadoPorTurno();
+		exodia.cartasActualesEnMano(mano);
 	}
 }

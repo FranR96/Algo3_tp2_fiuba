@@ -13,6 +13,7 @@ public class Campo {
 	private Tablero tablero;
 	private ArrayList<Carta> cementerio= new ArrayList<>();
 	private ArrayList<CartaMonstruo> monstruosQueAtacaron = new ArrayList<>();
+	private CartaMonstruo ultimoMonstruoAtacado;
 
 
 
@@ -148,6 +149,21 @@ public class Campo {
 		} else {
 			monstruo.cambiarPosicion();
 		}
+	}
+	
+	public void terminarTurno() {
+		this.zonaMonstruos.terminarTurno();
+		this.reiniciarAtaques();
+		this.jugador.terminarTurno();
+	}
+
+	public CartaMonstruo obtenerUltimoMonstruoAtacado() {
+		return this.ultimoMonstruoAtacado;
+	}
+
+	public void ultimoMonstruoAtacado(CartaMonstruo cartaMonstruo) {
+		this.ultimoMonstruoAtacado=cartaMonstruo;
+		
 	}
 }
 

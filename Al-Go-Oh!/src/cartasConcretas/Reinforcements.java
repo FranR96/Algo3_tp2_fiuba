@@ -14,8 +14,8 @@ public class Reinforcements extends CartaTrampa {
 	
 	@Override
 	public void aplicarEfecto(Campo campo, Campo campoEnemigo, Jugador activo, Jugador oponente) {
+		this.efecto.aplicarEfectoSobreCampoActivo(campo);
 		
-		this.efecto.aplicarEfectoSobreCampoActivo(campoEnemigo);
 	}
 
 }

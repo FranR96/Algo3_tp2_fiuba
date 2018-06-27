@@ -171,7 +171,10 @@ public class EfectoTest {
 		
 		int ptsDeVidaEsperados = 8000 - 100;
 		
-		assertEquals(ptsDeVidaEsperados, activo.getPtsVida());
+		assertEquals(ptsDeVidaEsperados, oponente.getPtsVida());
+		tablero.terminarTurno();
+		
+		assertEquals(monstruo1.getPtsAtaque(),1600);
 		
 	}
 	
@@ -258,8 +261,7 @@ public class EfectoTest {
 		activo.cartasEnLaMano().add(new PiernaDerechaExodia());
 		activo.cartasEnLaMano().add(new PiernaIzquierdaExodia());
 				
-		activo.tomarCartaDelMazo();
-		
+		tablero.terminarTurno();
 		assertEquals(activo,tablero.hayGanador());
 	}
 }

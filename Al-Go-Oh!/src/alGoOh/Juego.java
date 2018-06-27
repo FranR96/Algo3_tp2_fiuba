@@ -37,10 +37,13 @@ public class Juego {
 		}
 	}
 	
-	public void terminarTurno() {
-		//jugadorActivo.getCampo().reiniciarAtaques();
-		jugadorActivo.reiniciarMonstruoColocadoPorTurno();
+	public Jugador terminarTurno() {
+		Jugador ganador = this.hayGanador();
+		if(ganador != null) {
+			return ganador;
+		}
 		this.cambiarJugadores();
+		return null;
 	}
 
 	private void cambiarJugadores() {

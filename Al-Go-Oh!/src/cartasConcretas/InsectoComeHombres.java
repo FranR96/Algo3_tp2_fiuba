@@ -29,4 +29,12 @@ public class InsectoComeHombres extends CartaMonstruo {
 		this.voltear();
 		
 	}
+	
+	public int resetPtsAtaque() {
+		return 450;
+	}
+	
+	public int resetPtsDefensa() {
+		return 600;
+	}
 }

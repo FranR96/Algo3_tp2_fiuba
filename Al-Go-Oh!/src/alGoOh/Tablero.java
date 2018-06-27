@@ -48,9 +48,10 @@ public class Tablero {
 		return juego.hayGanador();
 	}
 	
-	public void terminarTurno() {
-		this.juego.terminarTurno();
-	//	this.campo1.terminarTurno();
-	//	this.campo2.terminarTurno();
+	public Jugador terminarTurno() {
+		this.campo1.terminarTurno();
+		this.campo2.terminarTurno();
+		Jugador ganador= this.juego.terminarTurno();
+		return ganador;
 	}
 }

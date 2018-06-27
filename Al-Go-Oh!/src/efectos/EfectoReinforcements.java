@@ -8,7 +8,7 @@ public class EfectoReinforcements extends Efecto {
 	@Override
 	public void aplicarEfectoSobreCampoActivo(Campo campo){
 		
-//		CartaMonstruo monstruo = campo.ultimoMonstruoAtacado();
-//		monstruo.setPtsAtaque(monstruo.getPtsAtaque() + 500);
+		CartaMonstruo monstruo = campo.obtenerUltimoMonstruoAtacado();
+		monstruo.setPtsAtaque(monstruo.getPtsAtaque() + 500);
     }
 }

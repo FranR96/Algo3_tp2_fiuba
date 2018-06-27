@@ -9,4 +9,12 @@ public class BrazoDerechoExodia extends CartaMonstruo {
 		
 		super(200,300,1, new EfectoBrazoDerechoExodia());
 	}
+	
+	public int resetPtsAtaque() {
+		return 200;
+	}
+	
+	public int resetPtsDefensa() {
+		return 300;
+	}
 }

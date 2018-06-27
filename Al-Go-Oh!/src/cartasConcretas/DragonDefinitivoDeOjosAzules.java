@@ -35,4 +35,11 @@ public class DragonDefinitivoDeOjosAzules extends CartaMonstruo {
 		return sacrificios;
 	}
 
+	public int resetPtsAtaque() {
+		return 4500;
+	}
+	
+	public int resetPtsDefensa() {
+		return 3800;
+	}
 }

@@ -42,13 +42,14 @@ public abstract class CartaMonstruo extends Carta{
     }
 	
 	public void atacar(CartaMonstruo monstruo) {
-		this.voltear();
 		campo.atacoEnTurno(this);
+		this.voltear();
 		this.posicion.atacar(this,monstruo);
 	}
 	
 	public int recibirDanio(int danio) {
 		this.voltear();
+		this.campo.ultimoMonstruoAtacado(this);
 		return (this.posicion.recibirDanio(danio));
 	}
 
@@ -88,5 +89,12 @@ public abstract class CartaMonstruo extends Carta{
 		
 		this.posicion = this.posicion.cambiarPosicion();
 	}
+	
+	public void terminarTurno() {
+		ptsAtaque = this.resetPtsAtaque();
+		ptsDefensa = this.resetPtsDefensa();
+	}
 
+	public abstract int resetPtsAtaque();
+	public abstract int resetPtsDefensa();
 }

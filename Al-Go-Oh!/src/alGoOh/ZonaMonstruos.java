@@ -64,4 +64,11 @@ public class ZonaMonstruos {
 	public boolean hayLugar() {
         return zonaMonstruos.size() < 5;
     }
+
+	public void terminarTurno() {
+		for(CartaMonstruo monstruo : zonaMonstruos) {
+			monstruo.terminarTurno();
+		}
+		
+	}
 }
