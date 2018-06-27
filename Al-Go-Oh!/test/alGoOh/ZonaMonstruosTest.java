@@ -11,7 +11,7 @@ public class ZonaMonstruosTest {
 	@Test
 	void test01LaZonaDeMonstruosEmpiezaVacia() {
 		
-		ZonaMonstruos zona = new ZonaMonstruos();
+		ZonaMonstruos zona = new ZonaMonstruos(new Campo());
 		
 		assertEquals(0, zona.cantidadMonstruosEnZona());
 	}
@@ -19,7 +19,7 @@ public class ZonaMonstruosTest {
 	@Test
 	void test02AlColocarUnMonstruoLaZonaYaNoEstaVacia() {
 		
-		ZonaMonstruos zona = new ZonaMonstruos();	
+		ZonaMonstruos zona = new ZonaMonstruos(new Campo());
 		CartaMonstruo monstruo = new HuevoMonstruoso();
 		
 		zona.colocarCarta(monstruo);
@@ -30,7 +30,7 @@ public class ZonaMonstruosTest {
 	@Test
 	void test03ColocarUnMonstruoEnLaZonaYVerQueEstaAhi() {
 		
-		ZonaMonstruos zona = new ZonaMonstruos();	
+		ZonaMonstruos zona = new ZonaMonstruos(new Campo());
 		CartaMonstruo monstruo = new HuevoMonstruoso();
 		
 		zona.colocarCarta(monstruo);
@@ -41,7 +41,7 @@ public class ZonaMonstruosTest {
 	@Test
 	void test04SeColocaUnMonstruoYLuegoEsEliminada() {
 		
-		ZonaMonstruos zona = new ZonaMonstruos();
+		ZonaMonstruos zona = new ZonaMonstruos(new Campo());
 		CartaMonstruo monstruo = new HuevoMonstruoso();
 		
 		zona.colocarCarta(monstruo);
@@ -53,7 +53,7 @@ public class ZonaMonstruosTest {
 	@Test
 	void test05NoSePuedeEliminarUnMonstruoQueNoHaSidoColocadoEnLaZona() {
 		
-		ZonaMonstruos zona = new ZonaMonstruos();
+		ZonaMonstruos zona = new ZonaMonstruos(new Campo());
 		CartaMonstruo monstruo1 = new HuevoMonstruoso();
 		CartaMonstruo monstruo2 = new AbismoReluciente();
 		
