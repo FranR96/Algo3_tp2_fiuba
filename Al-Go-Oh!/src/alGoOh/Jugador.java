@@ -97,4 +97,8 @@ public class Jugador {
 		reiniciarMonstruoColocadoPorTurno();
 		exodia.cartasActualesEnMano(mano);
 	}
+
+	public void eliminarDeLaMano(Carta carta){
+		this.mano.remove(carta);
+	}
 }

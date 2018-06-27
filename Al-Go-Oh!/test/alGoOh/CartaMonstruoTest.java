@@ -9,22 +9,7 @@ import cartasConcretas.*;
 public class CartaMonstruoTest {
 
 	@Test
-	void test01LaCartaMonstruoRecienCreadaTienePtsDeAtaqueDefensaYEstrellas() {
-		
-		Tablero tablero = Tablero.getInstance();
-		tablero.inicializarTablero(new Jugador(), new Jugador());
-		Jugador activo = tablero.getJugadorActivo();
-		
-		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
-		activo.getCampo().colocarCarta(huevoMonstruoso, new PosicionAtaque(), new BocaArriba());
-		
-		assertEquals(600, huevoMonstruoso.getPtsAtaque());
-		assertEquals(900, huevoMonstruoso.getPtsDefensa());
-		assertEquals(3, huevoMonstruoso.getEstrellas());
-	}
-	
-	@Test
-	void test02LaCartaMonstruoNoRequiereDeSacrificiosParaSerInvocada() {
+	void test01LaCartaMonstruoNoRequiereDeSacrificiosParaSerInvocada() {
 		
 		CartaMonstruo monstruo = new AbismoReluciente();
 		
@@ -34,7 +19,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	void test03LaCartaMonstruoRequiereUnSacrificioParaSerInvocada() {
+	void test02LaCartaMonstruoRequiereUnSacrificioParaSerInvocada() {
 		
 		CartaMonstruo monstruo = new Ansatsu();
 		
@@ -44,7 +29,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	void test04LaCartaMonstruoRequiereDosSacrificiosParaSerInvocada() {
+	void test03LaCartaMonstruoRequiereDosSacrificiosParaSerInvocada() {
 		
 		CartaMonstruo monstruo = new DragonBlancoDeOjosAzules();
 		

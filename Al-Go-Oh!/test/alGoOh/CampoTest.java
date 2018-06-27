@@ -156,23 +156,28 @@ class CampoTest {
 	}
 	
 	@Test
-	void test08Invoco3DragonesBlancosYLuegoLosSacrificoParaInvocarAlDragonDefinitivo() {
+	void test08Invoco3DragonesBlancosYSoloSeSacrificanEstosParaInvocarAlDragonDefinitivo() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
+		CartaMonstruo huevoMonstruoso1 = new HuevoMonstruoso();
+		CartaMonstruo huevoMonstruoso2 = new HuevoMonstruoso();
 		
-		
+		activo.getCampo().getZonaMonstruos().agregarCarta(huevoMonstruoso1);
 		activo.getCampo().getZonaMonstruos().agregarCarta(new DragonBlancoDeOjosAzules());
+		activo.getCampo().getZonaMonstruos().agregarCarta(huevoMonstruoso2);
 		activo.getCampo().getZonaMonstruos().agregarCarta(new DragonBlancoDeOjosAzules());
 		activo.getCampo().getZonaMonstruos().agregarCarta(new DragonBlancoDeOjosAzules());
 
 		CartaMonstruo dragonDefinitivo = new DragonDefinitivoDeOjosAzules();
 		activo.getCampo().colocarCarta(dragonDefinitivo, new PosicionAtaque(), new BocaArriba());
 		
-		assertEquals(activo.getCampo().monstruosInvocados().size(),1);
+		assertEquals(activo.getCampo().monstruosInvocados().size(),3);
 		
 		assertTrue(activo.getCampo().monstruosInvocados().contains(dragonDefinitivo));
+		assertTrue(activo.getCampo().monstruosInvocados().contains(huevoMonstruoso2));
+		assertTrue(activo.getCampo().monstruosInvocados().contains(huevoMonstruoso1));
 	}
 	
 	@Test

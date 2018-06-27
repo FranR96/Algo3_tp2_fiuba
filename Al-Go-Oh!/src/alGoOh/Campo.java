@@ -25,6 +25,7 @@ public class Campo {
     		if(this.zonaMonstruos.colocarCarta(carta)) {
     			this.jugador.setMonstruoColocadoEnTurno(carta);
     			carta.invocar(posicion, lado,this, tablero.getOponente().getCampo(), this.jugador, tablero.getOponente());
+    			this.jugador.eliminarDeLaMano(carta);
     		}
     		else {
     			throw new NoSePudoInvocarElMonstruoException();    		}
@@ -34,15 +35,18 @@ public class Campo {
 	public void colocarCarta(CartaTrampa carta,LadoCarta lado) {
 		this.zonaEspeciales.colocarCarta(carta);
 		carta.invocar(lado, this, tablero.getOponente().getCampo(), this.jugador,  tablero.getOponente());
+		this.jugador.eliminarDeLaMano(carta);
 	}
 
 	public void colocarCarta(CartaMagica carta, LadoCarta lado) {
 	    this.zonaEspeciales.colocarCarta(carta);
         carta.invocar(lado, this, tablero.getOponente().getCampo(), this.jugador,  tablero.getOponente());
+		this.jugador.eliminarDeLaMano(carta);
     }
 
     public void colocarCarta(CartaCampo carta, LadoCarta lado){
     	this.cartaCampo = carta;
+		this.jugador.eliminarDeLaMano(carta);
 	}
 
     public void setTablero(Tablero tablero) {
