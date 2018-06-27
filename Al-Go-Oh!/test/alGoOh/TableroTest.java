@@ -240,4 +240,51 @@ public class TableroTest {
 
 		assertEquals(ptsDeVidaEsperados, oponente.getPtsVida());
 	}
+	
+		@Test
+	void test11ColocarUnMonstruoEnCadaCampoYVerificarQueUnMonstruoNoPuedeAtacarDosVecesEnUnMismoTurno() {
+		
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador activo = tablero.getJugadorActivo();
+		Jugador oponente = tablero.getOponente();
+		
+		CartaMonstruo monstruo1 = new AbismoReluciente();
+		CartaMonstruo monstruo2 = new HuevoMonstruoso();
+		activo.getCampo().colocarCarta(monstruo1, new PosicionAtaque(), new BocaArriba());
+		oponente.getCampo().colocarCarta(monstruo2, new PosicionAtaque(), new BocaArriba());
+		
+		monstruo1.atacar(monstruo2);
+		
+		assertThrows(EstaCartaYaAtacoException.class,
+				()-> monstruo1.atacar(monstruo2) );
+		
+	}
+	
+	@Test
+	void test12AlIniciarElJuegoCadaJugadorObtiene5CartasEnSuMano() {
+		
+		Tablero tablero = Tablero.getInstance();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		
+		tablero.inicializarTablero(jugador1, jugador2);
+		
+		assertEquals(5, jugador1.cartasEnLaMano().size());
+		assertEquals(5, jugador2.cartasEnLaMano().size());
+	}
+	
+	@Test
+	void test13AlFinalizarTurnoElJugadorActivoPasaASerElOponenteYViceversa() {
+		
+		Tablero tablero = Tablero.getInstance();
+		tablero.inicializarTablero(new Jugador(), new Jugador());
+		Jugador jugador1 = tablero.getJugadorActivo();
+		Jugador jugador2 = tablero.getOponente();
+		
+		tablero.terminarTurno();
+		
+		assertEquals(jugador2, tablero.getJugadorActivo());
+		assertEquals(jugador1, tablero.getOponente());
+	}
 }
