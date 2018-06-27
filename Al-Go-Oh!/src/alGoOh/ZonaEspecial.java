@@ -11,7 +11,7 @@ public class ZonaEspecial{
 
 
     public void colocarCarta(CartaMagica cartaMagica) {
-        if(zonaMagica.size() + zonaTrampa.size() < 5) {
+        if(this.hayLugar()) {
             zonaMagica.add(cartaMagica);
         }
         else {
@@ -20,7 +20,7 @@ public class ZonaEspecial{
     }
 
     public void colocarCarta(CartaTrampa cartaTrampa) {
-        if(zonaMagica.size() + zonaTrampa.size() < 5) {
+        if(this.hayLugar()) {
             zonaTrampa.add(cartaTrampa);
         }
         else {
@@ -46,6 +46,9 @@ public class ZonaEspecial{
     //No se usa nunca
     public void voltearCartaMagica(CartaMagica cartaMagica) {
     	zonaMagica.get(zonaMagica.indexOf(cartaMagica)).voltear();
- 
+    }
+
+    public boolean hayLugar() {
+        return zonaMagica.size() + zonaTrampa.size() < 5;
     }
 }

@@ -19,7 +19,7 @@ public class Jugador {
 	public Jugador() {
 		puntosVida = 8000;
 		mazo = new Mazo();
-		mano = new ArrayList<Carta>();
+		mano = new ArrayList<>();
 		exodia = new ExodiaCompleto();
 	}
 
@@ -54,9 +54,7 @@ public class Jugador {
 	}
 
 	public boolean estaVivo() {
-		if(puntosVida<=0)
-			return false;
-		return true;
+		return puntosVida > 0;
 	}
 
 	public boolean tieneCartasEnMazo() {
@@ -79,12 +77,17 @@ public class Jugador {
 		return (exodia.exodiaEstaCompleto());
 	}
 	
-	public boolean yaColocoMonstruo(CartaMonstruo monstruo) {
+	public boolean yaColocoElMonstruo(CartaMonstruo monstruo) {
 		
-		if (this.monstruoColocadoEnTurno == null)
-			this.monstruoColocadoEnTurno = monstruo;
-		
-		return (this.monstruoColocadoEnTurno != monstruo);
+		return (this.monstruoColocadoEnTurno == monstruo);
+	}
+
+	public boolean coloqueMonstruo() {
+	    return this.monstruoColocadoEnTurno != null;
+    }
+
+	public void setMonstruoColocadoEnTurno(CartaMonstruo monstruo) {
+		monstruoColocadoEnTurno = monstruo;
 	}
 	
 	public void reiniciarMonstruoColocadoPorTurno() {

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import cartas.*;
 import cartasConcretas.*;
 
-class TableroTest {
+public class TableroTest {
 
 	@Test
 	void test01ColocarUnaCartaEnPosicionAtaqueYElOponenteColocaOtraDeMayorAtaqueYEsteGanaAplicandoDanioAlPrimerJugador() {

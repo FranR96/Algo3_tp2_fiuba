@@ -11,19 +11,20 @@ public class Campo {
 	private CartaCampo cartaCampo = null;
 	private Jugador jugador;
 	private Tablero tablero;
-	private ArrayList<Carta> cementerio= new ArrayList<Carta>();
-	private ArrayList<CartaMonstruo> monstruosQueAtacaron = new ArrayList<CartaMonstruo>();
+	private ArrayList<Carta> cementerio= new ArrayList<>();
+	private ArrayList<CartaMonstruo> monstruosQueAtacaron = new ArrayList<>();
 
 
 	// Hay que borrar esto y reemplazar con los metodos de ZonaMonstruo
      public void colocarCarta(CartaMonstruo carta, PosicionCarta posicion, LadoCarta lado) {
-    	if (this.jugador.yaColocoMonstruo(carta)) {
+    	if (this.jugador.coloqueMonstruo()) {
     		throw new YaSeHaInvocadoMonstruoEnTurnoException();
     	} else {
     		int sacrificiosNecesarios = carta.requiereSacrificio();
     		if((this.zonaMonstruos.cantidadMonstruosEnZona() - sacrificiosNecesarios) < 5) {
     			if(this.realizarSacrificioPara(sacrificiosNecesarios,carta)) {
     				this.zonaMonstruos.colocarCarta(carta);
+    				this.jugador.setMonstruoColocadoEnTurno(carta);
     				carta.invocar(posicion, lado,this, tablero.getOponente().getCampo(), this.jugador, tablero.getOponente());
     			}
     			else
@@ -63,6 +64,14 @@ public class Campo {
         return this.zonaMonstruos.obtenerMonstruos();
     }
 
+    public boolean puedoColocarCartaEspecial() {
+         return zonaEspeciales.hayLugar();
+    }
+
+    public boolean puedoColocarMonstruo() {
+         return zonaMonstruos.hayLugar();
+    }
+
 	public void eliminarMonstruo(CartaMonstruo carta) {
 		this.zonaMonstruos.eliminarCarta(carta);
 		this.cementerio.add(carta);
@@ -73,12 +82,9 @@ public class Campo {
 		this.cementerio.add(cartaMagica);
 	}
 
-	
 	public void atacarJugador(int danio) {
 		this.jugador.recibirDaniosVitales(danio);
 	}
-
-
 
 	public Collection<Carta> cartasEnCementerio() {
 		return this.cementerio;
@@ -89,15 +95,14 @@ public class Campo {
             ArrayList<CartaMonstruo> monstruosEnCampo = this.monstruosInvocados();
             ArrayList<CartaMonstruo> monstruosASacrificar = carta.elegirSacrificios(monstruosEnCampo);
             if(!monstruosASacrificar.isEmpty()) {
-            	for(int i = 0; i<monstruosASacrificar.size();i++) {
-            		this.eliminarMonstruo(monstruosASacrificar.get(i));
-            	}
+				for (CartaMonstruo aMonstruosASacrificar : monstruosASacrificar) {
+					this.eliminarMonstruo(aMonstruosASacrificar);
+				}
             }
         	return true;
         }
         return false;
 	}
-
 
 	public void voltearCartaTrampa() {
         if(zonaEspeciales.hayCartaTrampa()) {
@@ -120,8 +125,6 @@ public class Campo {
 	public CartaMonstruo cartaAtacante() {
 		int cantidadAtaques= monstruosQueAtacaron.size();
 		return monstruosQueAtacaron.get(cantidadAtaques-1);
-		
-
 	}
 
 	public void atacoEnTurno(CartaMonstruo cartaMonstruo) {
@@ -130,12 +133,10 @@ public class Campo {
 		else {
 			throw  new EstaCartaYaAtacoException();
 		}
-		
 	}
 
 	public void reiniciarAtaques() {
 		monstruosQueAtacaron.clear();
-		
 	}
 	
 	public ZonaMonstruos getZonaMonstruos(){
@@ -172,7 +173,7 @@ public class Campo {
 	
 	public void cambiarPosicionDeMonstruo(CartaMonstruo monstruo) {
 		
-		if (!this.jugador.yaColocoMonstruo(monstruo)) {        //si el monstruo fue recien colocado entonces
+		if (this.jugador.yaColocoElMonstruo(monstruo)) {        //si el monstruo fue recien colocado entonces
 			throw new NoSePuedeCambiarPosicionMonstruoException();    //no se le puede cambiar la posicion
 		} else {
 			monstruo.cambiarPosicion();

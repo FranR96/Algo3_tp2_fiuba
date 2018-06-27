@@ -9,7 +9,7 @@ public class ZonaMonstruos {
     private ArrayList<CartaMonstruo> zonaMonstruos = new ArrayList<>();
 
     public void colocarCarta(CartaMonstruo cartaMonstruo) {
-        if (zonaMonstruos.size() < 5) {
+        if (this.hayLugar()) {
             zonaMonstruos.add(cartaMonstruo);
         }
     }
@@ -30,6 +30,9 @@ public class ZonaMonstruos {
 
 	public void voltearMonstruo(CartaMonstruo cartaMonstruo) {
 		zonaMonstruos.get(zonaMonstruos.indexOf(cartaMonstruo)).voltear();
-		
 	}
+
+	public boolean hayLugar() {
+        return zonaMonstruos.size() < 5;
+    }
 }
