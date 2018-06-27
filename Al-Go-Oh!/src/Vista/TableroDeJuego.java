@@ -1,47 +1,49 @@
 package Vista;
 
 import alGoOh.Jugador;
+import alGoOh.Tablero;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 public class TableroDeJuego extends HBox {
     private Stage stage;
-    private Label jugador1;
-    private Label jugador2;
+    private Jugador jugador1;
+    private Jugador jugador2;
 
 
-    public TableroDeJuego(Stage stage) {
+    public TableroDeJuego(Stage stage, Tablero tablero, Jugador jugador1, Jugador jugador2) {
         super();
         this.stage = stage;
-        this.jugador1 = new Label();
-        this.jugador2 = new Label();
+        this.jugador1 = jugador1;
+        this.jugador2 = jugador2;
 
         GridPane cuadriculaTablero = new GridPane();
         cuadriculaTablero.getStyleClass().add("grilla-tablero");
         cuadriculaTablero.setGridLinesVisible(true);
         this.setGridConstraints(cuadriculaTablero);
 
-        jugador1.getStyleClass().add("nombre-usuario");
-        jugador2.getStyleClass().add("nombre-usuario");
+        VBox cartasDeMano = new VBox();
+        ScrollPane panelScrolleableDeCartas = new ScrollPane();
+        panelScrolleableDeCartas.setMinWidth(120);
+        panelScrolleableDeCartas.setContent(cartasDeMano);
+        VistaMano vistaMano = new VistaMano(cartasDeMano, tablero);
+        vistaMano.update();
 
-        HBox tablero = new HBox(cuadriculaTablero);
+        HBox boxTablero = new HBox(panelScrolleableDeCartas, cuadriculaTablero);
 
-        tablero.setAlignment(Pos.CENTER);
+        boxTablero.setAlignment(Pos.CENTER);
 
         this.setAlignment(Pos.CENTER);
-        this.getChildren().add(tablero);
+        this.getChildren().add(boxTablero);
     }
 
-    public void actualizarInfo(Jugador jugador1, Jugador jugador2) {
-        this.jugador1.setText(jugador1.getNombre());
-        this.jugador2.setText(jugador2.getNombre());
-    }
 
     private void setGridConstraints(GridPane grid) {
         grid.setMinWidth(712);

@@ -42,7 +42,6 @@ public class VentanaNombreJugadores extends VBox {
                     else {
                         jugador2.setNombre(obtenerNombre.getText());
                         obtenerNombre.setText("");
-                        tablero.actualizarInfo(jugador1, jugador2);
                         stage.setScene(escenaProxima);
                     }
                 });
