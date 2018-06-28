@@ -46,7 +46,6 @@ public class TableroDeJuego extends HBox {
         vistaDeCarta.setSmooth(true);
         vistaDeCarta.setRotate(90);
 
-
         GridPane zonaCartasEspeciales = new GridPane();
         zonaCartasEspeciales.getRowConstraints().add(new RowConstraints(107));
         zonaCartasEspeciales.setGridLinesVisible(true);
@@ -90,18 +89,9 @@ public class TableroDeJuego extends HBox {
         jugador2.agregarObserverVida(vistaVida);
         vistaVida.update();
 
-        GridPane cuadriculaTablero = new GridPane();
-        cuadriculaTablero.getStyleClass().add("grilla-tablero");
-        cuadriculaTablero.setGridLinesVisible(true);
-        GridPane.setColumnSpan(vida1, 12);
-        GridPane.setColumnSpan(vida2, 12);
-
-        cuadriculaTablero.add(vida1, 0,8);
-        cuadriculaTablero.add(vida2, 0,0);
-
         VBox cartasDeMano = new VBox();
         ScrollPane panelScrolleableDeCartas = new ScrollPane();
-        panelScrolleableDeCartas.setMinWidth(120);
+        panelScrolleableDeCartas.setMinWidth(240);
         panelScrolleableDeCartas.setContent(cartasDeMano);
         VistaMano vistaMano = new VistaMano(cartasDeMano, tablero, stage);
 
@@ -113,7 +103,12 @@ public class TableroDeJuego extends HBox {
         tablero.getJugadorActivo().getCampo().agregarObserverZonaEspecial(vistaZonaEspecial);
         tablero.getOponente().getCampo().agregarObserverZonaEspecial(vistaZonaEspecial);
 
-        HBox boxTablero = new HBox(panelScrolleableDeCartas, contenedorAux);
+        VBox VidaYMano = new VBox();
+        VidaYMano.getChildren().add(vida2);
+        VidaYMano.getChildren().add(panelScrolleableDeCartas);
+        VidaYMano.getChildren().add(vida1);
+
+        HBox boxTablero = new HBox(VidaYMano, contenedorAux);
 
 
         this.setAlignment(Pos.CENTER);

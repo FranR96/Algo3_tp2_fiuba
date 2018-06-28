@@ -190,7 +190,6 @@ public class Campo {
      	this.filtroDeAtaque.desactivarFiltro();
 	}
 
-
 	public void agregarObserverZonaEspecial(Observer observador) {
 		zonaEspeciales.agregarObserver(observador);
 	}
