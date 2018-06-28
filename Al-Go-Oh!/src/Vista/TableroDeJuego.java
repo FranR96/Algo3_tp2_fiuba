@@ -13,7 +13,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-import static javafx.scene.paint.Color.*;
+import static javafx.scene.paint.Color.DARKRED;
 
 
 public class TableroDeJuego extends HBox {
@@ -113,8 +113,11 @@ public class TableroDeJuego extends HBox {
         tablero.getJugadorActivo().getCampo().agregarObserverZonaEspecial(vistaZonaEspecial);
         tablero.getOponente().getCampo().agregarObserverZonaEspecial(vistaZonaEspecial);
 
-        HBox boxTablero = new HBox(panelScrolleableDeCartas, contenedorAux);
+        VistaZonaMonstruos vistaZonaMonstruos = new VistaZonaMonstruos(zonaCartasMonstruo, tablero);
+        tablero.getJugadorActivo().getCampo().agregarObserverZonaMonstruos(vistaZonaMonstruos);
+        tablero.getOponente().getCampo().agregarObserverZonaMonstruos(vistaZonaMonstruos);
 
+        HBox boxTablero = new HBox(panelScrolleableDeCartas, contenedorAux);
 
         this.setAlignment(Pos.CENTER);
         this.getChildren().add(boxTablero);
@@ -145,7 +148,6 @@ public class TableroDeJuego extends HBox {
         grid.getRowConstraints().add(new RowConstraints(98));
         grid.getRowConstraints().add(new RowConstraints(107));
         grid.getRowConstraints().add(new RowConstraints(26));
-<<<<<<< HEAD
         grid.getRowConstraints().add(new RowConstraints(108));*/
     }
 

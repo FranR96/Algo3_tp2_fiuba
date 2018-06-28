@@ -195,6 +195,10 @@ public class Campo {
 		zonaEspeciales.agregarObserver(observador);
 	}
 
+    public void agregarObserverZonaMonstruos(Observer observador) {
+        zonaMonstruos.agregarObserver(observador);
+    }
+
 }
 
 

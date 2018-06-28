@@ -19,7 +19,7 @@ public abstract class Carta {
 
 	public void voltear() {
 		if(estaBocaAbajo()) {
-			BocaArriba lado = new BocaArriba();
+			this.lado = new BocaArriba();
 			lado.setCarta(this);
 			lado.invocar(campo, campoEnemigo, activo, oponente);
 		}
