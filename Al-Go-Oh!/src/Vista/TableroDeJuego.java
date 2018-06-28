@@ -51,7 +51,7 @@ public class TableroDeJuego extends HBox {
         panelScrolleableDeCartas.setContent(cartasDeMano);
         VistaMano vistaMano = new VistaMano(cartasDeMano, tablero, stage);
         jugador1.agregarObserverMano(vistaMano);
-        jugador1.agregarObserverMano(vistaMano);
+        jugador2.agregarObserverMano(vistaMano);
         vistaMano.update();
 
         HBox boxTablero = new HBox(panelScrolleableDeCartas, cuadriculaTablero);
