@@ -26,14 +26,19 @@ public class TableroDeJuego extends HBox {
         this.jugador2 = jugador2;
 
         Label vida1 = new Label();
-        vida1.setText("LIFEPOINTS: " + jugador1.getPtsVida());
+        vida1.setText("LIFEPOINTS: " + jugador1.getPtsVida()); //+ nombre del jugador
         vida1.setTextFill(DARKRED);
         vida1.setFont(Font.font ("Verdana",FontWeight.BOLD, 26));
 
         Label vida2 = new Label();
-        vida2.setText("LIFEPOINTS: " + jugador2.getPtsVida());
+        vida2.setText("LIFEPOINTS: " + jugador2.getPtsVida()); //+ nombre del jugador
         vida2.setTextFill(DARKRED);
         vida2.setFont(Font.font ("Verdana",FontWeight.BOLD, 26));
+
+        VistaVida vistaVida = new VistaVida(vida1, vida2, jugador1, jugador2);
+        jugador1.agregarObserverVida(vistaVida);
+        jugador2.agregarObserverVida(vistaVida);
+        vistaVida.update();
 
         GridPane cuadriculaTablero = new GridPane();
         cuadriculaTablero.getStyleClass().add("grilla-tablero");
@@ -50,6 +55,7 @@ public class TableroDeJuego extends HBox {
         panelScrolleableDeCartas.setMinWidth(120);
         panelScrolleableDeCartas.setContent(cartasDeMano);
         VistaMano vistaMano = new VistaMano(cartasDeMano, tablero, stage);
+
         jugador1.agregarObserverMano(vistaMano);
         jugador2.agregarObserverMano(vistaMano);
         vistaMano.update();
