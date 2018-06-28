@@ -1,15 +1,14 @@
 package alGoOh;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import alGoOh.cartas.LogicaCartas.*;
+import alGoOh.cartas.cartasConcretas.*;
+import alGoOh.componentes.Jugador;
+import alGoOh.componentes.Tablero;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 
-import org.junit.jupiter.api.Test;
-
-import cartas.*;
-import cartasConcretas.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class EfectoTest {

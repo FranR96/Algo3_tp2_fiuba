@@ -1,11 +1,13 @@
 package alGoOh;
 
-import static org.junit.jupiter.api.Assertions.*;
+import alGoOh.cartas.LogicaCartas.*;
+import alGoOh.cartas.cartasConcretas.*;
+import alGoOh.componentes.*;
 import org.junit.jupiter.api.Test;
-import cartas.*;
-import cartasConcretas.*;
 
 import java.util.Collection;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class CampoTest {
 	

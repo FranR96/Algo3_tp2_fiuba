@@ -1,9 +1,9 @@
 package Vista;
 
-import Vista.Eventos.ClickEnCartaHandler;
-import alGoOh.Jugador;
-import alGoOh.Tablero;
-import cartas.Carta;
+import Controlador.ClickEnCartaHandler;
+import alGoOh.cartas.LogicaCartas.Carta;
+import alGoOh.componentes.Jugador;
+import alGoOh.componentes.Tablero;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;

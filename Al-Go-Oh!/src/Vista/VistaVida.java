@@ -1,6 +1,6 @@
 package Vista;
 
-import alGoOh.Jugador;
+import alGoOh.componentes.Jugador;
 import javafx.scene.control.Label;
 
 import java.util.Observable;

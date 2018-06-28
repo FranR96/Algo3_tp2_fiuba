@@ -1,10 +1,14 @@
 package alGoOh;
 
-import static org.junit.jupiter.api.Assertions.*;
+import alGoOh.cartas.LogicaCartas.CartaMonstruo;
+import alGoOh.cartas.LogicaCartas.CartaMonstruoNoExistenteException;
+import alGoOh.cartas.cartasConcretas.AbismoReluciente;
+import alGoOh.cartas.cartasConcretas.HuevoMonstruoso;
+import alGoOh.componentes.Campo;
+import alGoOh.componentes.ZonaMonstruos;
 import org.junit.jupiter.api.Test;
 
-import cartasConcretas.*;
-import cartas.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ZonaMonstruosTest {
 

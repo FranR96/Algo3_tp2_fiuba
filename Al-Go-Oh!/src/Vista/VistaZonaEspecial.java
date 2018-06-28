@@ -1,8 +1,8 @@
 package Vista;
 
-import Vista.Eventos.ClickEnCartaEspecialHandler;
-import alGoOh.Tablero;
-import cartas.CartaEspecial;
+import Controlador.ClickEnCartaEspecialHandler;
+import alGoOh.cartas.LogicaCartas.CartaEspecial;
+import alGoOh.componentes.Tablero;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;

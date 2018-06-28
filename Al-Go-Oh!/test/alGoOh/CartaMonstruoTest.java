@@ -1,10 +1,12 @@
 package alGoOh;
 
-import static org.junit.jupiter.api.Assertions.*;
+import alGoOh.cartas.LogicaCartas.CartaMonstruo;
+import alGoOh.cartas.cartasConcretas.AbismoReluciente;
+import alGoOh.cartas.cartasConcretas.Ansatsu;
+import alGoOh.cartas.cartasConcretas.DragonBlancoDeOjosAzules;
 import org.junit.jupiter.api.Test;
 
-import cartas.*;
-import cartasConcretas.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CartaMonstruoTest {
 

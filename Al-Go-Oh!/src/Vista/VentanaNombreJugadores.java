@@ -1,7 +1,7 @@
 package Vista;
 
-import Vista.Eventos.EnviarConEnterHandler;
-import alGoOh.Jugador;
+import Controlador.EnviarConEnterHandler;
+import alGoOh.componentes.Jugador;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

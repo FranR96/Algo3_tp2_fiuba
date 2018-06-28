@@ -1,10 +1,12 @@
 package Vista;
 
-import alGoOh.Jugador;
-import alGoOh.Tablero;
+import Controlador.BotonCambiarFaseHandler;
+import alGoOh.componentes.Jugador;
+import alGoOh.componentes.Tablero;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -103,16 +105,26 @@ public class TableroDeJuego extends HBox {
         tablero.getJugadorActivo().getCampo().agregarObserverZonaEspecial(vistaZonaEspecial);
         tablero.getOponente().getCampo().agregarObserverZonaEspecial(vistaZonaEspecial);
 
-        VistaZonaMonstruos vistaZonaMonstruos = new VistaZonaMonstruos(zonaCartasMonstruo, tablero);
+        VistaZonaMonstruos vistaZonaMonstruos = new VistaZonaMonstruos(zonaCartasMonstruo, tablero, stage);
         tablero.getJugadorActivo().getCampo().agregarObserverZonaMonstruos(vistaZonaMonstruos);
         tablero.getOponente().getCampo().agregarObserverZonaMonstruos(vistaZonaMonstruos);
 
-        VBox VidaYMano = new VBox();
+        tablero.agregarObserver(vistaMano);
+        tablero.agregarObserver(vistaZonaEspecial);
+        tablero.agregarObserver(vistaZonaMonstruos);
+
+        Button botonCambiarFase = new Button("Cambiar fase");
+        botonCambiarFase.setOnAction(new BotonCambiarFaseHandler(stage, botonCambiarFase, zonaCartasEspeciales, zonaCartasMonstruo, cartasDeMano, tablero));
+
+        VBox faseYMano = new VBox(botonCambiarFase, panelScrolleableDeCartas);
+        /*VBox VidaYMano = new VBox();
         VidaYMano.getChildren().add(vida2);
         VidaYMano.getChildren().add(panelScrolleableDeCartas);
-        VidaYMano.getChildren().add(vida1);
+        VidaYMano.getChildren().add(vida1);*/
 
-        HBox boxTablero = new HBox(VidaYMano, contenedorAux);
+        HBox boxTablero = new HBox(faseYMano, contenedorAux);
+        zonaCartasEspeciales.setDisable(true);
+        zonaCartasMonstruo.setDisable(true);
 
         this.setAlignment(Pos.CENTER);
         this.getChildren().add(boxTablero);
@@ -121,7 +133,7 @@ public class TableroDeJuego extends HBox {
 
     private void setGridConstraintsEspecial(GridPane grid) {
 
-        // Defino el tamanio de cada columna y fila de la grilla sobre la que se colocan las cartas
+        // Defino el tamanio de cada columna y fila de la grilla sobre la que se colocan las alGoOh.cartas.LogicaCartas
         grid.getColumnConstraints().add(new ColumnConstraints(75));
         grid.getColumnConstraints().add(new ColumnConstraints(19));
         grid.getColumnConstraints().add(new ColumnConstraints(75));
@@ -148,7 +160,7 @@ public class TableroDeJuego extends HBox {
 
     private void setGridConstraintsMonstruo(GridPane grid) {
 
-        // Defino el tamanio de cada columna y fila de la grilla sobre la que se colocan las cartas
+        // Defino el tamanio de cada columna y fila de la grilla sobre la que se colocan las alGoOh.cartas.LogicaCartas
         grid.getColumnConstraints().add(new ColumnConstraints(75));
         grid.getColumnConstraints().add(new ColumnConstraints(110));
         grid.getColumnConstraints().add(new ColumnConstraints(110));

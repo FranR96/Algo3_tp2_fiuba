@@ -1,8 +1,8 @@
 package Vista;
 
-import Vista.Eventos.BotonEscapeHandler;
-import alGoOh.Jugador;
-import alGoOh.Tablero;
+import Controlador.BotonEscapeHandler;
+import alGoOh.componentes.Jugador;
+import alGoOh.componentes.Tablero;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;

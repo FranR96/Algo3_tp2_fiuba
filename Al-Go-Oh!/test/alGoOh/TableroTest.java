@@ -1,10 +1,18 @@
 package alGoOh;
 
-import static org.junit.jupiter.api.Assertions.*;
-import java.util.Collection;
+import alGoOh.cartas.LogicaCartas.*;
+import alGoOh.cartas.cartasConcretas.AbismoReluciente;
+import alGoOh.cartas.cartasConcretas.HuevoMonstruoso;
+import alGoOh.cartas.cartasConcretas.Sogen;
+import alGoOh.cartas.cartasConcretas.Wasteland;
+import alGoOh.componentes.EstaCartaYaAtacoException;
+import alGoOh.componentes.Jugador;
+import alGoOh.componentes.Tablero;
 import org.junit.jupiter.api.Test;
-import cartas.*;
-import cartasConcretas.*;
+
+import java.util.Collection;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TableroTest {
 
