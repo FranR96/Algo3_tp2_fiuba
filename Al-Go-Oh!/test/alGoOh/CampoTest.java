@@ -1,18 +1,18 @@
 package alGoOh;
 
-import alGoOh.cartas.LogicaCartas.*;
-import alGoOh.cartas.cartasConcretas.*;
-import alGoOh.componentes.*;
-import org.junit.jupiter.api.Test;
+import cartas.*;
+import cartasConcretas.*;
+import org.junit.Test;
 
 import java.util.Collection;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-class CampoTest {
+public class CampoTest {
 	
 	@Test
-	void test01ColocarCartaMonstruoEnPosicionDefensaYNoPuedeAtacar() {
+	public void test01ColocarCartaMonstruoEnPosicionDefensaYNoPuedeAtacar() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -22,13 +22,20 @@ class CampoTest {
 
 		activo.getCampo().colocarCarta(abismoReluciente, new PosicionDefensa(), new BocaArriba());
 
-		assertThrows(MonstruoNoPuedeAtacarEstaEnPosicionDefensaException.class,
-				()-> abismoReluciente.atacar(huevoMonstruoso));
+		boolean error = false;
+
+		try{
+			abismoReluciente.atacar(huevoMonstruoso);
+		}catch(MonstruoNoPuedeAtacarEstaEnPosicionDefensaException e){
+			error = true;
+		}
+
+		assertTrue(error);
 
 	}
 
 	@Test
-	void test02ColocarCartaTrampaBocaAbajo(){
+	public void test02ColocarCartaTrampaBocaAbajo(){
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -41,7 +48,7 @@ class CampoTest {
 	}
 	
 	@Test
-	void test03ColocoUnMonstruoYLuegoColocoMaldicionDeDragonQueRequiereUnSacrificioElPrimeroNoEstaYElUltimoSi() {
+	public void test03ColocoUnMonstruoYLuegoColocoMaldicionDeDragonQueRequiereUnSacrificioElPrimeroNoEstaYElUltimoSi() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -66,7 +73,7 @@ class CampoTest {
 	}
 	
 	@Test 
-	void test04ColocoDosMonstruosYLuegoColocoDragonBlancoDeOjosAzulesQueRequiereDosSacrificiosAmbosNoEstanYElUltimoSi() {
+	public void test04ColocoDosMonstruosYLuegoColocoDragonBlancoDeOjosAzulesQueRequiereDosSacrificiosAmbosNoEstanYElUltimoSi() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -100,7 +107,7 @@ class CampoTest {
 
 	
 	@Test
-	void test05ColocoMasDeCincoCartasEspecialesBocaAbajoYMeSaltaUnaExcepcion() {
+	public void test05ColocoMasDeCincoCartasEspecialesBocaAbajoYMeSaltaUnaExcepcion() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -109,16 +116,22 @@ class CampoTest {
 			CartaMagica agujeroNegro = new AgujeroNegro();
 			activo.getCampo().colocarCarta(agujeroNegro, new BocaAbajo());
 		}
-		assertThrows(CapacidadMaximaEnZonaEspecialesException.class,
-				()->{
-					CartaMagica agujeroNegro = new AgujeroNegro();
-					activo.getCampo().colocarCarta(agujeroNegro, new BocaAbajo());
-				});
+
+		boolean error = false;
+
+		try{
+			CartaMagica agujeroNegro = new AgujeroNegro();
+			activo.getCampo().colocarCarta(agujeroNegro, new BocaAbajo());
+		}catch(CapacidadMaximaEnZonaEspecialesException e){
+			error = true;
+		}
+
+		assertTrue(error);
 		
 	}
 	
 	@Test
-	void test06ColocoMasDeCincoCartasMonstruosYMeSaltaUnaExcepcion() {
+	public void test06ColocoMasDeCincoCartasMonstruosYMeSaltaUnaExcepcion() {
 
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -131,15 +144,22 @@ class CampoTest {
 			tablero.terminarTurno();
 			tablero.terminarTurno();
 		}
-		assertThrows(NoSePudoInvocarElMonstruoException.class,
-				()->{
-					CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
-					activo.getCampo().colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
-				});
+
+		boolean error = false;
+
+		try{
+			CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
+			activo.getCampo().colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaAbajo());
+		}catch(NoSePudoInvocarElMonstruoException e){
+			error = true;
+		}
+
+		assertTrue(error);
+
 	}
 	
 	@Test
-	void test07TengoLaZonaDeMonstruosCompletaPeroQuieroInvocarAUnMonstruoQueRequiereSacrificioYPuedo() {
+	public void test07TengoLaZonaDeMonstruosCompletaPeroQuieroInvocarAUnMonstruoQueRequiereSacrificioYPuedo() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -158,7 +178,7 @@ class CampoTest {
 	}
 	
 	@Test
-	void test08Invoco3DragonesBlancosYSoloSeSacrificanEstosParaInvocarAlDragonDefinitivo() {
+	public void test08Invoco3DragonesBlancosYSoloSeSacrificanEstosParaInvocarAlDragonDefinitivo() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -183,7 +203,7 @@ class CampoTest {
 	}
 	
 	@Test
-	void test09ExtraigoTodasLasCartasDelMazoYVerificoQueElJugadorPierde() {
+	public void test09ExtraigoTodasLasCartasDelMazoYVerificoQueElJugadorPierde() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -199,22 +219,28 @@ class CampoTest {
 	}
 	
 	@Test
-	void test10SoloSePuedeInvocarUnMonstruoPorTurno() {
+	public void test10SoloSePuedeInvocarUnMonstruoPorTurno() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
 		
 		activo.getCampo().colocarCarta(new HuevoMonstruoso(),new PosicionAtaque(), new BocaAbajo());
-		
-		assertThrows(YaSeHaInvocadoMonstruoEnTurnoException.class,
-				()->{ 
-					activo.getCampo().colocarCarta(new AbismoReluciente(),new PosicionAtaque(), new BocaAbajo());
-				});
+
+		boolean error = false;
+
+		try{
+			activo.getCampo().colocarCarta(new AbismoReluciente(),new PosicionAtaque(), new BocaAbajo());
+		}catch(YaSeHaInvocadoMonstruoEnTurnoException e){
+			error = true;
+		}
+
+		assertTrue(error);
+
 	}
 	
 	@Test
-	void test11NoSePuedeCambiarLaPosicionDelMonstruoRecienColocado() {
+	public void test11NoSePuedeCambiarLaPosicionDelMonstruoRecienColocado() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -222,13 +248,21 @@ class CampoTest {
 		
 		CartaMonstruo huevoMonstruoso = new HuevoMonstruoso();
 		activo.getCampo().colocarCarta(huevoMonstruoso,new PosicionAtaque(), new BocaArriba());
-		
-		assertThrows(NoSePuedeCambiarPosicionMonstruoException.class,
-				()-> activo.getCampo().cambiarPosicionDeMonstruo(huevoMonstruoso) );
+
+		boolean error = false;
+
+		try{
+			activo.getCampo().cambiarPosicionDeMonstruo(huevoMonstruoso);
+		}catch(NoSePuedeCambiarPosicionMonstruoException e){
+			error = true;
+		}
+
+		assertTrue(error);
+
 	}
 	
 	@Test
-	void test12ColocarUnMonstruoEnAtaqueLuegoCambiarSuPosicionYVerificarQueNoPuedoAtacar() {
+	public void test12ColocarUnMonstruoEnAtaqueLuegoCambiarSuPosicionYVerificarQueNoPuedoAtacar() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -243,9 +277,17 @@ class CampoTest {
 		tablero.terminarTurno();
 		
 		oponente.getCampo().cambiarPosicionDeMonstruo(monstruo1);
-		
-		assertThrows(MonstruoNoPuedeAtacarEstaEnPosicionDefensaException.class,
-			()-> monstruo1.atacar(monstruo2));
+
+		boolean error = false;
+
+		try{
+			monstruo1.atacar(monstruo2);
+		}catch(MonstruoNoPuedeAtacarEstaEnPosicionDefensaException e){
+			error = true;
+		}
+
+		assertTrue(error);
+
 	}
 }
 

@@ -1,14 +1,14 @@
 package alGoOh;
 
-import alGoOh.componentes.Jugador;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.*;
+
 
 public class JugadorTest {
 	
 	@Test
-	void test01ElJugadorEmpiezaCon8000DeVida() {
+	public void test01ElJugadorEmpiezaCon8000DeVida() {
 		
 		Jugador jugador = new Jugador();
 		
@@ -16,7 +16,7 @@ public class JugadorTest {
 	}
 	
 	@Test
-	void test02ElJugadorAlIniciarElJuegoTomaCincoCartasDelMazo() {
+	public void test02ElJugadorAlIniciarElJuegoTomaCincoCartasDelMazo() {
 		
 		Jugador jugador = new Jugador();
 		
@@ -26,7 +26,7 @@ public class JugadorTest {
 	}
 	
 	@Test
-	void test03ElJugadorAlAgarrarUnaCartaDelMazoLuegoDeObtenerLaManoInicialTieneUnaMasEnMano() {
+	public void test03ElJugadorAlAgarrarUnaCartaDelMazoLuegoDeObtenerLaManoInicialTieneUnaMasEnMano() {
 		
 		Jugador jugador = new Jugador();
 		

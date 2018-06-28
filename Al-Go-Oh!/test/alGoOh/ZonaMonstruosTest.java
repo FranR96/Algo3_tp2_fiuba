@@ -1,19 +1,16 @@
 package alGoOh;
 
-import alGoOh.cartas.LogicaCartas.CartaMonstruo;
-import alGoOh.cartas.LogicaCartas.CartaMonstruoNoExistenteException;
-import alGoOh.cartas.cartasConcretas.AbismoReluciente;
-import alGoOh.cartas.cartasConcretas.HuevoMonstruoso;
-import alGoOh.componentes.Campo;
-import alGoOh.componentes.ZonaMonstruos;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import cartasConcretas.*;
+import cartas.*;
+import org.junit.Test;
 
 public class ZonaMonstruosTest {
 
 	@Test
-	void test01LaZonaDeMonstruosEmpiezaVacia() {
+	public void test01LaZonaDeMonstruosEmpiezaVacia() {
 		
 		ZonaMonstruos zona = new ZonaMonstruos(new Campo());
 		
@@ -21,7 +18,7 @@ public class ZonaMonstruosTest {
 	}
 	
 	@Test
-	void test02AlColocarUnMonstruoLaZonaYaNoEstaVacia() {
+	public void test02AlColocarUnMonstruoLaZonaYaNoEstaVacia() {
 		
 		ZonaMonstruos zona = new ZonaMonstruos(new Campo());
 		CartaMonstruo monstruo = new HuevoMonstruoso();
@@ -32,7 +29,7 @@ public class ZonaMonstruosTest {
 	}
 	
 	@Test
-	void test03ColocarUnMonstruoEnLaZonaYVerQueEstaAhi() {
+	public void test03ColocarUnMonstruoEnLaZonaYVerQueEstaAhi() {
 		
 		ZonaMonstruos zona = new ZonaMonstruos(new Campo());
 		CartaMonstruo monstruo = new HuevoMonstruoso();
@@ -43,7 +40,7 @@ public class ZonaMonstruosTest {
 	}
 	
 	@Test
-	void test04SeColocaUnMonstruoYLuegoEsEliminada() {
+	public void test04SeColocaUnMonstruoYLuegoEsEliminada() {
 		
 		ZonaMonstruos zona = new ZonaMonstruos(new Campo());
 		CartaMonstruo monstruo = new HuevoMonstruoso();
@@ -55,16 +52,24 @@ public class ZonaMonstruosTest {
 	}
 	
 	@Test
-	void test05NoSePuedeEliminarUnMonstruoQueNoHaSidoColocadoEnLaZona() {
+	public void test05NoSePuedeEliminarUnMonstruoQueNoHaSidoColocadoEnLaZona() {
 		
 		ZonaMonstruos zona = new ZonaMonstruos(new Campo());
 		CartaMonstruo monstruo1 = new HuevoMonstruoso();
 		CartaMonstruo monstruo2 = new AbismoReluciente();
 		
 		zona.colocarCarta(monstruo1);
-		
-		assertThrows(CartaMonstruoNoExistenteException.class,
-				()-> zona.eliminarCarta(monstruo2) );	
+
+		boolean error = false;
+
+		try{
+			zona.eliminarCarta(monstruo2);
+		}catch(CartaMonstruoNoExistenteException e){
+			error = true;
+		}
+
+		assertTrue(error);
+
 	}
 	
 }

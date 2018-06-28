@@ -1,20 +1,18 @@
 package alGoOh;
 
-import alGoOh.cartas.LogicaCartas.*;
-import alGoOh.cartas.cartasConcretas.*;
-import alGoOh.componentes.Jugador;
-import alGoOh.componentes.Tablero;
-import org.junit.jupiter.api.Test;
-
+import static org.junit.Assert.*;
 import java.util.Collection;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import cartas.*;
+import cartasConcretas.*;
+import org.junit.Test;
 
 
 public class EfectoTest {
 	
 	@Test
-	void test01ColocoUnMonstruoPorCadaLadoYLuegoLaCartaAgujeroNegroBocaArribaTodosLosMonstruosFueronDestruidosPeroNadieRecibeDanioVital() {
+	public void test01ColocoUnMonstruoPorCadaLadoYLuegoLaCartaAgujeroNegroBocaArribaTodosLosMonstruosFueronDestruidosPeroNadieRecibeDanioVital() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -42,7 +40,7 @@ public class EfectoTest {
 	}
 
 	@Test
-	void test02ColocarCartaMagicaBocaAbajoYNoActiveNingunEfecto() {
+	public void test02ColocarCartaMagicaBocaAbajoYNoActiveNingunEfecto() {
 
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -65,7 +63,7 @@ public class EfectoTest {
 	}
 	
 	@Test
-	void test03ColocarDosCartasEnCampoEnemigoYCartaFisuraDestruyeAlDeMenorAtaque() {
+	public void test03ColocarDosCartasEnCampoEnemigoYCartaFisuraDestruyeAlDeMenorAtaque() {
 	
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -91,7 +89,7 @@ public class EfectoTest {
 	}
 	
 	@Test
-	void test04ColocarJinzo7YUnMonstruoEnCampoOponenteAtacarYVerificarQueSeDanioAlJugadorOponente() {
+	public void test04ColocarJinzo7YUnMonstruoEnCampoOponenteAtacarYVerificarQueSeDanioAlJugadorOponente() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -111,7 +109,7 @@ public class EfectoTest {
 	}
 	
 	@Test
-	void test05ColocoInsectoComeHombresBocaAbajoYLuegoDeSerAtacadoDestruyeElMonstruoEnemigo() {
+	public void test05ColocoInsectoComeHombresBocaAbajoYLuegoDeSerAtacadoDestruyeElMonstruoEnemigo() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -131,7 +129,7 @@ public class EfectoTest {
 	}
 	
 	@Test
-	void test06ColocoInsectoComeHombreBocaArribaYLuegoDeSerAtacadoNoAplicaSuEfecto() {
+	public void test06ColocoInsectoComeHombreBocaArribaYLuegoDeSerAtacadoNoAplicaSuEfecto() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -151,7 +149,7 @@ public class EfectoTest {
 	}
 	
 	@Test
-	void test07ColocoUnMonstruoEnCadaCampoYLuegoLaCartaReinforcementsCuandoElEnemigoAtacaSeActivaLaTrampaYVerQueAplicaElEfecto() {
+	public void test07ColocoUnMonstruoEnCadaCampoYLuegoLaCartaReinforcementsCuandoElEnemigoAtacaSeActivaLaTrampaYVerQueAplicaElEfecto() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -178,7 +176,7 @@ public class EfectoTest {
 	}
 	
 	@Test
-	void test08ColocoUnMonstruoEnemigoYColocoCilindroMagicoEnMiCampoLuegoElMonstruoEnemigoAtacaYVerQueSeAplicaElEfecto() {
+	public void test08ColocoUnMonstruoEnemigoYColocoCilindroMagicoEnMiCampoLuegoElMonstruoEnemigoAtacaYVerQueSeAplicaElEfecto() {
 
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -206,7 +204,7 @@ public class EfectoTest {
 	}
 	
 	@Test
-	void test09ColocoOllaDeLaCodiciaBocaArribaYObtengoDosCartasDelMazo() {
+	public void test09ColocoOllaDeLaCodiciaBocaArribaYObtengoDosCartasDelMazo() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -217,7 +215,7 @@ public class EfectoTest {
 	}
 	
 	@Test
-	void test10ColocoDianKetoLaCuranderaYLosPuntosDeVidaAumentan1000() {
+	public void test10ColocoDianKetoLaCuranderaYLosPuntosDeVidaAumentan1000() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -228,7 +226,7 @@ public class EfectoTest {
 	}
 	
 	@Test
-	void test11ColocoJustDessertsBocaAbajoYElOponenteRecibe500DeDanioVitalPorCadaMonstruoInvocado() {
+	public void test11ColocoJustDessertsBocaAbajoYElOponenteRecibe500DeDanioVitalPorCadaMonstruoInvocado() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -254,7 +252,7 @@ public class EfectoTest {
 		assertEquals(ptsDeVidaEsperados, oponente.getPtsVida());
 	}
 	@Test
-	void test12JugadorActivoAgarraTodasLasPartesDeExodiaEnLaManoYGanaElJuego() {
+	public void test12JugadorActivoAgarraTodasLasPartesDeExodiaEnLaManoYGanaElJuego() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
