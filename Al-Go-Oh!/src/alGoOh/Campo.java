@@ -4,6 +4,7 @@ import cartas.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Observer;
 
 public class Campo {
 	private ZonaMonstruos zonaMonstruos = new ZonaMonstruos(this);
@@ -121,6 +122,10 @@ public class Campo {
 		return zonaMonstruos;
 	}
 
+	public ArrayList<CartaEspecial> zonaEspecial() {
+	    return zonaEspeciales.getCartasColocadas();
+    }
+
 	public int obtenerAdicionalAtkPropio(){
 		if(cartaCampo != null){
 			return cartaCampo.getPtsAdicionalAtkPropio();
@@ -186,17 +191,9 @@ public class Campo {
 	}
 
 
-	public void agregarObserver(Object observador) {
-		observers.add(observador);
+	public void agregarObserverZonaEspecial(Observer observador) {
+		zonaEspeciales.agregarObserver(observador);
 	}
-
-	private void notifyObservers() {
-		for (Object observador: observers) {
-			observador.notify();
-		}
-	}
-
-
 
 }
 

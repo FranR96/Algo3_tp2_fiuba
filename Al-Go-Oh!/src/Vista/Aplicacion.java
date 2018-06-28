@@ -37,15 +37,15 @@ public class Aplicacion extends Application
         player.setCycleCount(MediaPlayer.INDEFINITE);
 
         TableroDeJuego tableroDeJuego = new TableroDeJuego(stage, tablero, jugador1, jugador2);
-        Scene escenaTablero = new Scene(tableroDeJuego, 842, 690);
+        Scene escenaTablero = new Scene(tableroDeJuego, 842, 680);
         escenaTablero.getStylesheets().add("Vista/Estilos/estilos.css");
 
         VentanaNombreJugadores ventanaNombreJugadores = new VentanaNombreJugadores(stage, escenaTablero, tableroDeJuego, jugador1, jugador1);
-        Scene escenaNombreJugadores = new Scene(ventanaNombreJugadores, 842, 690);
+        Scene escenaNombreJugadores = new Scene(ventanaNombreJugadores, 842, 680);
         escenaNombreJugadores.getStylesheets().add("Vista/Estilos/estilos.css");
 
         VentanaInicio ventanaInicio = new VentanaInicio(stage, escenaNombreJugadores, player);
-        Scene escenaVentanaInicio = new Scene(ventanaInicio, 842, 690);
+        Scene escenaVentanaInicio = new Scene(ventanaInicio, 842, 680);
 
         escenaVentanaInicio.getStylesheets().add("Vista/Estilos/estilos.css");
 

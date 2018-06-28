@@ -1,5 +1,6 @@
 package alGoOh;
 
+import cartas.CartaEspecial;
 import cartas.CartaMagica;
 import cartas.CartaMagicaNoExistenteException;
 import cartas.CartaTrampa;
@@ -22,8 +23,8 @@ public class ZonaEspecial{
 
     public void colocarCarta(CartaMagica cartaMagica) {
         if(this.hayLugar()) {
-            notifyObservers();
             zonaMagica.add(cartaMagica);
+            notifyObservers();
 
         }
         else {
@@ -33,8 +34,8 @@ public class ZonaEspecial{
 
     public void colocarCarta(CartaTrampa cartaTrampa) {
         if(this.hayLugar()) {
-            notifyObservers();
             zonaTrampa.add(cartaTrampa);
+            notifyObservers();
         }
         else {
             throw new CapacidadMaximaEnZonaEspecialesException();
@@ -69,5 +70,13 @@ public class ZonaEspecial{
 
     public boolean hayLugar() {
         return zonaMagica.size() + zonaTrampa.size() < 5;
+    }
+
+    public ArrayList<CartaEspecial> getCartasColocadas() {
+        ArrayList<CartaEspecial> cartasColocadas = new ArrayList<>();
+        cartasColocadas.addAll(zonaMagica);
+        cartasColocadas.addAll(zonaTrampa);
+
+        return cartasColocadas;
     }
 }
