@@ -1,15 +1,16 @@
 package alGoOh;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 import java.util.Collection;
-import org.junit.jupiter.api.Test;
+
 import cartas.*;
 import cartasConcretas.*;
+import org.junit.Test;
 
 public class TableroTest {
 
 	@Test
-	void test01ColocarUnaCartaEnPosicionAtaqueYElOponenteColocaOtraDeMayorAtaqueYEsteGanaAplicandoDanioAlPrimerJugador() {
+	public void test01ColocarUnaCartaEnPosicionAtaqueYElOponenteColocaOtraDeMayorAtaqueYEsteGanaAplicandoDanioAlPrimerJugador() {
 	
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -32,7 +33,7 @@ public class TableroTest {
 	}
 	
 	@Test
-	void test02ColocarCartaEnPosicionAtaqueDeMayorPuntajeQueLaQueColocaElOponenteYEsteRecibeElDanioDelAtaque() {
+	public void test02ColocarCartaEnPosicionAtaqueDeMayorPuntajeQueLaQueColocaElOponenteYEsteRecibeElDanioDelAtaque() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -55,7 +56,7 @@ public class TableroTest {
 	}
 	
 	@Test
-	void test03CadaJugadorColocaCartasConMismosPuntosDeAtaqueYSeDestruyenLasDosPeroNoRecibenDanios() {
+	public void test03CadaJugadorColocaCartasConMismosPuntosDeAtaqueYSeDestruyenLasDosPeroNoRecibenDanios() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -80,8 +81,8 @@ public class TableroTest {
 
 	}
 	
-	@Test 
-	void test04ColocarCartaEnDefensaYOponenteColocaCartaEnPosicionAtaqueConMayorPuntajeYSeDestruyeElPrimerMonstruoSinRecibirDanioVital() {
+	@Test
+	public void test04ColocarCartaEnDefensaYOponenteColocaCartaEnPosicionAtaqueConMayorPuntajeYSeDestruyeElPrimerMonstruoSinRecibirDanioVital() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -103,8 +104,8 @@ public class TableroTest {
 		
 	}
 	
-	@Test 
-	void test05ColocarCartaEnDefensaYOponenteColocaCartaEnPosicionAtaqueConMenorPuntajeNoSeDestruyeElPrimerMonstruoNiRecibeDanioVital() {
+	@Test
+	public void test05ColocarCartaEnDefensaYOponenteColocaCartaEnPosicionAtaqueConMenorPuntajeNoSeDestruyeElPrimerMonstruoNiRecibeDanioVital() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -136,7 +137,7 @@ public class TableroTest {
 	}
 
 	@Test
-	void test06MandarCartaAlCementerio(){
+	public void test06MandarCartaAlCementerio(){
 
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -156,7 +157,7 @@ public class TableroTest {
 	
 	
 	@Test
-	void test07ColocarUnaCartaMonstruoEnCadaCampoYLuegoCartaWastelandYVerificarQueSeRealizanLosIncrementos() {
+	public void test07ColocarUnaCartaMonstruoEnCadaCampoYLuegoCartaWastelandYVerificarQueSeRealizanLosIncrementos() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -177,8 +178,8 @@ public class TableroTest {
 		assertEquals(ptsDeVidaEsperados, activo.getPtsVida());
 	}
 	
-	@Test 
-	void test08ColocarUnaCartaMonstruoEnCadaLadoElOponenteColocaWastelandYVerificoLosIncrementos() {
+	@Test
+	public void test08ColocarUnaCartaMonstruoEnCadaLadoElOponenteColocaWastelandYVerificoLosIncrementos() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -199,7 +200,7 @@ public class TableroTest {
 	}
 	
 	@Test
-	void test09ColocarUnaCartaMonstruoEnCadaCampoYLuegoCartaSogenYVerificarQueSeRealizanLosIncrementos() {
+	public void test09ColocarUnaCartaMonstruoEnCadaCampoYLuegoCartaSogenYVerificarQueSeRealizanLosIncrementos() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -221,7 +222,7 @@ public class TableroTest {
 	}
 	
 	@Test
-	void test10ColocarUnaCartaMonstruoEnCadaCampoYLuegoElOponentePoneLaCartaSogenYVerificarQueSeRealizanLosIncrementos() {
+	public void test10ColocarUnaCartaMonstruoEnCadaCampoYLuegoElOponentePoneLaCartaSogenYVerificarQueSeRealizanLosIncrementos() {
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
 		Jugador activo = tablero.getJugadorActivo();
@@ -241,8 +242,8 @@ public class TableroTest {
 		assertEquals(ptsDeVidaEsperados, oponente.getPtsVida());
 	}
 	
-		@Test
-	void test11ColocarUnMonstruoEnCadaCampoYVerificarQueUnMonstruoNoPuedeAtacarDosVecesEnUnMismoTurno() {
+	@Test
+	public void test11ColocarUnMonstruoEnCadaCampoYVerificarQueUnMonstruoNoPuedeAtacarDosVecesEnUnMismoTurno() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());
@@ -255,14 +256,20 @@ public class TableroTest {
 		oponente.getCampo().colocarCarta(monstruo2, new PosicionAtaque(), new BocaArriba());
 		
 		monstruo1.atacar(monstruo2);
-		
-		assertThrows(EstaCartaYaAtacoException.class,
-				()-> monstruo1.atacar(monstruo2) );
-		
+
+		boolean error = false;
+
+		try{
+			monstruo1.atacar(monstruo2);
+		}catch(EstaCartaYaAtacoException e){
+			error = true;
+		}
+
+		assertTrue(error);
 	}
 	
 	@Test
-	void test12AlIniciarElJuegoCadaJugadorObtiene5CartasEnSuMano() {
+	public void test12AlIniciarElJuegoCadaJugadorObtiene5CartasEnSuMano() {
 		
 		Tablero tablero = Tablero.getInstance();
 		Jugador jugador1 = new Jugador();
@@ -275,7 +282,7 @@ public class TableroTest {
 	}
 	
 	@Test
-	void test13AlFinalizarTurnoElJugadorActivoPasaASerElOponenteYViceversa() {
+	public void test13AlFinalizarTurnoElJugadorActivoPasaASerElOponenteYViceversa() {
 		
 		Tablero tablero = Tablero.getInstance();
 		tablero.inicializarTablero(new Jugador(), new Jugador());

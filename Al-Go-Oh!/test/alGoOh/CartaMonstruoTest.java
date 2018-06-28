@@ -1,15 +1,15 @@
 package alGoOh;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
 
 import cartas.*;
 import cartasConcretas.*;
+import org.junit.Test;
 
 public class CartaMonstruoTest {
 
 	@Test
-	void test01LaCartaMonstruoNoRequiereDeSacrificiosParaSerInvocada() {
+    public void test01LaCartaMonstruoNoRequiereDeSacrificiosParaSerInvocada() {
 		
 		CartaMonstruo monstruo = new AbismoReluciente();
 		
@@ -19,7 +19,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	void test02LaCartaMonstruoRequiereUnSacrificioParaSerInvocada() {
+    public void test02LaCartaMonstruoRequiereUnSacrificioParaSerInvocada() {
 		
 		CartaMonstruo monstruo = new Ansatsu();
 		
@@ -29,7 +29,7 @@ public class CartaMonstruoTest {
 	}
 	
 	@Test
-	void test03LaCartaMonstruoRequiereDosSacrificiosParaSerInvocada() {
+    public void test03LaCartaMonstruoRequiereDosSacrificiosParaSerInvocada() {
 		
 		CartaMonstruo monstruo = new DragonBlancoDeOjosAzules();
 		
