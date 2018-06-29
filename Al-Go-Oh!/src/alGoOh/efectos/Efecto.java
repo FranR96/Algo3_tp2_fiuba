@@ -1,8 +1,8 @@
 package alGoOh.efectos;
 
-import alGoOh.cartas.cartasConcretas.ExodiaCompleto;
-import alGoOh.componentes.Campo;
-import alGoOh.componentes.Jugador;
+import cartasConcretas.ExodiaCompleto;
+import alGoOh.Campo;
+import alGoOh.Jugador;
 
 public abstract class Efecto {
 

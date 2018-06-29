@@ -1,8 +1,8 @@
 package Vista;
 
-import Controlador.BotonEscapeHandler;
-import alGoOh.componentes.Jugador;
-import alGoOh.componentes.Tablero;
+import Vista.Eventos.BotonEscapeHandler;
+import alGoOh.Jugador;
+import alGoOh.Tablero;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
@@ -40,7 +40,7 @@ public class Aplicacion extends Application
         Scene escenaTablero = new Scene(tableroDeJuego, 842, 680);
         escenaTablero.getStylesheets().add("Vista/Estilos/estilos.css");
 
-        VentanaNombreJugadores ventanaNombreJugadores = new VentanaNombreJugadores(stage, escenaTablero, tableroDeJuego, jugador1, jugador1);
+        VentanaNombreJugadores ventanaNombreJugadores = new VentanaNombreJugadores(stage, escenaTablero, tableroDeJuego, jugador1, jugador2);
         Scene escenaNombreJugadores = new Scene(ventanaNombreJugadores, 842, 680);
         escenaNombreJugadores.getStylesheets().add("Vista/Estilos/estilos.css");
 

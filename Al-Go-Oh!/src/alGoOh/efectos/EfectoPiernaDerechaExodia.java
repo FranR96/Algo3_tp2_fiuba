@@ -1,6 +1,6 @@
 package alGoOh.efectos;
 
-import alGoOh.cartas.cartasConcretas.ExodiaCompleto;
+import cartasConcretas.ExodiaCompleto;
 
 public class EfectoPiernaDerechaExodia extends Efecto {
 

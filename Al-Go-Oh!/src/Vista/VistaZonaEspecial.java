@@ -1,8 +1,8 @@
 package Vista;
 
-import Controlador.ClickEnCartaEspecialHandler;
-import alGoOh.cartas.LogicaCartas.CartaEspecial;
-import alGoOh.componentes.Tablero;
+import Vista.Eventos.ClickEnCartaEspecialHandler;
+import cartas.CartaEspecial;
+import alGoOh.Tablero;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class VistaZonaEspecial implements Observer {
+class VistaZonaEspecial implements Observer {
 
     private GridPane zonaEspecial;
     private Tablero tablero;

@@ -1,34 +1,20 @@
 package Vista;
 
-import Controlador.BotonCambiarFaseHandler;
-import alGoOh.componentes.Jugador;
-import alGoOh.componentes.Tablero;
-import javafx.geometry.HPos;
+import Vista.Eventos.BotonCambiarFaseHandler;
+import alGoOh.Jugador;
+import alGoOh.Tablero;
 import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-import static javafx.scene.paint.Color.DARKRED;
+class TableroDeJuego extends HBox {
 
 
-public class TableroDeJuego extends HBox {
-    private Stage stage;
-    private Jugador jugador1;
-    private Jugador jugador2;
-
-
-    public TableroDeJuego(Stage stage, Tablero tablero, Jugador jugador1, Jugador jugador2) {
+    TableroDeJuego(Stage stage, Tablero tablero, Jugador jugador1, Jugador jugador2) {
         super();
-        this.stage = stage;
-        this.jugador1 = jugador1;
-        this.jugador2 = jugador2;
 
         GridPane zonaCartasMonstruo = new GridPane();
         zonaCartasMonstruo.getRowConstraints().add(new RowConstraints(107));
@@ -36,17 +22,6 @@ public class TableroDeJuego extends HBox {
         zonaCartasMonstruo.setStyle("-fx-padding: 0 0 26px 0");
         setGridConstraintsMonstruo(zonaCartasMonstruo);
 
-        Image imagenCarta = new Image("Vista/Imagenes/AbismoReluciente.jpg");
-        VistaCarta vistaDeCarta = new VistaCarta(null);
-        vistaDeCarta.setImage(imagenCarta);
-        vistaDeCarta.setPreserveRatio(true);
-        vistaDeCarta.setFitHeight(110);
-
-        zonaCartasMonstruo.add(vistaDeCarta, 1, 0);
-        GridPane.setHalignment(vistaDeCarta, HPos.CENTER);
-        GridPane.setValignment(vistaDeCarta, VPos.CENTER);
-        vistaDeCarta.setSmooth(true);
-        vistaDeCarta.setRotate(90);
 
         GridPane zonaCartasEspeciales = new GridPane();
         zonaCartasEspeciales.getRowConstraints().add(new RowConstraints(107));
@@ -77,14 +52,12 @@ public class TableroDeJuego extends HBox {
         contenedorAux.getStyleClass().add("grilla-tablero");
 
         Label vida1 = new Label();
-        vida1.setText("LIFEPOINTS: " + jugador1.getPtsVida()); //+ nombre del jugador
-        vida1.setTextFill(DARKRED);
-        vida1.setFont(Font.font ("Verdana",FontWeight.BOLD, 26));
+        vida1.setText(jugador1.getNombre() + jugador1.getPtsVida()); //+ nombre del jugador
+        vida1.getStyleClass().add("botones-inicio");
 
         Label vida2 = new Label();
-        vida2.setText("LIFEPOINTS: " + jugador2.getPtsVida()); //+ nombre del jugador
-        vida2.setTextFill(DARKRED);
-        vida2.setFont(Font.font ("Verdana",FontWeight.BOLD, 26));
+        vida2.setText(jugador2.getNombre() + jugador2.getPtsVida()); //+ nombre del jugador
+        vida2.getStyleClass().add("botones-inicio");
 
         VistaVida vistaVida = new VistaVida(vida1, vida2, jugador1, jugador2);
         jugador1.agregarObserverVida(vistaVida);
@@ -93,7 +66,7 @@ public class TableroDeJuego extends HBox {
 
         VBox cartasDeMano = new VBox();
         ScrollPane panelScrolleableDeCartas = new ScrollPane();
-        panelScrolleableDeCartas.setMinWidth(240);
+        panelScrolleableDeCartas.setMinWidth(120);
         panelScrolleableDeCartas.setContent(cartasDeMano);
         VistaMano vistaMano = new VistaMano(cartasDeMano, tablero, stage);
 
@@ -115,8 +88,15 @@ public class TableroDeJuego extends HBox {
 
         Button botonCambiarFase = new Button("Cambiar fase");
         botonCambiarFase.setOnAction(new BotonCambiarFaseHandler(stage, botonCambiarFase, zonaCartasEspeciales, zonaCartasMonstruo, cartasDeMano, tablero));
+        botonCambiarFase.getStyleClass().add("botones-inicio");
 
-        VBox faseYMano = new VBox(botonCambiarFase, panelScrolleableDeCartas);
+        botonCambiarFase.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        vida1.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        vida2.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+
+
+        VBox faseYMano = new VBox(botonCambiarFase, vida1, vida2, panelScrolleableDeCartas);
         /*VBox VidaYMano = new VBox();
         VidaYMano.getChildren().add(vida2);
         VidaYMano.getChildren().add(panelScrolleableDeCartas);
@@ -133,7 +113,7 @@ public class TableroDeJuego extends HBox {
 
     private void setGridConstraintsEspecial(GridPane grid) {
 
-        // Defino el tamanio de cada columna y fila de la grilla sobre la que se colocan las alGoOh.cartas.LogicaCartas
+        // Defino el tamanio de cada columna y fila de la grilla sobre la que se colocan las cartas.LogicaCartas
         grid.getColumnConstraints().add(new ColumnConstraints(75));
         grid.getColumnConstraints().add(new ColumnConstraints(19));
         grid.getColumnConstraints().add(new ColumnConstraints(75));
@@ -160,7 +140,7 @@ public class TableroDeJuego extends HBox {
 
     private void setGridConstraintsMonstruo(GridPane grid) {
 
-        // Defino el tamanio de cada columna y fila de la grilla sobre la que se colocan las alGoOh.cartas.LogicaCartas
+        // Defino el tamanio de cada columna y fila de la grilla sobre la que se colocan las cartas.LogicaCartas
         grid.getColumnConstraints().add(new ColumnConstraints(75));
         grid.getColumnConstraints().add(new ColumnConstraints(110));
         grid.getColumnConstraints().add(new ColumnConstraints(110));

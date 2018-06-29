@@ -1,8 +1,8 @@
 package Vista;
 
-import Controlador.ClickEnCartaMonstruoHandler;
-import alGoOh.cartas.LogicaCartas.CartaMonstruo;
-import alGoOh.componentes.Tablero;
+import Vista.Eventos.ClickEnCartaMonstruoHandler;
+import cartas.CartaMonstruo;
+import alGoOh.Tablero;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.image.Image;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class VistaZonaMonstruos implements Observer {
+class VistaZonaMonstruos implements Observer {
 
     private GridPane zonaMonstruos;
     private Tablero tablero;

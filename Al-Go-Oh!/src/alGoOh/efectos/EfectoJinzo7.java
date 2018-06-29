@@ -1,6 +1,6 @@
 package alGoOh.efectos;
 
-import alGoOh.componentes.Jugador;
+import alGoOh.Jugador;
 
 public class EfectoJinzo7 extends Efecto {
 

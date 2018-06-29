@@ -1,12 +1,12 @@
 package Vista;
 
-import alGoOh.componentes.Jugador;
+import alGoOh.Jugador;
 import javafx.scene.control.Label;
 
 import java.util.Observable;
 import java.util.Observer;
 
-public class VistaVida implements Observer {
+class VistaVida implements Observer {
 
     private Label vidaJugador1;
     private Label vidaJugador2;
@@ -22,8 +22,8 @@ public class VistaVida implements Observer {
     }
 
     public void update() {
-        vidaJugador1.setText("LIFEPOINTS: " + jugador1.getPtsVida());
-        vidaJugador2.setText("LIFEPOINTS: " + jugador2.getPtsVida());
+        vidaJugador1.setText(jugador1.getNombre() +" "+ jugador1.getPtsVida());
+        vidaJugador2.setText(jugador2.getNombre() +" "+ jugador2.getPtsVida());
 
     }
 

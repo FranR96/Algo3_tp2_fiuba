@@ -1,9 +1,10 @@
 package alGoOh;
-
 import static org.junit.Assert.*;
 
-import cartas.*;
+
+import cartas.CartaMonstruo;
 import cartasConcretas.*;
+
 import org.junit.Test;
 
 public class CartaMonstruoTest {

@@ -1,13 +1,13 @@
 package alGoOh;
 
-import cartas.*;
-import cartasConcretas.*;
-import org.junit.Test;
-
+import static org.junit.Assert.*;
 import java.util.Collection;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+import cartas.*;
+import cartasConcretas.*;
+
+import org.junit.Test;
 
 public class CampoTest {
 	

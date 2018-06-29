@@ -1,10 +1,10 @@
 package alGoOh.controladorJuego;
 
-import alGoOh.componentes.Jugador;
+import alGoOh.Jugador;
 
 import java.util.Random;
 
-public class Seleccionador {
+class Seleccionador {
 
 	
     private Random random = new Random();

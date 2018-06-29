@@ -1,6 +1,6 @@
 package Vista;
 
-import Controlador.BotonComenzarJuegoHandler;
+import Vista.Eventos.BotonComenzarJuegoHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -13,7 +13,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 
-public class VentanaInicio extends HBox
+class VentanaInicio extends HBox
 {
     private Stage stage;
     private MediaPlayer player;

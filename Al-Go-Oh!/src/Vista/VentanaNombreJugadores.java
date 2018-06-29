@@ -1,7 +1,7 @@
 package Vista;
 
-import Controlador.EnviarConEnterHandler;
-import alGoOh.componentes.Jugador;
+import Vista.Eventos.EnviarConEnterHandler;
+import alGoOh.Jugador;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class VentanaNombreJugadores extends VBox {
+class VentanaNombreJugadores extends VBox {
 
     public VentanaNombreJugadores(Stage stage, Scene escenaProxima, TableroDeJuego tablero, Jugador jugador1, Jugador jugador2) {
         super();
@@ -41,7 +41,6 @@ public class VentanaNombreJugadores extends VBox {
                     }
                     else {
                         jugador2.setNombre(obtenerNombre.getText());
-                        obtenerNombre.setText("");
                         stage.setScene(escenaProxima);
                     }
                 });
@@ -65,7 +64,7 @@ public class VentanaNombreJugadores extends VBox {
         this.getStyleClass().add("ventana-inicio");
     }
 
-    public static void mostrarToolTip(Stage owner, Control control, String tooltipText) {
+    private static void mostrarToolTip(Stage owner, Control control, String tooltipText) {
         Point2D p = control.localToScene(0.0, 0.0);
 
         final Tooltip customTooltip = new Tooltip();

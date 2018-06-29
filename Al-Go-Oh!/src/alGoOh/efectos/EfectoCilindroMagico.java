@@ -1,7 +1,7 @@
 package alGoOh.efectos;
 
-import alGoOh.cartas.LogicaCartas.CartaMonstruo;
-import alGoOh.componentes.Campo;
+import cartas.CartaMonstruo;
+import alGoOh.Campo;
 
 public class EfectoCilindroMagico extends Efecto {
 

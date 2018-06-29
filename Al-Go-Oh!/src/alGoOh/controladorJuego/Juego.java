@@ -1,6 +1,6 @@
 package alGoOh.controladorJuego;
 
-import alGoOh.componentes.Jugador;
+import alGoOh.Jugador;
 
 public class Juego {
 	

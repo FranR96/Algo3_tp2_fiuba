@@ -1,6 +1,6 @@
 package alGoOh.efectos;
 
-import alGoOh.componentes.Jugador;
+import alGoOh.Jugador;
 
 public class EfectoJustDesserts extends Efecto {
 

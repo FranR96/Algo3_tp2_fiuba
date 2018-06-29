@@ -3,8 +3,10 @@ package alGoOh;
 import static org.junit.Assert.*;
 
 
+import cartas.CartaMonstruo;
+import cartas.CartaMonstruoNoExistenteException;
 import cartasConcretas.*;
-import cartas.*;
+
 import org.junit.Test;
 
 public class ZonaMonstruosTest {

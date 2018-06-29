@@ -1,6 +1,6 @@
 package Vista;
 
-import alGoOh.cartas.LogicaCartas.Carta;
+import cartas.Carta;
 import javafx.scene.image.ImageView;
 
 public class VistaCarta extends ImageView {

@@ -3,8 +3,10 @@ package alGoOh;
 import static org.junit.Assert.*;
 import java.util.Collection;
 
+
 import cartas.*;
 import cartasConcretas.*;
+
 import org.junit.Test;
 
 public class TableroTest {

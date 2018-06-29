@@ -1,9 +1,9 @@
 package Vista;
 
-import Controlador.ClickEnCartaHandler;
-import alGoOh.cartas.LogicaCartas.Carta;
-import alGoOh.componentes.Jugador;
-import alGoOh.componentes.Tablero;
+import Vista.Eventos.ClickEnCartaHandler;
+import cartas.Carta;
+import alGoOh.Jugador;
+import alGoOh.Tablero;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -13,7 +13,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 
-public class VistaMano implements Observer {
+class VistaMano implements Observer {
     private VBox vistaDeCartas;
     private Tablero tablero;
     private Stage stage;
